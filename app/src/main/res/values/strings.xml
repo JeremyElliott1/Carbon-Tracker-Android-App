@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">CarbonFootprintTracker</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">My Profile</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="action_myAccount">My Account</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_recyclables">Recyclables</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_travel">Travel</string>
+    <string name="menu_shop">Shop</string>
+    <string name="menu_leaderboard">Leaderboard</string>
+    <string name="menu_reusables">Reusables</string>
+    //Scott Strings for settings
+    <string name="action_settings_about">About us</string>
+    <string name="settings_notification">Notifications</string>
+    <string name="settings_sounds">Sounds</string>
+    <string name="settings_about">About</string>
+    <string name="settings_tos">Terms of Service</string>
+    <string name="settings_security">Security</string>
+    <string name="settings_delete_acc">Delete Account</string>
+    <string name="settings_privacy">Privacy Policy</string>
+    <string name="settings_data_usage">Data and Storage</string>
+    <string name="settings_help_title">Help</string>
+    <string name="settings_dark_mode">Dark Mode</string>
+
+
+    <string name="settings_about_policy">
+        Welcome to SAGE\’s own Carbon Footprint Tracker. We\'re dedicated to giving you the
+        very best experience, with a focus on helping our employees reducing their carbon
+        footprint.\n\n
+        Founded in 2020 by Group 19, SAGE has come a long way from its humble beginnings in
+        a rural Newcastle upon Tyne where Alan Rickman first started out. His passion
+        for helping other people be more eco-friendly drove him to build an app to aid those
+        in his workplace and gave him the impetus to turn hard work and inspiration into to a
+        booming app. We now serve customers all Newcastle upon Tyne and are thrilled to be a
+        part of the eco-friendly wing of the IT industry.\n\n
+
+        We hope you enjoy our products as much as we enjoy offering them to you.
+        If you have any questions or comments, please don\'t hesitate to contact us.\n\n
+        Sincerely,\n
+        Alan Rickman, CEO, Founder, Prodigy, Wizard.
+    </string>
+
+
+    <string name="settings_tos_policy">
+        TOS
+    </string>
+
+    <string name="settings_security_policy">
+    Security Policy
+    </string>
+
+    <string name="settings_privacy_policy">
+    Privacy Policy
+    </string>
+
+    //Jeremy Strings for reusables
+    <string name="Reusables_MainHeader">Reusables</string>
+    <string name="Reusables_UsesHeader">Uses:</string>
+    <string name="Reusables_ItemsHeader">Items:</string>
+    <string name="Reusables_AddButton">Add</string>
+    <string name="Reusables_RemoveButton">Remove</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

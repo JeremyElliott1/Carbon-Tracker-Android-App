@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.slidebox.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_recyclables"
+        android:name="com.example.slidebox.ui.recyclables.recyclablesFragment"
+        android:label="@string/menu_recyclables"
+        tools:layout="@layout/fragment_recyclables" />
+
+    <fragment
+        android:id="@+id/nav_reusables"
+        android:name="com.example.slidebox.ui.reusables.ReusablesFragment"
+        android:label="@string/menu_reusables"
+        tools:layout="@layout/fragment_reusables" />
+
+    <fragment
+        android:id="@+id/nav_travel"
+        android:name="com.example.slidebox.ui.travel.TravelFragment"
+        android:label="@string/menu_travel"
+        tools:layout="@layout/fragment_travel" />
+
+    <fragment
+        android:id="@+id/nav_leaderboard"
+        android:name="com.example.slidebox.ui.leaderboard.LeaderboardFragment"
+        android:label="@string/menu_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
+    <fragment
+        android:id="@+id/nav_shop"
+        android:name="com.example.slidebox.ui.shop.ShopFragment"
+        android:label="@string/menu_shop"
+        tools:layout="@layout/fragment_shop" />
+
+
+
+
+
+
+
+
+</navigation>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_recyclables"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_recyclables" />
+        <item
+            android:id="@+id/nav_reusables"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/menu_reusables" />
+
+        <item
+            android:id="@+id/nav_travel"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_travel" />
+
+        <item
+            android:id="@+id/nav_leaderboard"
+            android:icon="@drawable/ic_ac_unit_black_24dp"
+            android:title="@string/menu_leaderboard" />
+
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/menu_shop" />
+
+
+    </group>
+
+</menu>

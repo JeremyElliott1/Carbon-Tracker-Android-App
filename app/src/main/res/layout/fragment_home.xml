@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sv1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_1"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/logo_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:src="@drawable/sage" />
+
+
+        <TextView
+            android:id="@+id/tips_lable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/logo_home"
+            android:paddingLeft="20dp"
+            android:text="Tips:" />
+
+        <TextView
+            android:id="@+id/tips_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tips_lable"
+            android:layout_toRightOf="@+id/tips_lable"
+            android:background="@color/colorAccent"
+            android:text="tips" />
+
+        <TextView
+
+            android:id="@+id/points"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_centerHorizontal="true"/>
+
+
+        <TextView
+            android:id="@+id/points_lable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/points"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+
+            android:text="Your Points"
+            android:textSize="35dp" />
+
+        <TextView
+            android:id="@+id/chanllage_lable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/points_lable"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="20dp"
+            android:text="Daily chanllage:"
+            android:textSize="20dp" />
+        <CheckedTextView
+            android:id="@+id/chanllage_1"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="chanllage 1"
+            android:layout_below="@+id/chanllage_lable"
+            android:paddingLeft="20dp"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_below="@+id/chanllage_lable"
+            android:layout_toRightOf="@+id/chanllage_1"
+            android:scaleX="0.5"
+            android:scaleY="0.5" />
+
+        <CheckedTextView
+            android:id="@+id/chanllage_2"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="chanllage 2"
+            android:layout_below="@+id/chanllage_1"
+            android:paddingLeft="20dp"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_below="@+id/chanllage_1"
+            android:layout_toRightOf="@+id/chanllage_2"
+            android:scaleX="0.5"
+            android:scaleY="0.5" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Shopping Now!"
+            android:textSize="25dp"
+            android:layout_alignParentBottom="true"
+            />
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
+

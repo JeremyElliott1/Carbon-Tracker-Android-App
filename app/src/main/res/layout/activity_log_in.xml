@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/topHalf"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#0099ff"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/welcome" />
+
+        <EditText
+            android:paddingLeft="10dp"
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/passWord"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_white"
+            android:hint="User:"
+
+            />
+
+        <EditText
+            android:paddingLeft="10dp"
+            android:inputType="textPassword"
+            android:id="@+id/passWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_white"
+            android:hint="Password:"
+
+            />
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/botHalf"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#0099ff"
+        android:paddingTop="20dp"
+        >
+        <Button
+            android:id="@+id/Log_in"
+            android:background="@drawable/bg_blue"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:text="Log In"
+            android:textColor="#f0f0f0"
+
+            />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
