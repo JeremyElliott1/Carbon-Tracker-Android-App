@@ -12,6 +12,7 @@ public class SettingsOptions extends AppCompatActivity {
     private Button button_Tos;
     private Button button_Security;
     private Button button_Privacy;
+    private Button button_Help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,14 @@ public class SettingsOptions extends AppCompatActivity {
             }
         });
 
+        button_Help = (Button) findViewById(R.id.button_Help);
+        button_Help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSetting_Help();
+            }
+        });
+
     }
 
     public void openSetting_About() {
@@ -70,6 +79,11 @@ public class SettingsOptions extends AppCompatActivity {
 
     public void openSetting_Privacy() {
         Intent intent = new Intent(this, SettingsPrivacyPolicy.class);
+        startActivity(intent);
+    }
+
+    public void openSetting_Help() {
+        Intent intent = new Intent(this, HelpOptions.class);
         startActivity(intent);
     }
 
