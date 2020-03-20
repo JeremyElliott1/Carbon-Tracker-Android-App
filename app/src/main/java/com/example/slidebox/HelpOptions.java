@@ -9,15 +9,15 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class HelpOptions extends AppCompatActivity {
-    private Button button;
+    private Button button_back;
     private Button help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options_help);
-        button = (Button)findViewById(R.id.button4);
-        button.setOnClickListener(new View.OnClickListener() {
+        button_back = (Button)findViewById(R.id.button4);
+        button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HelpOptions.this, SlideBox.class);
