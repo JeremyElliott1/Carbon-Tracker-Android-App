@@ -60,12 +60,24 @@
     Privacy Policy
     </string>
 
-    //Jeremy Strings for reusables
+    //Jeremy Strings for reusables -------------------------------------------------------------
     <string name="Reusables_MainHeader">Reusables</string>
     <string name="Reusables_UsesHeader">Uses:</string>
     <string name="Reusables_ItemsHeader">Items:</string>
     <string name="Reusables_AddButton">Add</string>
     <string name="Reusables_RemoveButton">Remove</string>
+
+    <string-array name="Reusable_Items">
+        <item>Cup</item>
+        <item>GroceryBag</item>
+        <item>LunchBox</item>
+        <item>SnackBox</item>
+        <item>Straw</item>
+        <item>WatterBottle</item>
+    </string-array>
+
+
+    //------------------------------------------------------------------------------------------
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
