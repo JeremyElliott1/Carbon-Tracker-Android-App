@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsPrivacyPolicy"></activity>
+        <activity android:name=".SettingsPrivacyPolicy" />
         <activity android:name=".SettingsSecurity" />
         <activity android:name=".SettingsTos" />
         <activity android:name=".SettingsAbout" />
@@ -17,6 +17,7 @@
         <activity android:name=".MyAccountOptions" />
         <activity android:name=".HelpOptions" />
         <activity android:name=".SettingsOptions" />
+        <activity android:name=".ui.reusables.ReusablesItemAdd" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
