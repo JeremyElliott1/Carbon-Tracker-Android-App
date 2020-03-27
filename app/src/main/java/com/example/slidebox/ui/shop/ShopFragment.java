@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.slidebox.ActivityOne;
+import com.example.slidebox.MyProfile;
 import com.example.slidebox.R;
 
 
@@ -51,7 +52,7 @@ public class ShopFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(getActivity(), ActivityOne.class);
+                    Intent intent = new Intent(getActivity(), MyProfile.class);
                     intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
                 }
