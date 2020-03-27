@@ -6,15 +6,66 @@
     android:layout_height="match_parent">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ItemHeaderView"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reusables_AddItemsButton">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <TextView
+            android:id="@+id/reusables_itemImageHeader"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/reusables_ItemImageHeader"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/reusables_ItemDescriptionHeader"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/reusables_ItemNameHeader"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Reusable_ItemRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ItemHeaderView" />
+
     <TextView
-        android:id="@+id/Reusable_mainHeader"
+        android:id="@+id/reusables_MainHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
-        android:text="@string/Reusables_MainHeader"
+        android:text="@string/reusables_MainHeader"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,123 +73,90 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Reusables_UsesHeader"
+        android:id="@+id/reusables_UsesHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="@string/Reusables_UsesHeader"
+        android:text="@string/reusables_UsesHeader"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/Reusable_mainHeader"
-        app:layout_constraintTop_toBottomOf="@+id/Reusable_mainHeader" />
+        app:layout_constraintStart_toStartOf="@+id/reusables_MainHeader"
+        app:layout_constraintTop_toBottomOf="@+id/reusables_MainHeader" />
 
     <TextView
-        android:id="@+id/Reusable_ItemsHeader"
+        android:id="@+id/reusables_ItemsHeader"
         android:layout_width="53dp"
         android:layout_height="21dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="310dp"
         android:gravity="center_horizontal"
-        android:text="@string/Reusables_ItemsHeader"
+        android:text="@string/reusables_ItemsHeader"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/Reusable_mainHeader"
-        app:layout_constraintTop_toBottomOf="@+id/Reusables_UsesHeader" />
+        app:layout_constraintStart_toStartOf="@+id/reusables_MainHeader"
+        app:layout_constraintTop_toBottomOf="@+id/reusables_UsesHeader" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <ScrollView
-        android:id="@+id/Reusable_UsesScrollView"
-        android:layout_width="0dp"
-        android:layout_height="260dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Reusables_UsesHeader">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:srcCompat="@drawable/ic_menu_camera" />
-        </LinearLayout>
-    </ScrollView>
-
-    <ScrollView
-        android:id="@+id/Reusable_ItemsScrollView"
-        android:layout_width="0dp"
-        android:layout_height="260dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Reusable_ItemsHeader">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        app:layout_constraintGuide_begin="17dp" />
 
     <Button
-        android:id="@+id/Reusables_AddButton"
+        android:id="@+id/reusables_AddUsesButton"
         android:layout_width="90dp"
         android:layout_height="37dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:text="@string/Reusables_AddButton"
+        android:text="@string/reusables_AddButton"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/Reusables_UsesHeader"
-        app:layout_constraintTop_toTopOf="@+id/Reusables_UsesHeader" />
+        app:layout_constraintStart_toEndOf="@+id/reusables_UsesHeader"
+        app:layout_constraintTop_toTopOf="@+id/reusables_UsesHeader" />
 
     <Button
-        android:id="@+id/reusables_AddButton2"
+        android:id="@+id/reusables_AddItemsButton"
         android:layout_width="90dp"
-        android:layout_height="37dp"
+        android:layout_height="38dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:text="@string/Reusables_AddButton"
+        android:text="@string/reusables_AddButton"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/Reusable_ItemsHeader"
-        app:layout_constraintTop_toTopOf="@+id/Reusable_ItemsHeader" />
+        app:layout_constraintStart_toEndOf="@+id/reusables_ItemsHeader"
+        app:layout_constraintTop_toTopOf="@+id/reusables_ItemsHeader" />
 
     <Button
-        android:id="@+id/reusables_RemoveButton"
+        android:id="@+id/reusables_RmvUsesButton"
         android:layout_width="90dp"
         android:layout_height="38dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:text="@string/Reusables_RemoveButton"
+        android:text="@string/reusables_RemoveButton"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/Reusables_AddButton"
-        app:layout_constraintTop_toTopOf="@+id/Reusables_UsesHeader" />
+        app:layout_constraintStart_toEndOf="@+id/reusables_AddUsesButton"
+        app:layout_constraintTop_toTopOf="@+id/reusables_UsesHeader" />
 
     <Button
-        android:id="@+id/reusables_RemoveButton2"
+        android:id="@+id/reusables_RmvItemsButton"
         android:layout_width="90dp"
         android:layout_height="38dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:text="@string/Reusables_RemoveButton"
+        android:text="@string/reusables_RemoveButton"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/reusables_AddButton2"
-        app:layout_constraintTop_toTopOf="@+id/Reusable_ItemsHeader" />
+        app:layout_constraintStart_toEndOf="@+id/reusables_AddItemsButton"
+        app:layout_constraintTop_toTopOf="@+id/reusables_ItemsHeader" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reusables_AddUsesButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
