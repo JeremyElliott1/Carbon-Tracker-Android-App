@@ -38,10 +38,6 @@ public class ReusablesFragment extends Fragment {
     private ArrayList<ReusableItem> reusableItemList;
 
     //image array for recycler view to hold images of reusables objects.
-    int[] ReusableItemImages =
-            {R.drawable.reusable_cup, R.drawable.reusable_grocerybag,
-                    R.drawable.reusable_lunchbox, R.drawable.reusable_snackbox,
-                    R.drawable.reusable_straw};
 
 
     /*Untouched Code Starts----------------------------------------------------------------*/
@@ -128,7 +124,6 @@ public class ReusablesFragment extends Fragment {
         reusableItemList.add(new ReusableItem(R.drawable.coffee, "Coffeeee!!!"));
         reusableItemList.add(new ReusableItem(R.drawable.coffee, "Coffeeee!!!"));
         reusableItemList.add(new ReusableItem(R.drawable.coffee, "Coffeeee!!!"));
-        reusableItemList.add(new ReusableItem(R.drawable.reusable_waterbottle, "Water Bottle!!!"));
     }
 
     public void createItemRecyclerView() {
