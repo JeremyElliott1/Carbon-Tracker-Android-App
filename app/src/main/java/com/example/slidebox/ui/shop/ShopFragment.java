@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.slidebox.ActivityOne;
+import com.example.slidebox.MyProfile;
 import com.example.slidebox.R;
 
 
@@ -25,7 +26,7 @@ public class ShopFragment extends Fragment {
 
     private ShopViewModel shopViewModel;
 
-    GridLayout mainGrid;
+    private GridLayout mainGrid;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class ShopFragment extends Fragment {
         return root;
     }
 
-    public void setSingleEvent(GridLayout mainGrid) {
+    private void setSingleEvent(GridLayout mainGrid) {
         //Loop all child item of Main Grid
         for (int i = 0; i < mainGrid.getChildCount(); i++) {
             //You can see , all child item is CardView , so we just cast object to CardView
@@ -51,7 +52,7 @@ public class ShopFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(getActivity(), ActivityOne.class);
+                    Intent intent = new Intent(getActivity(), MyProfile.class);
                     intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
                 }
