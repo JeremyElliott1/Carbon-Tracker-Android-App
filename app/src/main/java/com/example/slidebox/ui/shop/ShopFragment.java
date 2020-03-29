@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.slidebox.ActivityOne;
 import com.example.slidebox.MyProfile;
 import com.example.slidebox.R;
 
