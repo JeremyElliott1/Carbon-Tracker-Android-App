@@ -55,8 +55,8 @@ public class ShopFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), MyProfile.class);
                     intent.putExtra("info","This is activity from card item index  "+finalI);
                     startActivity(intent);
-                }
-            });
-        }
-    }
 }
+            });
+                    }
+                    }
+                    }
