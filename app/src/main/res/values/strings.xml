@@ -89,7 +89,7 @@
     <string name="tea">Tea \n20 points</string>
     <string name="cookie">Cookie \n10 points</string>
     <string name="muffin">Muffin \n10 points</string>
-    <string name="tshirt">Company t-shirt \n100 points</string>
+    <string name="tshirt">T-shirt \n100 points</string>
     <string name="travelMug">Travel mug \n100 points</string>
 
 </resources>
