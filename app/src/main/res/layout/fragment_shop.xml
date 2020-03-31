@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2">
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/text_shop"
@@ -28,13 +28,14 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="center_horizontal" />
             <TextView
                 android:id="@+id/textGrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Grid Layout"
+                android:text="@string/shop"
                 android:textColor="@android:color/primary_text_light_nodisable"
                 android:textSize="34sp" />
 
@@ -48,7 +49,7 @@
             android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:columnOrderPreserved="false"
-            android:padding="14dp"
+            android:padding="10dp"
             android:rowCount="3">
 
             <!-- Row 1 -->
@@ -67,17 +68,31 @@
                 tools:ignore="UnusedAttribute"
                 >
 
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/coffee"
+                    android:layout_marginTop="24dp"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/coffee"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+
                 <TextView
                     android:id="@id/textGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/coffee"
-                    android:text="@string/coffee"
+                    android:layout_gravity="bottom"
+                    android:text="@string/_20_points"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
+
 
 
             </androidx.cardview.widget.CardView>
@@ -100,13 +115,26 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/tea"
                     android:text="@string/tea"
+                    android:layout_marginTop="24dp"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/tea"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@id/textGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="@string/_20_points"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
 
             </androidx.cardview.widget.CardView>
@@ -126,16 +154,28 @@
                 tools:targetApi="lollipop">
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cookie"
+                    android:layout_marginTop="16dp"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/cookie"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+
+                <TextView
                     android:id="@id/textGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/cookie"
-                    android:text="@string/cookie"
+                    android:layout_gravity="bottom"
+                    android:text="@string/_10_points"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
 
             </androidx.cardview.widget.CardView>
@@ -156,16 +196,28 @@
                 tools:targetApi="lollipop">
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/muffin"
+                    android:layout_marginTop="16dp"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/muffin2"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+
+                <TextView
                     android:id="@id/textGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/muffin2"
-                    android:text="@string/muffin"
+                    android:layout_gravity="bottom"
+                    android:text="@string/_10_points"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
 
             </androidx.cardview.widget.CardView>
@@ -185,16 +237,27 @@
                 tools:targetApi="lollipop">
 
                 <TextView
-                    android:id="@id/textGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/shirt"
                     android:text="@string/tshirt"
                     android:textAlignment="center"
+                    android:drawableBottom="@drawable/shirt"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@id/textGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="@string/_80_points"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
 
             </androidx.cardview.widget.CardView>
@@ -215,16 +278,27 @@
                 tools:targetApi="lollipop">
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/travelMug"
+                    android:textAlignment="center"
+                    android:drawableBottom="@drawable/travelmug"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+
+                <TextView
                     android:id="@id/textGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/travelmug"
-                    android:text="@string/travelMug"
+                    android:layout_gravity="bottom"
+                    android:text="@string/_80_points"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
 
             </androidx.cardview.widget.CardView>

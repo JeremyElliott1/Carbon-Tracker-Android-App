@@ -85,11 +85,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="coffee">Coffee \n20 points</string>
-    <string name="tea">Tea \n20 points</string>
-    <string name="cookie">Cookie \n10 points</string>
-    <string name="muffin">Muffin \n10 points</string>
-    <string name="tshirt">T-shirt \n100 points</string>
-    <string name="travelMug">Travel mug \n100 points</string>
+    <string name="coffee">Coffee</string>
+    <string name="tea">Tea</string>
+    <string name="cookie">Cookie</string>
+    <string name="muffin">Muffin</string>
+    <string name="tshirt">T-shirt</string>
+    <string name="travelMug">Travel mug</string>
+    <string name="_20_points">20 points</string>
+    <string name="_10_points">10 points</string>
+    <string name="_80_points">80 points</string>
+    <string name="shop">Shop</string>
 
 </resources>

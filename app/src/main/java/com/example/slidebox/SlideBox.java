@@ -98,11 +98,6 @@ public class SlideBox extends AppCompatActivity {
                 startActivity(myIntent3);
                 return true;
 
-            case R.id.action_shopping:
-                Intent myIntent4 = new Intent(SlideBox.this, ShoppingCart.class);
-                startActivity(myIntent4);
-                return true;
-
             default:
                 return super.onOptionsItemSelected(item);
 
