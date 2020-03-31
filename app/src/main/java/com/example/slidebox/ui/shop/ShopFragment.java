@@ -26,6 +26,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import org.w3c.dom.Text;
@@ -146,13 +147,18 @@ private void getCode(String text){
             e.printStackTrace();
         }
 }
-  MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
 public void qrCode(String text) throws WriterException {
+    QRCodeWriter qrCodeWriter = new QRCodeWriter();
     qrCode = dialogShopRedeemPopup.findViewById(R.id.qr_code);
-    BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 350,350);
-    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+    BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 350,350);
+    Bitmap bitmap = Bitmap.createBitmap(350,350,Bitmap.Config.RGB_565);
+
+    for(int x =0 ; x<350 ; x++){
+        for(int y=0 ; y<350 ; y++){
+            bitmap.setPixel(x,y,bitMatrix.get(x,y)? Color.BLACK : Color.parseColor("#224977"));
+        }
+    }
     qrCode.setImageBitmap(bitmap);
 }
 }
