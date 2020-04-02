@@ -30,7 +30,8 @@
             android:hint="User:"
             android:paddingLeft="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/passWord"
@@ -61,12 +62,13 @@
 
         <Button
             android:id="@+id/Log_in"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="90dp"
             android:layout_height="30dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
-            android:background="#348A00"
 
+            android:background="#348A00"
             android:text="Log In"
             android:textColor="#f0f0f0"
             app:layout_constraintHorizontal_bias="0.498"
