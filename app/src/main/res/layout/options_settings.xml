@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#87D05B"
+    android:background="#FFFFFF"
     tools:context=".SettingsOptions"
     tools:ignore="PrivateResource">
 
@@ -17,14 +17,14 @@
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
         android:layout_marginTop="8dp"
-        android:background="#348A00"
+        android:background="#87D05B"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
         android:text="@string/settings_help_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#f0f0f0"
+        android:textColor="#FFFFFF"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_Security" />
+        app:layout_constraintTop_toBottomOf="@+id/button_privacy_policy" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -49,7 +49,7 @@
         android:text="@string/action_settings"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#f0f0f0"
+        android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,32 +60,30 @@
         android:id="@+id/switch1"
         android:layout_width="200dp"
         android:layout_height="54dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginLeft="105dp"
-        android:checked="true"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="112dp"
+        android:checked="false"
+
         android:text="@string/settings_notification"
-        android:textColor="#f0f0f0"
-
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home6" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_Security"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="215dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="8dp"
-        android:background="#348A00"
-        android:lineSpacingExtra="@dimen/activity_vertical_margin"
-        android:text="@string/settings_security"
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="200dp"
+        android:layout_height="54dp"
+
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:checked="false"
+        android:text="@string/settings_sounds"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#f0f0f0"
-        android:typeface="normal"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_privacy_policy" />
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <Button
         android:id="@+id/button_Tos"
@@ -95,11 +93,11 @@
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
         android:layout_marginTop="8dp"
-        android:background="#348A00"
+        android:background="#87D05B"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
         android:text="@string/settings_tos"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#f0f0f0"
+        android:textColor="#FFFFFF"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_About" />
@@ -112,28 +110,14 @@
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
         android:layout_marginTop="8dp"
-        android:background="#348A00"
+        android:background="#87D05B"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
-        android:text="@string/settings_privacy_policy"
+        android:text="@string/settings_privacy"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#f0f0f0"
+        android:textColor="#FFFFFF"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_Tos" />
-
-    <Switch
-        android:id="@+id/switch3"
-        android:layout_width="200dp"
-        android:layout_height="54dp"
-
-        android:layout_marginStart="105dp"
-        android:layout_marginLeft="105dp"
-        android:checked="false"
-        android:text="@string/settings_dark_mode"
-        android:textColor="#f0f0f0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch2" />
 
     <Button
         android:id="@+id/button_About"
@@ -142,28 +126,15 @@
         android:layout_height="50dp"
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
-        android:background="#348A00"
+        android:layout_marginTop="238dp"
+        android:background="#87D05B"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
         android:text="@string/settings_about"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#f0f0f0"
+        android:textColor="#FFFFFF"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch3" />
-
-    <Switch
-        android:id="@+id/switch2"
-        android:layout_width="200dp"
-        android:layout_height="54dp"
-
-        android:layout_marginStart="105dp"
-        android:layout_marginLeft="105dp"
-        android:checked="true"
-        android:text="@string/settings_sounds"
-        android:textColor="#f0f0f0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

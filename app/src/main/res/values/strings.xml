@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CarbonFootprintTracker</string>
+    <string name="app_name">footprints</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">My Profile</string>
@@ -49,15 +49,40 @@
 
 
     <string name="settings_tos_policy">
-        TOS
+        Please read these Terms of Service carefully before using Footprint, operated by Sage.
+        Your access to and use this service is conditioned on your acceptance of and compliance
+        with these terms. These terms apply to all of those who chose to use Footprint, as use
+        of this service is an extension of Sage itself.\n\n
+
+        By accessing or using this service you agree to be bound by these terms. If you disagree
+        with any part of the terms, then you may not access the service.\n\n
+
+        Termination of account may be a done to those accounts which are in breach of terms. This
+        termination or suspension of account may be done immediately, without prior notice or
+        liability for any reason whatsoever, including but without limitation if you breach
+        the terms.
+
     </string>
 
     <string name="settings_security_policy">
-    Security Policy
+        !!
     </string>
 
     <string name="settings_privacy_policy">
-    Privacy Policy
+        At Sage we hold the privacy of your data to the highest authority. The confidentiality,
+        integrity and availability of your data will only be used to the point agreed in our terms
+        of service. Your personal data shall not be used by any means beyond the confines of
+        Footprint.\n\n
+
+        All data agreed to be used for research (reusable, recycled and travel data)
+        will be anonymised. This data is then used by Sage to make strides towards a healthier
+        planet and better future.\n\n
+
+        If your account is suspended or removed all personal data is deleted but statistics remain
+        for research purposes. Accounts cannot be recovered on permanent deletion but suspended
+        accounts will retain data.
+
+
     </string>
 
     //Jeremy Strings for reusables -------------------------------------------------------------
@@ -94,12 +119,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="coffee">Coffee \n20 points</string>
-    <string name="tea">Tea \n20 points</string>
-    <string name="cookie">Cookie \n10 points</string>
-    <string name="muffin">Muffin \n10 points</string>
-    <string name="tshirt">Company t-shirt \n100 points</string>
-    <string name="travelMug">Travel mug \n100 points</string>
-    <string name="what_are_you_recycling_this_time">What are you recycling this time?</string>
+    <string name="coffee">Coffee</string>
+    <string name="tea">Tea</string>
+    <string name="cookie">Cookie</string>
+    <string name="muffin">Muffin</string>
+    <string name="tshirt">T-shirt</string>
+    <string name="travelMug">Travel mug</string>
+    <string name="_20_points">20 points</string>
+    <string name="_10_points">10 points</string>
+    <string name="_80_points">80 points</string>
+    <string name="shop">Shop</string>
 
 </resources>

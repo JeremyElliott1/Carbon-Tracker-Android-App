@@ -2,6 +2,7 @@ package com.example.slidebox;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.slidebox.ui.shop.ShoppingCart;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -68,6 +69,7 @@ public class SlideBox extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.options, menu);
+
         return true;
     }
 
@@ -82,18 +84,18 @@ public class SlideBox extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_myAccount:
-                Intent myIntent3 = new Intent(SlideBox.this, MyAccountOptions.class);
-                startActivity(myIntent3);
-                return true;
-
-            case R.id.action_settings:
-                Intent myIntent1 = new Intent(SlideBox.this, SettingsOptions.class);
+                Intent myIntent1 = new Intent(SlideBox.this, MyAccountOptions.class);
                 startActivity(myIntent1);
                 return true;
 
-            case R.id.action_help:
-                Intent myIntent2 = new Intent(SlideBox.this, HelpOptions.class);
+            case R.id.action_settings:
+                Intent myIntent2 = new Intent(SlideBox.this, SettingsOptions.class);
                 startActivity(myIntent2);
+                return true;
+
+            case R.id.action_help:
+                Intent myIntent3 = new Intent(SlideBox.this, HelpOptions.class);
+                startActivity(myIntent3);
                 return true;
 
             default:
