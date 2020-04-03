@@ -10,7 +10,6 @@ import android.widget.Button;
 public class SettingsOptions extends AppCompatActivity {
     private Button button_About;
     private Button button_Tos;
-    private Button button_Security;
     private Button button_Privacy;
     private Button button_Help;
 
@@ -36,13 +35,6 @@ public class SettingsOptions extends AppCompatActivity {
             }
         });
 
-        button_Security = (Button) findViewById(R.id.button_Security);
-        button_Security.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openSetting_Security();
-            }
-        });
 
         button_Privacy = (Button) findViewById(R.id.button_privacy_policy);
         button_Privacy.setOnClickListener(new View.OnClickListener() {
@@ -72,10 +64,6 @@ public class SettingsOptions extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openSetting_Security() {
-        Intent intent = new Intent(this, SettingsSecurity.class);
-        startActivity(intent);
-    }
 
     public void openSetting_Privacy() {
         Intent intent = new Intent(this, SettingsPrivacyPolicy.class);
