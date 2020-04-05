@@ -44,4 +44,6 @@ dependencies {
     // QRcode generator
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     implementation 'com.google.zxing:core:3.3.0'
+    implementation 'androidx.fragment:fragment:1.2.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0'
 }

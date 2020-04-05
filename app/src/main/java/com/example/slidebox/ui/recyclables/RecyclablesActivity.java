@@ -1,10 +1,9 @@
 package com.example.slidebox.ui.recyclables;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -14,53 +13,71 @@ import com.example.slidebox.MainActivity;
 import com.example.slidebox.R;
 
 
-public class RecyclablesActivity extends AppCompatActivity{ //implements AdapterView.OnItemSelectedListener{
-
+public class RecyclablesActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclables_activity);
+    }
 
-        Spinner mySpinner = (Spinner) findViewById(R.id.spinner2);
-
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(RecyclablesActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Recyclable_Items));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
-//       Spinner mySpinner = findViewById(R.id.spinner1);
-//        ArrayAdapter<CharSequence> recyclablesAdapter2 = ArrayAdapter.createFromResource(this, R.array.Recyclable_Items, android.R.layout.simple_spinner_item);
-//       recyclablesAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//       mySpinner.setAdapter(recyclablesAdapter2);
-//       mySpinner.setOnItemSelectedListener(this);
-
-/*
-       ArrayAdapter<String> recyclablesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Recyclable_Items));
-        recyclablesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(recyclablesAdapter);
-        mySpinner.setOnItemSelectedListener(this);*/
-
+    public void paperPopup(View v) {
+        PopupMenu paperPopup = new PopupMenu(this, v);
+        paperPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        paperPopup.inflate(R.menu.recyclables_popup);
+        paperPopup.show();
 
     }
 
-//    @Override
-//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        String text = adapterView.getItemAtPosition(position).toString();
-//        Toast.makeText(adapterView.getContext(),text, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//    }
+    public void plasticPopup(View v) {
+        PopupMenu plasticPopup = new PopupMenu(this, v);
+        plasticPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        plasticPopup.inflate(R.menu.recyclables_popup_plastic);
+        plasticPopup.show();
 
-//    @Override
-//    public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-//    String text = parent.getItemAtPosition(position).toString();
-//        Toast.makeText(parent.getContext(),text, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> parent) {
-//
-//    }
-}
+    }
+
+    public void metalPopup(View v) {
+        PopupMenu metalPopup = new PopupMenu(this, v);
+        metalPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        metalPopup.inflate(R.menu.recyclables_popup_metal);
+        metalPopup.show();
+
+    }
+
+    public void glassPopup(View v) {
+        PopupMenu glassPopup = new PopupMenu(this, v);
+        glassPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        glassPopup.inflate(R.menu.recyclables_popup);
+        glassPopup.show();
+
+    }
+
+    public void unsurePopup(View v) {
+        PopupMenu unsurePopup = new PopupMenu(this, v);
+        unsurePopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        unsurePopup.inflate(R.menu.recyclables_popup);
+        unsurePopup.show();
+
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item2:
+                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item3:
+                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item4:
+                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return false;
+        }
+    }
+
+            }
