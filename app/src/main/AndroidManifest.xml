@@ -31,6 +31,7 @@
         <activity
             android:name=".SlideBox"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.recyclables.RecyclablesActivity" />
     </application>
 
 </manifest>
