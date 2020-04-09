@@ -12,6 +12,7 @@ public class SettingsOptions extends AppCompatActivity {
     private Button button_Tos;
     private Button button_Privacy;
     private Button button_Help;
+    private Button button_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,6 @@ public class SettingsOptions extends AppCompatActivity {
             }
         });
 
-
         button_Tos = (Button) findViewById(R.id.button_Tos);
         button_Tos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +34,6 @@ public class SettingsOptions extends AppCompatActivity {
                 openSetting_Tos();
             }
         });
-
 
         button_Privacy = (Button) findViewById(R.id.button_privacy_policy);
         button_Privacy.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +51,18 @@ public class SettingsOptions extends AppCompatActivity {
             }
         });
 
+        button_back = (Button) findViewById(R.id.back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSetting_back();
+            }
+        });
+    }
+
+    public void openSetting_back() {
+        Intent intent = new Intent(this, SlideBox.class);
+        startActivity(intent);
     }
 
     public void openSetting_About() {
@@ -74,6 +85,8 @@ public class SettingsOptions extends AppCompatActivity {
         Intent intent = new Intent(this, HelpOptions.class);
         startActivity(intent);
     }
+
+
 
 
 }
