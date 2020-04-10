@@ -1,0 +1,4 @@
+ .idea/caches/build_file_checksums.ser | Bin [31m547[m -> [32m547[m bytes
+ app/app.iml                           |  46 [32m+++++++++++++++++++++++++++++[m[31m-----[m
+ local.properties                      |   4 [32m+[m[31m--[m
+ 3 files changed, 42 insertions(+), 8 deletions(-)
