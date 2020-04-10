@@ -88,7 +88,6 @@ public class HomeFragment extends Fragment {
 
         }
         getQuote(random);
-        System.out.println("Helloooooooooooo " + random);
 
         //firebase
         firebaseAuth = FirebaseAuth.getInstance();
