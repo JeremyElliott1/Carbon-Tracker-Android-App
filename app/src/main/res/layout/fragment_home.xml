@@ -115,9 +115,10 @@
             android:scaleY="0.5" />
 
         <Button
+            android:id="@+id/sign_out"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Shopping Now!"
+            android:text="Sign out"
             android:textSize="25dp"
             android:layout_alignParentBottom="true"
             />

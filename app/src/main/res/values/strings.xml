@@ -106,15 +106,12 @@
     </string-array>
 
 
-
     <string-array name="Recyclable_Items">
         <item>Paper</item>
         <item>Metal</item>
         <item>Plastic</item>
         <item>Glass</item>
     </string-array>
-
-
 
 
     <!-- TODO: Remove or change this placeholder text -->

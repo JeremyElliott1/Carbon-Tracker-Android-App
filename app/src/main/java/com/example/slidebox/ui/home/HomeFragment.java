@@ -1,10 +1,14 @@
 package com.example.slidebox.ui.home;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,9 +17,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.slidebox.LogIn;
 import com.example.slidebox.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,6 +31,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Source;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -38,7 +46,13 @@ public class HomeFragment extends Fragment {
     private TextView quoteText;
     private TextView quoteAuthor;
 
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
+
+    private Button sign_out;
+
     private static final String TAG = "DocSnippets";
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,15 +68,39 @@ public class HomeFragment extends Fragment {
         });
         quoteText = root.findViewById(R.id.quoteText);
         quoteAuthor = root.findViewById(R.id.quoteAuthor);
-        getQuote();
+
+        Calendar calender = Calendar.getInstance();
+        int currentDay = calender.get(Calendar.DAY_OF_MONTH);
+        SharedPreferences settings = getActivity().getSharedPreferences("PREFS",0);
+        int lastDay = settings.getInt("day",0);
+        int random = settings.getInt("random", 1);
+
+        if (lastDay!=currentDay) {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("day" , currentDay);
+
+            Random r = new Random();
+            int low = 1;
+            int high = 10;
+            int result = r.nextInt(high-low) + low;
+            editor.putInt("random",result);
+            editor.commit();
+
+        }
+        getQuote(random);
+        System.out.println("Helloooooooooooo " + random);
+
+        //firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+
+        sign_out=root.findViewById(R.id.sign_out);
+        signOut();
+
         return root;
     }
-    public void getQuote(){
-        Random r = new Random();
-        int low = 1;
-        int high = 10;
-        int result = r.nextInt(high-low) + low;
-       quotes.whereEqualTo("id",result)
+    public void getQuote(int random){
+       quotes.whereEqualTo("id",random)
        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
            @Override
            public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -79,5 +117,17 @@ public class HomeFragment extends Fragment {
                }
            }
        });
+    }
+    public void signOut(){
+        sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(),LogIn.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
     }
 }
