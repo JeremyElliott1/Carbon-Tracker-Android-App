@@ -38,7 +38,6 @@ dependencies {
     //Recycler View dependency
     implementation 'com.android.support:recyclerview-v7:29.0.0'
     implementation "androidx.cardview:cardview:1.0.0"
-
     implementation 'com.android.support:cardview-v7:29.0.0'
 
     // QRcode generator
@@ -46,4 +45,11 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'androidx.fragment:fragment:1.2.4'
     implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0'
+
+    def room_version = "2.2.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+
+// For Kotlin use kapt instead of annotationProcessor
 }

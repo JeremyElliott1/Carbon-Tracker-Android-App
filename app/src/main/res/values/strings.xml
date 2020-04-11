@@ -131,4 +131,9 @@
     <string name="shop">Shop</string>
     <string name="what_are_you_recycling">what are you recycling</string>
 
+
+
+    <string name="step_counts">Steps</string>
+    <string name="total_carbon_reduction">TOTAL</string>
+
 </resources>
