@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1019306232504",
+    "firebase_url": "https://slidebox-a9e7f.firebaseio.com",
+    "project_id": "slidebox-a9e7f",
+    "storage_bucket": "slidebox-a9e7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019306232504:android:c1d29de9551d16d56cc24d",
+        "android_client_info": {
+          "package_name": "com.example.slidebox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019306232504-grl6mlcl404k6obg3lpsn36lah77v5hq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.slidebox",
+            "certificate_hash": "493a73e71edc09bc049a15102e9740fd87bf524a"
+          }
+        },
+        {
+          "client_id": "1019306232504-f67cipe4969ovlvn86b9p6ubamg0pkpa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuTrp7LhABJtLiXF_SI9j7my0N14zPDPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019306232504-f67cipe4969ovlvn86b9p6ubamg0pkpa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
