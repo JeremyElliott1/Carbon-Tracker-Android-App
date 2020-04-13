@@ -15,6 +15,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -24,6 +26,7 @@ import android.view.Menu;
 import android.widget.ImageButton;
 
 public class SlideBox extends AppCompatActivity {
+
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -63,6 +66,8 @@ public class SlideBox extends AppCompatActivity {
                 startActivity(intentLoadNewActivity);
             }
         });
+
+
     }
 
     @Override

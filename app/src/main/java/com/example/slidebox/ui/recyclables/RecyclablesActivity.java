@@ -6,10 +6,8 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.slidebox.MainActivity;
 import com.example.slidebox.R;
 
 
