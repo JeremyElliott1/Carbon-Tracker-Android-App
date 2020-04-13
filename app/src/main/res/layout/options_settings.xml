@@ -63,8 +63,6 @@
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
         android:layout_marginTop="112dp"
-        android:checked="false"
-
         android:text="@string/settings_notification"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#000000"
@@ -72,13 +70,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/sounds"
         android:layout_width="200dp"
         android:layout_height="54dp"
-
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:checked="false"
         android:text="@string/settings_sounds"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#000000"

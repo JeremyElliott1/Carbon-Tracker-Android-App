@@ -2,10 +2,16 @@ package com.example.slidebox;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
+
+import com.example.slidebox.ui.GlobalSettings;
 
 public class SettingsOptions extends AppCompatActivity {
     private Button button_About;
@@ -13,11 +19,16 @@ public class SettingsOptions extends AppCompatActivity {
     private Button button_Privacy;
     private Button button_Help;
     private Button button_back;
+    private Switch switch_sounds;
+    private AudioManager amanager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options_settings);
+
+        amanager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
         button_About = (Button) findViewById(R.id.button_About);
         button_About.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +69,46 @@ public class SettingsOptions extends AppCompatActivity {
                 openSetting_back();
             }
         });
+
+
+
+        //Global mute settings & saving state of switch
+        //https://stackoverflow.com/questions/10895882/mute-the-global-sound-in-android
+        //https://www.youtube.com/watch?v=RyiTx8lWdx0
+        switch_sounds = (Switch) findViewById(R.id.sounds);
+        final SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+        switch_sounds.setChecked(sharedPreferences.getBoolean("value", true));
+        switch_sounds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                if (switch_sounds.isChecked()) {
+                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    editor.putBoolean("value", true);
+                    editor.apply();
+                    switch_sounds.setChecked(true);
+                    AudioManager amanager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                    amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
+                    amanager.setStreamMute(AudioManager.STREAM_ALARM, false);
+                    amanager.setStreamMute(AudioManager.STREAM_MUSIC, false);
+                    amanager.setStreamMute(AudioManager.STREAM_RING, false);
+                    amanager.setStreamMute(AudioManager.STREAM_SYSTEM, false);
+                }
+                else {
+                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    editor.putBoolean("value", false);
+                    editor.apply();
+                    switch_sounds.setChecked(false);
+                    AudioManager amanager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
+                    amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
+                    amanager.setStreamMute(AudioManager.STREAM_ALARM, true);
+                    amanager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+                    amanager.setStreamMute(AudioManager.STREAM_RING, true);
+                    amanager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+
+                }
+            }
+        });
+
     }
 
     public void openSetting_back() {
@@ -74,7 +125,6 @@ public class SettingsOptions extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsTos.class);
         startActivity(intent);
     }
-
 
     public void openSetting_Privacy() {
         Intent intent = new Intent(this, SettingsPrivacyPolicy.class);
