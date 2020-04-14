@@ -28,10 +28,10 @@
 
             android:background="@drawable/bg_white"
             android:hint="Email:"
+            android:importantForAutofill="no"
             android:paddingLeft="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
         <EditText
             android:id="@+id/user_password"
@@ -53,9 +53,8 @@
             android:id="@+id/imageView6"
             android:layout_width="273dp"
             android:layout_height="224dp"
-            android:layout_marginStart="88dp"
-            android:layout_marginLeft="88dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="68dp"
             android:src="@drawable/fp3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -81,23 +80,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:clickable="true"
             android:gravity="center_vertical"
             android:text="Not registered? Sign up!"
             android:textColor="@color/colorAccent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
 
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login" />
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="337dp"
-            android:layout_height="252dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="472dp"
+            android:layout_width="397dp"
+            android:layout_height="303dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="448dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/trees_blank" />
@@ -108,15 +107,15 @@
             android:layout_height="129dp"
             android:layout_marginStart="144dp"
             android:layout_marginLeft="144dp"
-            android:layout_marginTop="492dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="144dp"
             android:layout_marginRight="144dp"
-            android:layout_marginBottom="160dp"
+            android:layout_marginBottom="188dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login"
             app:srcCompat="@drawable/sage" />
 
         <TextView
@@ -125,17 +124,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="168dp"
             android:layout_marginLeft="168dp"
-            android:layout_marginTop="512dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="169dp"
             android:layout_marginRight="169dp"
-            android:layout_marginBottom="260dp"
+            android:layout_marginBottom="280dp"
             android:text="Powered by"
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/not_registered"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
