@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#87D05B"
+        android:background="@color/colorPrimary"
         android:paddingTop="20dp">
 
         <EditText
@@ -68,9 +68,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
 
-            android:background="#348A00"
+            android:background="@color/colorPrimaryDark"
             android:text="Log In"
-            android:textColor="#f0f0f0"
+            android:textColor="@color/colorAccent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -80,16 +80,16 @@
             android:id="@+id/not_registered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:text="Not registered? Sign up!"
+            android:textColor="@color/colorAccent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="Not registered? Sign up!"
-            app:layout_constraintTop_toBottomOf="@+id/login"
-            android:clickable="true"
 
-            />
+            app:layout_constraintTop_toBottomOf="@+id/login" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -130,6 +130,7 @@
             android:layout_marginRight="169dp"
             android:layout_marginBottom="260dp"
             android:text="Powered by"
+            android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

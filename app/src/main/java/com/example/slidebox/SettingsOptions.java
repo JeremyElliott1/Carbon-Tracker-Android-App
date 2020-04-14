@@ -1,6 +1,7 @@
 package com.example.slidebox;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,7 @@ public class SettingsOptions extends AppCompatActivity {
     private Button button_Help;
     private Button button_back;
     private Switch switch_sounds;
+    private Switch switch_dark_mode;
     private AudioManager amanager;
 
 
@@ -104,6 +106,29 @@ public class SettingsOptions extends AppCompatActivity {
                     amanager.setStreamMute(AudioManager.STREAM_MUSIC, true);
                     amanager.setStreamMute(AudioManager.STREAM_RING, true);
                     amanager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+                }
+            }
+        });
+
+        switch_dark_mode = (Switch) findViewById(R.id.dark);
+        switch_dark_mode.setChecked(sharedPreferences.getBoolean("dark", true));
+        switch_dark_mode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                if (switch_dark_mode.isChecked()) {
+                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    editor.putBoolean("dark", true);
+                    editor.apply();
+                    switch_dark_mode.setChecked(true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+                else {
+                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    editor.putBoolean("dark", false);
+                    editor.apply();
+                    switch_dark_mode.setChecked(false);
+                    getTheme().applyStyle(R.style.AppTheme, true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
                 }
             }

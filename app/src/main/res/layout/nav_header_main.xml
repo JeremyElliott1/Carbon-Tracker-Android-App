@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="#87D05B"
+    android:background="@color/colorPrimary"
     android:clickable="false"
     android:focusable="auto"
     android:focusableInTouchMode="false"
