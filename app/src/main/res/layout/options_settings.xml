@@ -68,8 +68,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorB"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:checked="false" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/sounds"
@@ -77,7 +76,7 @@
         android:layout_height="54dp"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:checked="false"
+        android:checked="true"
         android:text="@string/settings_sounds"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorB"
