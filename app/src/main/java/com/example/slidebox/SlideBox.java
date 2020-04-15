@@ -30,6 +30,7 @@ public class SlideBox extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -64,8 +65,10 @@ public class SlideBox extends AppCompatActivity {
             public void onClick(View view){
                 Intent intentLoadNewActivity = new Intent(SlideBox.this, MyProfile.class);
                 startActivity(intentLoadNewActivity);
+
             }
         });
+
 
 
     }
@@ -107,6 +110,15 @@ public class SlideBox extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }
 
