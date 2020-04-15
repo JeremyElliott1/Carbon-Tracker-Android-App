@@ -110,6 +110,8 @@ public class SettingsOptions extends AppCompatActivity {
             }
         });
 
+        //night-mode tutorial
+        //https://www.youtube.com/watch?v=QhGf8fGJM8U
         switch_dark_mode = (Switch) findViewById(R.id.dark);
         switch_dark_mode.setChecked(sharedPreferences.getBoolean("dark", true));
         switch_dark_mode.setOnClickListener(new View.OnClickListener() {
