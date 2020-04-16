@@ -131,4 +131,7 @@
     <string name="shop">Shop</string>
     <string name="what_are_you_recycling">what are you recycling</string>
 
+    <string name="myprofile_title">My profile</string>
+    <string name="telephone">Telephone</string>
+
 </resources>
