@@ -11,13 +11,12 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <activity
+    <fragment
         android:id="@+id/nav_recyclables"
-        android:name="com.example.slidebox.ui.recyclables.RecyclablesActivity"
+        android:name="com.example.slidebox.ui.recyclables.RecyclablesFragment"
         android:label="@string/menu_recyclables"
-        tools:layout="@layout/recyclables_activity"
+        tools:layout="@layout/recyclables_fragment"
         />
-
 
     <fragment
         android:id="@+id/nav_reusables"

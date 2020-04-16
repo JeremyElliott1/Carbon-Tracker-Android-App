@@ -108,7 +108,7 @@
         <item>WatterBottle</item>
     </string-array>
 
-
+    <string name="recyclables_MainHeader">Recyclables</string>
     <string-array name="Recyclable_Items">
         <item>Paper</item>
         <item>Metal</item>
