@@ -28,6 +28,9 @@
     <string name="settings_data_usage">Data and Storage</string>
     <string name="settings_help_title">Help</string>
     <string name="settings_dark_mode">Dark Mode</string>
+    <string name="settings_analytics">Allow Analytics</string>
+    <string name="settings_version">Version:            1.0.1</string>
+
 
 
     <string name="settings_about_policy">
@@ -106,15 +109,12 @@
     </string-array>
 
 
-
     <string-array name="Recyclable_Items">
         <item>Paper</item>
         <item>Metal</item>
         <item>Plastic</item>
         <item>Glass</item>
     </string-array>
-
-
 
 
     <!-- TODO: Remove or change this placeholder text -->

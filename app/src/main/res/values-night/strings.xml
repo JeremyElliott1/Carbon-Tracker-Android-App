@@ -1,0 +1,134 @@
+<resources>
+    <string name="app_name">footprints</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">My Profile</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_help">Help</string>
+    <string name="action_myAccount">My Account</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_recyclables">Recyclables</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_travel">Travel</string>
+    <string name="menu_shop">Shop</string>
+    <string name="menu_leaderboard">Leaderboard</string>
+    <string name="menu_reusables">Reusables</string>
+    //Scott Strings for settings
+    <string name="action_settings_about">About us</string>
+    <string name="settings_notification">Notifications</string>
+    <string name="settings_sounds">Sounds</string>
+    <string name="settings_about">About</string>
+    <string name="settings_tos">Terms of Service</string>
+    <string name="settings_security">Security</string>
+    <string name="settings_delete_acc">Delete Account</string>
+    <string name="settings_privacy">Privacy Policy</string>
+    <string name="settings_data_usage">Data and Storage</string>
+    <string name="settings_help_title">Help</string>
+    <string name="settings_dark_mode">Dark Mode</string>
+    <string name="settings_analytics">Allow Analytics</string>
+    <string name="settings_version">Version:            1.0.1</string>
+
+
+
+    <string name="settings_about_policy">
+        Welcome to SAGE\’s own Carbon Footprint Tracker. We\'re dedicated to giving you the
+        very best experience, with a focus on helping our employees reducing their carbon
+        footprint.\n\n
+        Founded in 2020 by Group 19, SAGE has come a long way from its humble beginnings in
+        a rural Newcastle upon Tyne where Alan Rickman first started out. His passion
+        for helping other people be more eco-friendly drove him to build an app to aid those
+        in his workplace and gave him the impetus to turn hard work and inspiration into to a
+        booming app. We now serve customers all Newcastle upon Tyne and are thrilled to be a
+        part of the eco-friendly wing of the IT industry.\n\n
+
+        We hope you enjoy our products as much as we enjoy offering them to you.
+        If you have any questions or comments, please don\'t hesitate to contact us.\n\n
+        Sincerely,\n
+        Alan Rickman, CEO, Founder, Prodigy, Wizard.
+    </string>
+
+
+    <string name="settings_tos_policy">
+        Please read these Terms of Service carefully before using Footprint, operated by Sage.
+        Your access to and use this service is conditioned on your acceptance of and compliance
+        with these terms. These terms apply to all of those who chose to use Footprint, as use
+        of this service is an extension of Sage itself.\n\n
+
+        By accessing or using this service you agree to be bound by these terms. If you disagree
+        with any part of the terms, then you may not access the service.\n\n
+
+        Termination of account may be a done to those accounts which are in breach of terms. This
+        termination or suspension of account may be done immediately, without prior notice or
+        liability for any reason whatsoever, including but without limitation if you breach
+        the terms.
+
+    </string>
+
+    <string name="settings_security_policy">
+        !!
+    </string>
+
+    <string name="settings_privacy_policy">
+        At Sage we hold the privacy of your data to the highest authority. The confidentiality,
+        integrity and availability of your data will only be used to the point agreed in our terms
+        of service. Your personal data shall not be used by any means beyond the confines of
+        Footprint.\n\n
+
+        All data agreed to be used for research (reusable, recycled and travel data)
+        will be anonymised. This data is then used by Sage to make strides towards a healthier
+        planet and better future.\n\n
+
+        If your account is suspended or removed all personal data is deleted but statistics remain
+        for research purposes. Accounts cannot be recovered on permanent deletion but suspended
+        accounts will retain data.
+
+
+    </string>
+
+    //Jeremy Strings for reusables -------------------------------------------------------------
+    <string name="reusables_MainHeader">Reusables</string>
+    <string name="reusables_UsesHeader">Uses:</string>
+    <string name="reusables_ItemsHeader">Items:</string>
+    <string name="reusables_AddButton">Add</string>
+    <string name="reusables_RemoveButton">Remove</string>
+    <string name="reusables_ItemImageHeader">Item Image:</string>
+    <string name="reusables_ItemNameHeader">Item Name:</string>
+    <string name="reusables_EnterItemDetails">Enter Item Details</string>
+    <string name="reusables_ExistingItemsHeader">Existing Items</string>
+
+    <string-array name="Reusable_Items">
+        <item>Cup</item>
+        <item>GroceryBag</item>
+        <item>LunchBox</item>
+        <item>SnackBox</item>
+        <item>Straw</item>
+        <item>WatterBottle</item>
+    </string-array>
+
+
+    <string-array name="Recyclable_Items">
+        <item>Paper</item>
+        <item>Metal</item>
+        <item>Plastic</item>
+        <item>Glass</item>
+    </string-array>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="coffee">Coffee</string>
+    <string name="tea">Tea</string>
+    <string name="cookie">Cookie</string>
+    <string name="muffin">Muffin</string>
+    <string name="tshirt">T-shirt</string>
+    <string name="travelMug">Travel mug</string>
+    <string name="_20_points">20 points</string>
+    <string name="_10_points">10 points</string>
+    <string name="_80_points">80 points</string>
+    <string name="shop">Shop</string>
+    <string name="what_are_you_recycling">what are you recycling</string>
+
+</resources>

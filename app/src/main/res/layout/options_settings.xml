@@ -5,9 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/colorBackground"
     tools:context=".SettingsOptions"
     tools:ignore="PrivateResource">
+
+    <Switch
+        android:id="@+id/analytics2"
+        android:layout_width="200dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:checked="false"
+        android:text="@string/settings_analytics"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sounds" />
+
+    <Switch
+        android:id="@+id/analytics"
+        android:layout_width="200dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:checked="false"
+        android:text="@string/settings_notification"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/analytics2" />
 
     <Button
         android:id="@+id/button_Help"
@@ -17,11 +43,11 @@
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
         android:layout_marginTop="8dp"
-        android:background="#87D05B"
+        android:background="@color/colorPrimary"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
         android:text="@string/settings_help_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_privacy_policy" />
@@ -49,7 +75,7 @@
         android:text="@string/action_settings"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#000000"
+        android:textColor="@color/colorB"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,33 +83,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/dark"
         android:layout_width="200dp"
         android:layout_height="54dp"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="16dp"
         android:checked="false"
-
-        android:text="@string/settings_notification"
+        android:text="@string/settings_dark_mode"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#000000"
+        android:textColor="@color/colorB"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/text_home6" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/sounds"
         android:layout_width="200dp"
         android:layout_height="54dp"
-
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:checked="false"
+        android:checked="true"
         android:text="@string/settings_sounds"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#000000"
+        android:textColor="@color/colorB"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/dark" />
 
     <Button
         android:id="@+id/button_Tos"
@@ -93,11 +117,11 @@
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
         android:layout_marginTop="8dp"
-        android:background="#87D05B"
+        android:background="@color/colorPrimary"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
         android:text="@string/settings_tos"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_About" />
@@ -110,11 +134,11 @@
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
         android:layout_marginTop="8dp"
-        android:background="#87D05B"
+        android:background="@color/colorPrimary"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
         android:text="@string/settings_privacy"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_Tos" />
@@ -126,15 +150,52 @@
         android:layout_height="50dp"
         android:layout_marginStart="96dp"
         android:layout_marginLeft="96dp"
-        android:layout_marginTop="238dp"
-        android:background="#87D05B"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
         android:lineSpacingExtra="@dimen/activity_vertical_margin"
         android:text="@string/settings_about"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         android:typeface="normal"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/analytics" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="44dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="346dp"
+        android:layout_marginRight="346dp"
+        android:layout_marginBottom="604dp"
+        android:background="@drawable/back_button"
+        android:shadowColor="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="190dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginRight="111dp"
+        android:gravity="center"
+        android:text="@string/settings_version"
+        android:textColor="@color/colorB"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_Help" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

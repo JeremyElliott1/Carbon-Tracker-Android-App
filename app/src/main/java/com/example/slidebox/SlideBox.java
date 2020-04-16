@@ -15,6 +15,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -25,7 +27,9 @@ import android.widget.ImageButton;
 
 public class SlideBox extends AppCompatActivity {
 
+
     private AppBarConfiguration mAppBarConfiguration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +65,12 @@ public class SlideBox extends AppCompatActivity {
             public void onClick(View view){
                 Intent intentLoadNewActivity = new Intent(SlideBox.this, MyProfile.class);
                 startActivity(intentLoadNewActivity);
+
             }
         });
+
+
+
     }
 
     @Override
@@ -102,6 +110,15 @@ public class SlideBox extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }
 
