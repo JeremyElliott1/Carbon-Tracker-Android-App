@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:id="@+id/recyclables_MainHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_horizontal"
+        android:text="@string/recyclables_MainHeader"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="380dp"
+        android:layout_height="200dp"
+        android:src="recycling_image" />
+
+    <Button
+        android:id="@+id/buttonPaper"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paper"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:onClick="paperPopup"/>
+
+    <Button
+        android:id="@+id/buttonMetal"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Metal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:onClick="metalPopup"/>
+
+    <Button
+        android:id="@+id/buttonPlastic"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Plastic"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:onClick="plasticPopup"/>
+
+    <Button
+        android:id="@+id/buttonGlass"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Glass"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:onClick="glassPopup"/>
+
+    <Button
+        android:id="@+id/buttonUnsure"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unsure?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:onClick="unsurePopup"/>
+</LinearLayout>
+
