@@ -29,51 +29,71 @@
         android:id="@+id/imageView"
         android:layout_width="380dp"
         android:layout_height="200dp"
-        android:src="@drawable/recycling_image" />
+        android:src="@drawable/recycling_image"
+        android:layout_marginBottom="50dp"/>
 
     <Button
         android:id="@+id/buttonPaper"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_green_round"
+        android:color="@color/colorGreen1"
         android:onClick="paperPopup"
         android:text="Paper"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/buttonMetal"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_green_round"
+        android:color="@color/colorGreen1"
+        android:onClick="metalPopup"
         android:text="Metal"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:onClick="metalPopup"/>
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/buttonPlastic"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_green_round"
+        android:color="@color/colorGreen1"
         android:text="Plastic"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:onClick="plasticPopup"/>
+        android:onClick="plasticPopup"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/buttonGlass"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_green_round"
+        android:color="@color/colorGreen1"
         android:text="Glass"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:onClick="glassPopup"/>
+        android:onClick="glassPopup"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:id="@+id/buttonUnsure"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_green_round"
+        android:color="@color/colorGreen1"
+        android:onClick="unsurePopup"
         android:text="Unsure?"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:onClick="unsurePopup"/>
+        android:textColor="@color/colorWhite" />
 </LinearLayout>
 
