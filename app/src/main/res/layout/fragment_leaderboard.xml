@@ -28,7 +28,7 @@
         android:layout_height="144dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:text="@string/step_counts"
+        android:text="Weekly"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
@@ -39,7 +39,7 @@
         android:layout_height="144dp"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:text="@string/total_carbon_reduction"
+        android:text="Today"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonToCountSteps"
