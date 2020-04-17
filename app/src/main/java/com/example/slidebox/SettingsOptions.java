@@ -162,8 +162,4 @@ public class SettingsOptions extends AppCompatActivity {
         Intent intent = new Intent(this, HelpOptions.class);
         startActivity(intent);
     }
-
-
-
-
 }
