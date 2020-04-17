@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -26,23 +27,28 @@ import com.example.slidebox.ui.reusables.ReusablesViewModel;
 public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuItemClickListener{
 
     private RecyclablesViewModel recyclablesViewModel;
+    private Button paperButton;
+    private Button metalButton;
+    private Button plasticButton;
+    private Button glassButton;
+    private Button unsureButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         recyclablesViewModel = new ViewModelProvider(this).get(RecyclablesViewModel.class);
         View root = inflater.inflate(R.layout.recyclables_fragment, container, false);
         final TextView textView = root.findViewById(R.id.recyclables_MainHeader);
-        final View paperPopUp = root.findViewById(R.id.buttonPaper);
-        paperPopUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                paperPopUp.showContextMenu();
-
-            }
-
-    }
-
-        );
+//        final View paperPopUp = root.findViewById(R.id.buttonPaper);
+//        paperPopUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                paperPopUp.showContextMenu();
+//
+//            }
+//
+//    }
+//
+//        );
 
         recyclablesViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -50,6 +56,17 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
                 textView.setText(s);
             }
         });
+        paperButton = root.findViewById(R.id.buttonPaper);
+        metalButton = root.findViewById(R.id.buttonMetal);
+        plasticButton = root.findViewById(R.id.buttonPlastic);
+        glassButton = root.findViewById(R.id.buttonGlass);
+        unsureButton = root.findViewById(R.id.buttonUnsure);
+        paperPopup(root);
+        plasticPopup(root);
+        metalPopup(root);
+        glassPopup(root);
+        unsurePopup(root);
+
         return root;
     }
 
@@ -89,48 +106,87 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
         */
 
 
+
     public void paperPopup(View v) {
-        //View menuItemView = getView().findViewById(R.menu.recyclables_popup);
-        PopupMenu paperPopup = new PopupMenu(getActivity(), v);
-        paperPopup.getMenuInflater().inflate(R.menu.recyclables_popup, paperPopup.getMenu());
+        final PopupMenu paperPopup = new PopupMenu(getActivity(),v);
+        paperPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        paperButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paperPopup.getMenuInflater().inflate(R.menu.recyclables_popup, paperPopup.getMenu());
+                paperPopup.inflate(R.menu.recyclables_popup);
+                paperPopup.show();
 
-        paperPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) getActivity());
-        paperPopup.inflate(R.menu.recyclables_popup);
+            }
+        });
 
-        paperPopup.show();
     }
 
     public void plasticPopup(View v) {
-        PopupMenu plasticPopup = new PopupMenu(getActivity(), v);
-        plasticPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) getActivity());
-        plasticPopup.inflate(R.menu.recyclables_popup_plastic);
-        plasticPopup.show();
+        final PopupMenu plasticPopup = new PopupMenu(getActivity(), v);
+        plasticPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        plasticButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                plasticPopup.getMenuInflater().inflate(R.menu.recyclables_popup_plastic, plasticPopup.getMenu());
+                plasticPopup.inflate(R.menu.recyclables_popup_plastic);
+                plasticPopup.show();
+            }
+        });
+
+
 
     }
 
     public void metalPopup(View v) {
-        PopupMenu metalPopup = new PopupMenu(getActivity(), v);
-        metalPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) getActivity());
-        metalPopup.inflate(R.menu.recyclables_popup_metal);
-        metalPopup.show();
+        final PopupMenu metalPopup = new PopupMenu(getActivity(), v);
+        metalPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        metalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                metalPopup.getMenuInflater().inflate(R.menu.recyclables_popup_metal, metalPopup.getMenu());
+                metalPopup.inflate(R.menu.recyclables_popup_metal);
+                metalPopup.show();
+            }
+        });
+
+
 
     }
 
+
     public void glassPopup(View v) {
-        PopupMenu glassPopup = new PopupMenu(getActivity(), v);
-        glassPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) getActivity());
-        glassPopup.inflate(R.menu.recyclables_popup);
-        glassPopup.show();
+        final PopupMenu glassPopup = new PopupMenu(getActivity(), v);
+        glassPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        glassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                glassPopup.getMenuInflater().inflate(R.menu.recyclables_popup_glass, glassPopup.getMenu());
+                glassPopup.inflate(R.menu.recyclables_popup_glass);
+                glassPopup.show();
+            }
+        });
+
+
 
     }
 
     public void unsurePopup(View v) {
-        PopupMenu unsurePopup = new PopupMenu(getActivity(), v);
-        unsurePopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) getActivity());
-        unsurePopup.inflate(R.menu.recyclables_popup_unsure);
-        unsurePopup.show();
+        final PopupMenu unsurePopup = new PopupMenu(getActivity(), v);
+        unsurePopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        unsureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                unsurePopup.getMenuInflater().inflate(R.menu.recyclables_popup_unsure, unsurePopup.getMenu());
+                unsurePopup.inflate(R.menu.recyclables_popup_unsure);
+                unsurePopup.show();
+            }
+        });
+
+
 
     }
+
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
@@ -139,13 +195,13 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
                 Toast.makeText(getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.item2:
-                Toast.makeText(getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Item 2 clicked", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.item3:
-                Toast.makeText(getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Item 3 clicked", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.item4:
-                Toast.makeText(getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Item 4 clicked", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return false;
