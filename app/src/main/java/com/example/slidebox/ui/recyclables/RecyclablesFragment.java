@@ -128,7 +128,7 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
         plasticButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plasticPopup.getMenuInflater().inflate(R.menu.recyclables_popup, plasticPopup.getMenu());
+                plasticPopup.getMenuInflater().inflate(R.menu.recyclables_popup_plastic, plasticPopup.getMenu());
                 plasticPopup.inflate(R.menu.recyclables_popup_plastic);
                 plasticPopup.show();
             }
@@ -144,8 +144,8 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
         metalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                metalPopup.getMenuInflater().inflate(R.menu.recyclables_popup, metalPopup.getMenu());
-                metalPopup.inflate(R.menu.recyclables_popup_plastic);
+                metalPopup.getMenuInflater().inflate(R.menu.recyclables_popup_metal, metalPopup.getMenu());
+                metalPopup.inflate(R.menu.recyclables_popup_metal);
                 metalPopup.show();
             }
         });
@@ -161,7 +161,7 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
         glassButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                glassPopup.getMenuInflater().inflate(R.menu.recyclables_popup, glassPopup.getMenu());
+                glassPopup.getMenuInflater().inflate(R.menu.recyclables_popup_glass, glassPopup.getMenu());
                 glassPopup.inflate(R.menu.recyclables_popup_glass);
                 glassPopup.show();
             }
@@ -177,7 +177,7 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
         unsureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                unsurePopup.getMenuInflater().inflate(R.menu.recyclables_popup, unsurePopup.getMenu());
+                unsurePopup.getMenuInflater().inflate(R.menu.recyclables_popup_unsure, unsurePopup.getMenu());
                 unsurePopup.inflate(R.menu.recyclables_popup_unsure);
                 unsurePopup.show();
             }

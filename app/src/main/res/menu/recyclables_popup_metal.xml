@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/item1"
-        android:title="Small plastic bottle (500ml Coke bottle)"/>
+        android:title="Stationary items (ex. staplers)"/>
 
     <item android:id="@+id/item2"
-        android:title="Medium plastic bottle (1L Coke bottle)"/>
+        android:title="PC's, Laptops, tablets"/>
 
     <item android:id="@+id/item3"
-        android:title="Large plastic bottle (1L Coke bottle)"/>
+        android:title="Batteries"/>
 
     <item android:id="@+id/item4"
-        android:title="Plastic cup"/>
+        android:title="Generic scrap metal"/>
 
 </menu>

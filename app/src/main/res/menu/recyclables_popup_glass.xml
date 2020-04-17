@@ -2,15 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/item5"
-        android:title="Small plastic bottle (500ml Coke bottle)"/>
+        android:title="Transparent Glass"/>
 
     <item android:id="@+id/item6"
-        android:title="Medium plastic bottle (1L Coke bottle)"/>
-
-    <item android:id="@+id/item7"
-        android:title="Large plastic bottle (1L Coke bottle)"/>
-
-    <item android:id="@+id/item8"
-        android:title="Plastic cup"/>
+        android:title="Coloured Glass"/>
 
 </menu>
