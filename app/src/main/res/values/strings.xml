@@ -127,5 +127,11 @@
     <string name="_80_points">80 points</string>
     <string name="shop">Shop</string>
     <string name="what_are_you_recycling">what are you recycling</string>
+    <string name="old_corrugated_containers_i_e_cardboard">Old Corrugated Containers (i.e Cardboard)</string>
+    <string name="old_newspaper">Old Newspaper</string>
+    <string name="standard_stationary_paper">Standard Stationary Paper</string>
+    <string name="high_grade_deinked_paper">High-Grade Deinked Paper</string>
+    <string name="transparent_glass">Transparent Glass</string>
+    <string name="coloured_glass">Coloured Glass</string>
 
 </resources>

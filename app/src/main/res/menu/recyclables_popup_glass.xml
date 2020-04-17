@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/item5"
-        android:title="Transparent Glass"/>
+        android:title="@string/transparent_glass"/>
 
     <item android:id="@+id/item6"
-        android:title="Coloured Glass"/>
+        android:title="@string/coloured_glass"/>
 
 </menu>
