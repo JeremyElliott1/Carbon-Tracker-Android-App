@@ -19,7 +19,10 @@
         <activity android:name=".SettingsSecurity" />
         <activity android:name=".SettingsTos" />
         <activity android:name=".SettingsAbout" />
-        <activity android:name=".MyProfile" />
+        <activity android:name=".MyProfile.MyProfile"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                  android:parentActivityName=".SlideBox"
+            />
         <activity android:name=".MyAccountOptions" />
         <activity android:name=".HelpOptions" />
         <activity android:name=".SettingsOptions" />
