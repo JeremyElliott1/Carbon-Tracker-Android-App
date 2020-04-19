@@ -1,12 +1,15 @@
 package com.example.slidebox;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.slidebox.ui.shop.ShopFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,8 +33,7 @@ public class User {
     private  FirebaseFirestore db;
     private  FirebaseAuth firebaseAuth;
     private  String userID;
-    private  DocumentSnapshot user;
-    DocumentReference docRef;
+    private DocumentReference docRef;
 
     private User()
     {
@@ -48,27 +50,6 @@ public class User {
 
         return single_instance;
     }
-
-//    public void getUser(){
-//        DocumentReference docRef = db.collection("users").document(userID);
-//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document.exists()) {
-//                        user =  document;
-//                        System.out.println("hiiiiiiiiiiiiii" + user);
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-//                    } else {
-//                        Log.d(TAG, "No such document");
-//                    }
-//                } else {
-//                    Log.d(TAG, "get failed with ", task.getException());
-//                }
-//            }
-//        });
-//}
 
 public void getFirstName(final TextView text){
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -182,7 +163,7 @@ public void getFirstName(final TextView text){
             }
         });
     }
-    public void addPoints(final Long points){
+    public void addPoints(final int points){
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

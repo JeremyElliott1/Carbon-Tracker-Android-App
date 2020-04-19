@@ -111,9 +111,11 @@ public class HomeFragment extends Fragment {
 
         sign_out=root.findViewById(R.id.sign_out);
         signOut();
+
+
         return root;
     }
-    public void getQuote(int random){
+    private void getQuote(int random){
        quotes.whereEqualTo("id",random)
        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
            @Override
@@ -132,7 +134,7 @@ public class HomeFragment extends Fragment {
            }
        });
     }
-    public void signOut(){
+    private void signOut(){
         sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
