@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_navgation"
+    app:startDestination="@id/baseEditFragment">
+
+    <fragment
+        android:id="@+id/pictureEditFragment"
+        android:name="com.example.slidebox.MyProfile.Edit.PictureEditFragment"
+        android:label="fragment_picture_edit"
+        tools:layout="@layout/fragment_picture_edit" >
+        <action
+            android:id="@+id/action_pictureEditFragment_to_baseEditFragment"
+            app:destination="@id/baseEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/baseEditFragment"
+        android:name="com.example.slidebox.MyProfile.Edit.BaseEditFragment"
+        android:label="base_edit_fragment"
+        tools:layout="@layout/base_edit_fragment" >
+        <action
+            android:id="@+id/action_baseEditFragment_to_pictureEditFragment"
+            app:destination="@id/pictureEditFragment" />
+    </fragment>
+</navigation>

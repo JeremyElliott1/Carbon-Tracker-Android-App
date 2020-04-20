@@ -2,7 +2,7 @@ package com.example.slidebox;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.slidebox.ui.shop.ShoppingCart;
+import com.example.slidebox.MyProfile.MyProfile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
