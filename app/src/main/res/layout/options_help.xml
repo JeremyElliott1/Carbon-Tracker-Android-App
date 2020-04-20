@@ -175,6 +175,7 @@
         android:gravity="center"
         android:textColor="@color/colorB"
         android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
