@@ -31,7 +31,7 @@ public class HelpOptions extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HelpOptions.this, SlideBox.class);
+                Intent intent = new Intent(HelpOptions.this, SettingsOptions.class);
                 startActivity(intent);
             }
         });
