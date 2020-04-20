@@ -32,7 +32,6 @@
     <string name="settings_version">Version:            1.0.1</string>
 
 
-
     <string name="settings_about_policy">
         Welcome to SAGE\’s own Carbon Footprint Tracker. We\'re dedicated to giving you the
         very best experience, with a focus on helping our employees reducing their carbon
@@ -133,5 +132,8 @@
 
     <string name="myprofile_title">My profile</string>
     <string name="telephone">Telephone</string>
+    <string name="leaderboard_monthly">Monthly</string>
+    <string name="leaderboard_weekly">Weekly</string>
+    <string name="leaderboard_today">Today</string>
 
 </resources>

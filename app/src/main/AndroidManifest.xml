@@ -10,19 +10,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUp"
-            android:label="@string/app_name"
+        <activity android:name=".MyProfile.Edit.ProfileEditActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            ></activity>
+         ></activity>
+        <activity
+            android:name=".SignUp"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.shop.ShoppingCart" />
         <activity android:name=".SettingsPrivacyPolicy" />
         <activity android:name=".SettingsSecurity" />
         <activity android:name=".SettingsTos" />
         <activity android:name=".SettingsAbout" />
-        <activity android:name=".MyProfile.MyProfile"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                  android:parentActivityName=".SlideBox"
-            />
+        <activity
+            android:name=".MyProfile.MyProfile"
+            android:parentActivityName=".SlideBox"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".MyAccountOptions" />
         <activity android:name=".HelpOptions" />
         <activity android:name=".SettingsOptions" />
