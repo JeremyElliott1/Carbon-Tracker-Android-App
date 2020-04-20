@@ -2,11 +2,13 @@ package com.example.slidebox.ui.shop;
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,15 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.slidebox.R;
+import com.example.slidebox.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -33,6 +44,8 @@ import org.w3c.dom.Text;
 
 
 public class ShopFragment extends Fragment {
+
+    private  final String TAG = "TAG";
 
     private GridLayout mainGrid;
 
@@ -49,8 +62,14 @@ public class ShopFragment extends Fragment {
 
     private ImageView qrCode;
 
-    String[] itemNames = {"Coffee","Tea","Cookie","Muffin","T-shirt","Travel mug"};
-    int[] itemImages = {R.drawable.coffee,R.drawable.tea,R.drawable.cookie,R.drawable.muffin,R.drawable.shirt,R.drawable.travelmug};
+    private String[] itemNames = {"Coffee","Tea","Cookie","Muffin","T-shirt","Travel mug"};
+    private int[] itemImages = {R.drawable.coffee,R.drawable.tea,R.drawable.cookie,R.drawable.muffin,R.drawable.shirt,R.drawable.travelmug};
+    private int[] points = {20,20,10,10,80,80};
+
+    private  FirebaseFirestore db;
+    private  FirebaseAuth firebaseAuth;
+    private  String userID;
+    private DocumentReference docRef;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +82,11 @@ public class ShopFragment extends Fragment {
         dialogShopRedeemPopup = new Dialog(getContext(),android.R.style.Theme_Black_NoTitleBar_Fullscreen);
 
         mainGrid = (GridLayout) root.findViewById(R.id.mainGrid);
+
+        db= FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        userID = firebaseAuth.getCurrentUser().getUid();
+        docRef = db.collection("users").document(userID);
 
         //Set Event
         setSingleEvent(mainGrid);
@@ -85,7 +109,7 @@ public class ShopFragment extends Fragment {
                     Drawable myDrawable = getResources().getDrawable(itemImages[finalI]);
                     textShopPopup.setCompoundDrawablesWithIntrinsicBounds(null,null,null,myDrawable);
 
-                    redeemItem(finalI);
+                    removePoints(points[finalI], finalI);
 
                     closeShopPopup();
 
@@ -108,10 +132,6 @@ public class ShopFragment extends Fragment {
     }
     private void redeemItem(int finalI){
         final int finalII = finalI;
-        redeemItem = (Button) dialogShopPopup.findViewById(R.id.redeemItem);
-        redeemItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Toast toast=Toast.makeText(getActivity().getApplicationContext(),"Item Redeemed",Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 200);
                 toast.show();
@@ -126,8 +146,6 @@ public class ShopFragment extends Fragment {
 
                 dialogShopRedeemPopup.show();
                 closeShopRedeemPopup();
-            }
-        });
     }
     private void closeShopRedeemPopup(){
         closeShopRedeemPopup= (ImageView) dialogShopRedeemPopup.findViewById(R.id.closeShopRedeemPopup);
@@ -161,4 +179,50 @@ public void qrCode(String text) throws WriterException {
     }
     qrCode.setImageBitmap(bitmap);
 }
+
+    public void removePoints(final int points, final int finalI){
+        redeemItem = (Button) dialogShopPopup.findViewById(R.id.redeemItem);
+        redeemItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Long currentPoints = (Long) document.get("currentPoints");
+                        if (currentPoints >= points){
+                            docRef.update(
+                                    "currentPoints", currentPoints-points
+                            ).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    redeemItem(finalI);
+                                    Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                }
+                            })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error updating document", e);
+                                        }
+                                    });
+                            Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        }
+                        else{
+                            Toast.makeText(getContext(), "Sorry you don't have enough points to purchase this item",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+            }
+        });
+    }
 }
