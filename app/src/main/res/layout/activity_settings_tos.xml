@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".SettingsAbout">
 
     <TextView
@@ -14,7 +15,7 @@
         android:text="@string/settings_tos"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#C6000000"
+        android:textColor="@color/colorB"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,8 @@
         android:layout_marginTop="105dp"
         android:text="@string/settings_tos_policy"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/colorB"/>
 
     <ImageView
         android:id="@+id/imageView"
