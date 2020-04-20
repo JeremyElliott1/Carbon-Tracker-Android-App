@@ -16,7 +16,6 @@
             ></activity>
         <activity android:name=".ui.shop.ShoppingCart" />
         <activity android:name=".SettingsPrivacyPolicy" />
-        <activity android:name=".SettingsSecurity" />
         <activity android:name=".SettingsTos" />
         <activity android:name=".SettingsAbout" />
         <activity android:name=".MyProfile" />
