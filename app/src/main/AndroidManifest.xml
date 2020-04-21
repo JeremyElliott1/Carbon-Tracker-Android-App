@@ -20,15 +20,15 @@
         <activity android:name=".ui.shop.ShoppingCart" />
         <activity
             android:name=".SettingsPrivacyPolicy"
-            android:parentActivityName=".SlideBox"
+            android:parentActivityName=".SettingsOptions"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".SettingsTos"
-            android:parentActivityName=".SlideBox"
+            android:parentActivityName=".SettingsOptions"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".SettingsAbout"
-            android:parentActivityName=".SlideBox"
+            android:parentActivityName=".SettingsOptions"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MyProfile.MyProfile"
@@ -37,7 +37,7 @@
         <activity android:name=".MyAccountOptions" />
         <activity
             android:name=".HelpOptions"
-            android:parentActivityName=".SlideBox"
+            android:parentActivityName=".SettingsOptions"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".SettingsOptions"
