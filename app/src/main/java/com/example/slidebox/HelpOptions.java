@@ -1,6 +1,8 @@
 package com.example.slidebox;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class HelpOptions extends AppCompatActivity {
-    private Button button_back;
     private Button about;
     private Button shop;
     private Button leaderboard;
@@ -27,14 +28,12 @@ public class HelpOptions extends AppCompatActivity {
         setContentView(R.layout.options_help);
         textView = (TextView)findViewById(R.id.textView10);
 
-        button_back = (Button)findViewById(R.id.back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HelpOptions.this, SettingsOptions.class);
-                startActivity(intent);
-            }
-        });
+        //  setup customer's toolbar with manifests setting
+        Toolbar myToolbar = findViewById(R.id.settings_toolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //------------------------------------------------
 
         about = (Button)findViewById(R.id.button_help_about);
         about.setOnClickListener(new View.OnClickListener() {

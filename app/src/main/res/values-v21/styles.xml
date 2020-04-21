@@ -12,6 +12,32 @@
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
+    <style name="settings_toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/colorAccent</item>
+        <item name="title">Settings</item>
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+
+    <style name="about_toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:background">@color/colorPrimary</item>
+    <item name="titleTextColor">@color/colorAccent</item>
+    <item name="title">@string/settings_about</item>
+    <item name="android:windowActivityTransitions">true</item>
+</style>
+    <style name="tos_toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:background">@color/colorPrimary</item>
+    <item name="titleTextColor">@color/colorAccent</item>
+    <item name="title">@string/settings_tos</item>
+    <item name="android:windowActivityTransitions">true</item>
+</style>
+    <style name="pp_toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/colorAccent</item>
+        <item name="title">@string/settings_privacy</item>
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

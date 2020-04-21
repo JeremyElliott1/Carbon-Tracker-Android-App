@@ -1,7 +1,9 @@
 package com.example.slidebox;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +21,6 @@ public class SettingsOptions extends AppCompatActivity {
     private Button button_Tos;
     private Button button_Privacy;
     private Button button_Help;
-    private Button button_back;
     private Switch switch_sounds;
     private Switch switch_dark_mode;
     private AudioManager amanager;
@@ -29,6 +30,14 @@ public class SettingsOptions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options_settings);
+
+        //  setup customer's toolbar with manifests setting
+        Toolbar myToolbar = findViewById(R.id.settings_toolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //------------------------------------------------
+
 
         amanager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
@@ -63,15 +72,6 @@ public class SettingsOptions extends AppCompatActivity {
                 openSetting_Help();
             }
         });
-
-        button_back = (Button) findViewById(R.id.back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openSetting_back();
-            }
-        });
-
 
 
         //Global mute settings & saving state of switch
@@ -138,10 +138,6 @@ public class SettingsOptions extends AppCompatActivity {
 
     }
 
-    public void openSetting_back() {
-        Intent intent = new Intent(this, SlideBox.class);
-        startActivity(intent);
-    }
 
     public void openSetting_About() {
         Intent intent = new Intent(this, SettingsAbout.class);

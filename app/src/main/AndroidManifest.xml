@@ -18,16 +18,31 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.shop.ShoppingCart" />
-        <activity android:name=".SettingsPrivacyPolicy" />
-        <activity android:name=".SettingsTos" />
-        <activity android:name=".SettingsAbout" />
+        <activity
+            android:name=".SettingsPrivacyPolicy"
+            android:parentActivityName=".SlideBox"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".SettingsTos"
+            android:parentActivityName=".SlideBox"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".SettingsAbout"
+            android:parentActivityName=".SlideBox"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MyProfile.MyProfile"
             android:parentActivityName=".SlideBox"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".MyAccountOptions" />
-        <activity android:name=".HelpOptions" />
-        <activity android:name=".SettingsOptions" />
+        <activity
+            android:name=".HelpOptions"
+            android:parentActivityName=".SlideBox"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".SettingsOptions"
+            android:parentActivityName=".SlideBox"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.reusables.ReusablesItemAdd" />
         <activity
             android:name=".LogIn"
