@@ -10,9 +10,5 @@
     <color name="colorGreenLight">#abffc0</color>
     <color name="colorGreen1">#3eb959</color>
     <color name="colorWhite">#ffffff</color>
-
-    <color name="colorDMPrimary">#36393f</color>
-    <color name="colorDMPrimaryDark">#2f3136</color>
-    <color name="colorDMAccent">#7289da</color>
 </resources>
 
