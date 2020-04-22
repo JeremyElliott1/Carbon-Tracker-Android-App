@@ -18,6 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.slidebox.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
@@ -28,11 +32,18 @@ public class ReusablesFragment extends Fragment {
     private Button addItemButton;
     private Button rmvItemButton;
 
+    //    Firebase RecyclerAdapter
+    private FirebaseFirestore db = FirebaseFirestore.getInstance(); //firestore database
+    private CollectionReference reusableItemsCollRef = db.collection("ReusableItems"); //ReusableItems Collection reference
+    private ReusablesItemAdapter itemRecyclerViewAdapter;
+
+
     //RecyclerView
     private RecyclerView itemRecyclerView;
 
     /*Untouched Code Starts----------------------------------------------------------------*/
     private ReusablesViewModel reusablesViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
@@ -41,6 +52,9 @@ public class ReusablesFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_reusables, container, false);
         final TextView textView = root.findViewById(R.id.reusables_MainHeader);
         /*Untouched Code Ends---------------------------------------------------------------- */
+
+        setUpItemRecyclerView(root);
+        itemRecyclerViewAdapter.startListening();
 
         //Buttons:
         addItemButton = root.findViewById(R.id.reusables_AddItemsButton);
@@ -110,5 +124,19 @@ public class ReusablesFragment extends Fragment {
 //        Intent intent = new Intent(getActivity(), ReusablesUseAdd.class);
 //        startActivity(intent);
 //    }
+private void setUpItemRecyclerView(View v) {
+    Query query = reusableItemsCollRef.orderBy("name", Query.Direction.DESCENDING);
+
+    FirestoreRecyclerOptions options = new FirestoreRecyclerOptions.Builder<ReusableItem>()
+            .setQuery(query, ReusableItem.class)
+            .build();
+
+    itemRecyclerViewAdapter = new ReusablesItemAdapter(options);
+
+    RecyclerView itemRecyclerView = v.findViewById(R.id.reusable_ItemRecyclerView);
+    itemRecyclerView.setHasFixedSize(true);
+    itemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    itemRecyclerView.setAdapter(itemRecyclerViewAdapter);
+}
 
 }
