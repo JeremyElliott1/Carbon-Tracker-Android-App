@@ -1,20 +1,38 @@
 package com.example.slidebox.ui.reusables;
 
+import com.google.firebase.firestore.Exclude;
+
 public class ReusableItem {
-    private int itemImage;
-    private String itemDescription;
+    private String id;
+    private String name;
+    private String points;
 
-    ReusableItem(int imageResource, String enteredDescription) {
-        itemImage = imageResource;
-        itemDescription = enteredDescription;
+    public ReusableItem() {
+        //fireStore needs an empty constructor otherwise it crashes.
     }
 
-    public int getReusableItemImage() {
-        return itemImage;
+    public ReusableItem(String name, String points) {
+        this.name = name;
+        this.points = points;
     }
 
-    public String getItemStringDescription() {
-        return itemDescription;
+    @Exclude
+    //this tag ensures that id is not saved as an additional field in the Reusableitems documents
+    // so that it is only used within this application to retrieve each document ID.
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPoints() {
+        return points;
     }
 
 }
