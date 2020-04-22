@@ -35,7 +35,7 @@ public class User {
     private  String userID;
     private DocumentReference docRef;
 
-    private User()
+    public User()
     {
         db=FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
