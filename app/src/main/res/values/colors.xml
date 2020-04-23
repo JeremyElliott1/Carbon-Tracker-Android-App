@@ -10,5 +10,6 @@
     <color name="colorGreenLight">#abffc0</color>
     <color name="colorGreen1">#3eb959</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorSlider">#FFFFFF</color>
 </resources>
 
