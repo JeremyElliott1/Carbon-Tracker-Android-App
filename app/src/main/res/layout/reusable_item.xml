@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    app:cardCornerRadius="4dp">
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="4dp"
+    app:contentPadding="5px">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ItemView"
@@ -13,31 +15,31 @@
         android:layout_margin="4dp">
 
         <TextView
-            android:id="@+id/reusableItemTextView"
+            android:id="@+id/reusable_ItemNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_toEndOf="@+id/reusableItemImageView"
-            android:layout_toRightOf="@+id/reusableItemImageView"
-            android:text="Line 1"
-            android:textColor="@android:color/black"
+            android:text="Name"
+
+            android:textColor="@color/colorAccent"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/reusableItemImageView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/reusableItemImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:padding="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/reusable_ItemPointsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_10_points"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

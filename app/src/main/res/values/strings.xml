@@ -30,8 +30,7 @@
     <string name="settings_dark_mode">Dark Mode</string>
     <string name="settings_analytics">Allow Analytics</string>
     <string name="settings_version">Version:            1.0.1</string>
-
-
+    <string name="help_trouble">Having trouble? Click a button for more info on each page.</string>
 
     <string name="settings_about_policy">
         Welcome to SAGE\’s own Carbon Footprint Tracker. We\'re dedicated to giving you the
@@ -136,5 +135,11 @@
     <string name="high_grade_deinked_paper">High-Grade Deinked Paper</string>
     <string name="transparent_glass">Transparent Glass</string>
     <string name="coloured_glass">Coloured Glass</string>
+
+    <string name="myprofile_title">My profile</string>
+    <string name="telephone">Telephone</string>
+    <string name="leaderboard_monthly">Monthly</string>
+    <string name="leaderboard_weekly">Weekly</string>
+    <string name="leaderboard_today">Today</string>
 
 </resources>

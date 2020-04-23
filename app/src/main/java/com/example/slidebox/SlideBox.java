@@ -2,7 +2,7 @@ package com.example.slidebox;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.slidebox.ui.shop.ShoppingCart;
+import com.example.slidebox.MyProfile.MyProfile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -39,14 +39,7 @@ public class SlideBox extends AppCompatActivity {
 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -91,20 +84,12 @@ public class SlideBox extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_myAccount:
-                Intent myIntent1 = new Intent(SlideBox.this, MyAccountOptions.class);
-                startActivity(myIntent1);
-                return true;
 
             case R.id.action_settings:
                 Intent myIntent2 = new Intent(SlideBox.this, SettingsOptions.class);
                 startActivity(myIntent2);
                 return true;
 
-            case R.id.action_help:
-                Intent myIntent3 = new Intent(SlideBox.this, HelpOptions.class);
-                startActivity(myIntent3);
-                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -119,6 +104,11 @@ public class SlideBox extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+    }
+
+
+    private void setUpItemRecyclerView() {
+
     }
 }
 

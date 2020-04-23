@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.slidebox.LogIn;
 import com.example.slidebox.R;
+import com.example.slidebox.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -71,8 +72,12 @@ public class HomeFragment extends Fragment {
 
         Calendar calender = Calendar.getInstance();
         int currentDay = calender.get(Calendar.DAY_OF_MONTH);
+        int currentWeek = calender.get(Calendar.WEEK_OF_MONTH);
+        int currentMonth = calender.get(Calendar.MONTH);
         SharedPreferences settings = getActivity().getSharedPreferences("PREFS",0);
         int lastDay = settings.getInt("day",0);
+        int lastWeek = settings.getInt("week",0);
+        int lastMonth = settings.getInt("month",0);
         int random = settings.getInt("random", 1);
 
         if (lastDay!=currentDay) {
@@ -85,7 +90,18 @@ public class HomeFragment extends Fragment {
             int result = r.nextInt(high-low) + low;
             editor.putInt("random",result);
             editor.commit();
-
+        }
+        if(lastWeek!=currentWeek){
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("week" , currentWeek);
+            User.getInstance().resetWeeklyPoints();
+            editor.commit();
+        }
+        if(lastMonth!=currentMonth){
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("month" , currentMonth);
+            User.getInstance().resetMonthlyPoints();
+            editor.commit();
         }
         getQuote(random);
 
@@ -96,9 +112,10 @@ public class HomeFragment extends Fragment {
         sign_out=root.findViewById(R.id.sign_out);
         signOut();
 
+
         return root;
     }
-    public void getQuote(int random){
+    private void getQuote(int random){
        quotes.whereEqualTo("id",random)
        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
            @Override
@@ -117,7 +134,7 @@ public class HomeFragment extends Fragment {
            }
        });
     }
-    public void signOut(){
+    private void signOut(){
         sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

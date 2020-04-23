@@ -3,59 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ItemHeaderView"
-        android:layout_width="409dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reusables_AddItemsButton">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="100dp" />
-
-        <TextView
-            android:id="@+id/reusables_itemImageHeader"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="@string/reusables_ItemImageHeader"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/reusables_ItemDescriptionHeader"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="@string/reusables_ItemNameHeader"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Reusable_ItemRecyclerView"
-        android:layout_width="0dp"
+        android:id="@+id/reusable_ItemRecyclerView"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ItemHeaderView" />
+        app:layout_constraintTop_toBottomOf="@+id/reusables_AddItemsButton" />
 
     <TextView
         android:id="@+id/reusables_MainHeader"
@@ -70,7 +30,8 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/colorB"/>
 
     <TextView
         android:id="@+id/reusables_UsesHeader"
@@ -84,7 +45,8 @@
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/reusables_MainHeader"
-        app:layout_constraintTop_toBottomOf="@+id/reusables_MainHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/reusables_MainHeader"
+        android:textColor="@color/colorB"/>
 
     <TextView
         android:id="@+id/reusables_ItemsHeader"
@@ -98,7 +60,8 @@
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/reusables_MainHeader"
-        app:layout_constraintTop_toBottomOf="@+id/reusables_UsesHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/reusables_UsesHeader"
+        android:textColor="@color/colorB"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -116,7 +79,11 @@
         android:text="@string/reusables_AddButton"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/reusables_UsesHeader"
-        app:layout_constraintTop_toTopOf="@+id/reusables_UsesHeader" />
+        app:layout_constraintTop_toTopOf="@+id/reusables_UsesHeader"
+        android:background="@color/colorPrimary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorAccent"
+        android:typeface="normal"/>
 
     <Button
         android:id="@+id/reusables_AddItemsButton"
@@ -124,8 +91,12 @@
         android:layout_height="38dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:background="@color/colorPrimary"
         android:text="@string/reusables_AddButton"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorAccent"
         android:textSize="15sp"
+        android:typeface="normal"
         app:layout_constraintStart_toEndOf="@+id/reusables_ItemsHeader"
         app:layout_constraintTop_toTopOf="@+id/reusables_ItemsHeader" />
 
@@ -138,7 +109,11 @@
         android:text="@string/reusables_RemoveButton"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/reusables_AddUsesButton"
-        app:layout_constraintTop_toTopOf="@+id/reusables_UsesHeader" />
+        app:layout_constraintTop_toTopOf="@+id/reusables_UsesHeader"
+        android:background="@color/colorPrimary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorAccent"
+        android:typeface="normal"/>
 
     <Button
         android:id="@+id/reusables_RmvItemsButton"
@@ -149,11 +124,18 @@
         android:text="@string/reusables_RemoveButton"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/reusables_AddItemsButton"
-        app:layout_constraintTop_toTopOf="@+id/reusables_ItemsHeader" />
+        app:layout_constraintTop_toTopOf="@+id/reusables_ItemsHeader"
+        android:background="@color/colorPrimary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorAccent"
+        android:typeface="normal"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:id="@+id/reusables_UsesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/reusables_AddItemsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reusables_AddUsesButton" />

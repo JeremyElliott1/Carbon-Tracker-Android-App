@@ -5,7 +5,8 @@
     android:id="@+id/sv1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    >
 
     <RelativeLayout
         android:id="@+id/relativeLayout_1"
@@ -67,6 +68,7 @@
             android:layout_below="@+id/quoteText"
             android:gravity="center"
             android:layout_centerHorizontal="true"
+            android:textColor="@color/colorB"
 
             android:text="Your Points"
             android:textSize="35dp" />
@@ -78,15 +80,17 @@
             android:layout_below="@+id/points_lable"
             android:layout_marginTop="120dp"
             android:paddingLeft="20dp"
-            android:text="Daily chanllage:"
-            android:textSize="20dp" />
+            android:text="Daily challenge:"
+            android:textSize="20dp"
+            android:textColor="@color/colorB"/>
         <CheckedTextView
             android:id="@+id/chanllage_1"
             android:layout_width="wrap_content"
             android:layout_height="19dp"
-            android:text="chanllage 1"
+            android:text="challenge 1"
             android:layout_below="@+id/challange_lable"
             android:paddingLeft="20dp"
+            android:textColor="@color/colorB"
             />
 
         <CheckBox
@@ -95,15 +99,17 @@
             android:layout_below="@+id/challange_lable"
             android:layout_toRightOf="@+id/chanllage_1"
             android:scaleX="0.5"
-            android:scaleY="0.5" />
+            android:scaleY="0.5"
+            android:textColor="@color/colorB"/>
 
         <CheckedTextView
             android:id="@+id/chanllage_2"
             android:layout_width="wrap_content"
             android:layout_height="19dp"
-            android:text="chanllage 2"
+            android:text="challenge 2"
             android:layout_below="@+id/chanllage_1"
             android:paddingLeft="20dp"
+            android:textColor="@color/colorB"
             />
 
         <CheckBox

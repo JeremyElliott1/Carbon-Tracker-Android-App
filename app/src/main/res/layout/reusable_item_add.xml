@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="@color/colorB"
+        android:textColor="@color/colorB">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextItemNameAdd"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:hint="Enter Item Name"
+            android:textColor="@color/colorB"
+            android:textColorHint="@color/colorB" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="215dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="64dp"
+        android:background="@color/colorPrimary"
+        android:lineSpacingExtra="@dimen/activity_vertical_margin"
+        android:text="Save Item"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorAccent"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <Button
+        android:id="@+id/reusable_cancelAddItemButton"
+        android:layout_width="215dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="64dp"
+        android:background="@color/colorPrimary"
+        android:lineSpacingExtra="@dimen/activity_vertical_margin"
+        android:text="@android:string/cancel"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorAccent"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addItemButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

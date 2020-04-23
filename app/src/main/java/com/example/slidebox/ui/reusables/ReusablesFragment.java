@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -18,9 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.slidebox.R;
-import com.example.slidebox.ui.reusables.adapters.ItemsRecyclerAdapter;
-
-import java.util.ArrayList;
+import com.example.slidebox.User;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class ReusablesFragment extends Fragment {
     //Buttons
@@ -29,19 +30,22 @@ public class ReusablesFragment extends Fragment {
     private Button addItemButton;
     private Button rmvItemButton;
 
-    //RecyclerView
-    private RecyclerView itemRecyclerView;
-    private RecyclerView.Adapter itemAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+    //    Firebase database
+    private FirebaseFirestore db = FirebaseFirestore.getInstance(); //firestore database
+    private String userId;
 
-    //Recycler DataSet -----------------
-    private ArrayList<ReusableItem> reusableItemList;
+    //ReusablesUses
+    private CollectionReference reusableUsesCollRef;
+    private ReusablesUseAdapter usesRecyclerViewAdapter;
 
-    //image array for recycler view to hold images of reusables objects.
+    //ReusableItems
+    private CollectionReference reusableItemsCollRef;
+    private ReusablesItemAdapter itemRecyclerViewAdapter;
 
 
     /*Untouched Code Starts----------------------------------------------------------------*/
     private ReusablesViewModel reusablesViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
@@ -51,10 +55,19 @@ public class ReusablesFragment extends Fragment {
         final TextView textView = root.findViewById(R.id.reusables_MainHeader);
         /*Untouched Code Ends---------------------------------------------------------------- */
 
-        //Creating Recycler and initializing List Data Set:
-        itemRecyclerView = root.findViewById(R.id.Reusable_ItemRecyclerView); //Can this be moved to createItemRecyclerView()?
-        createItemList();
-        createItemRecyclerView();
+        //get user ID & firestore db reference.
+        User user = new User();
+        userId = user.getUserId();
+        reusableItemsCollRef = db.collection("users").document(userId)
+                .collection("ReusableItems"); //ReusableItems Collection reference
+        reusableUsesCollRef = db.collection("users").document(userId)
+                .collection("ReusableUses"); //ReusableUses Collection reference
+
+        setUpItemRecyclerView(root);
+        itemRecyclerViewAdapter.startListening();
+
+        setUpUsesRecyclerView(root);
+        usesRecyclerViewAdapter.startListening();
 
         //Buttons:
         addItemButton = root.findViewById(R.id.reusables_AddItemsButton);
@@ -67,35 +80,28 @@ public class ReusablesFragment extends Fragment {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Enter Item Details to add", Toast.LENGTH_SHORT).show(); //Toast widget displays a fading text when invoked.
                 openReusableItemAdd();
-
-                //Navigate to new Activity that allows User to enter Item Details.
             }
         });
         rmvItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Enter Item Details to save", Toast.LENGTH_SHORT).show(); //Toast widget displays a fading text when invoked.
-                //Navigate to new Activity that allows User to enter Item Details.
+                openReusableItemRmv();
             }
         });
 
         addUseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Enter Use Details to Add", Toast.LENGTH_SHORT).show(); //Toast widget displays a fading text when invoked.
-                //Navigate to new Activity that allows User to enter Item Details.
+//                openReusableUseAdd();
             }
         });
         rmvUseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Enter Use Details to remove", Toast.LENGTH_SHORT).show(); //Toast widget displays a fading text when invoked.
-                //Navigate to new Activity that allows User to enter Item Details.
+//                openReusableUseRmv();
             }
         });
-
 
         /*Untouched Code Starts----------------------------------------------------------------*/
 
@@ -111,30 +117,54 @@ public class ReusablesFragment extends Fragment {
     }
     /*Untouched Code Ends---------------------------------------------------------------- */
 
-    //Navigates to ItemAdd Activity carrying the RecyclerView List data extra with it
-    public void openReusableItemAdd() {
+    //Button Navigation
+    private void openReusableItemAdd() {
         Intent intent = new Intent(getActivity(), ReusablesItemAdd.class);
         startActivity(intent);
     }
 
-    public void createItemList() {
-        //adding items for recycler
-        reusableItemList = new ArrayList<>();
-        reusableItemList.add(new ReusableItem(R.drawable.coffee, "Coffeeee!!!"));
-        reusableItemList.add(new ReusableItem(R.drawable.coffee, "Coffeeee!!!"));
-        reusableItemList.add(new ReusableItem(R.drawable.coffee, "Coffeeee!!!"));
-        reusableItemList.add(new ReusableItem(R.drawable.coffee, "Coffeeee!!!"));
+    private void openReusableItemRmv() {
+        Intent intent = new Intent(getActivity(), ReusablesItemRmv.class);
+        startActivity(intent);
     }
 
-    public void createItemRecyclerView() {
-        itemRecyclerView.setHasFixedSize(true);//Improves efficiency as item View size is not expected to change.
-        // assigning layout manager
-        layoutManager = new LinearLayoutManager(getActivity());
-        //assigning Adapter
-        itemAdapter = new ItemsRecyclerAdapter(reusableItemList);
-
-        //setting Adapter and Manager to RecyclerView
-        itemRecyclerView.setLayoutManager(layoutManager);
-        itemRecyclerView.setAdapter(itemAdapter);
+    public void openReusableUseAdd() {
+        Intent intent = new Intent(getActivity(), ReusablesUseAdd.class);
+        startActivity(intent);
     }
+
+    public void openReusableUseRmv() {
+        Intent intent = new Intent(getActivity(), ReusablesUseRmv.class);
+        startActivity(intent);
+    }
+private void setUpItemRecyclerView(View v) {
+    Query query = reusableItemsCollRef.orderBy("name", Query.Direction.DESCENDING);
+
+    FirestoreRecyclerOptions options = new FirestoreRecyclerOptions.Builder<ReusableItem>()
+            .setQuery(query, ReusableItem.class)
+            .build();
+
+    itemRecyclerViewAdapter = new ReusablesItemAdapter(options);
+
+    RecyclerView itemRecyclerView = v.findViewById(R.id.reusable_ItemRecyclerView);
+    itemRecyclerView.setHasFixedSize(true);
+    itemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    itemRecyclerView.setAdapter(itemRecyclerViewAdapter);
+}
+
+    private void setUpUsesRecyclerView(View v) {
+        Query query = reusableUsesCollRef.orderBy("date", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions options = new FirestoreRecyclerOptions.Builder<ReusableUse>()
+                .setQuery(query, ReusableUse.class)
+                .build();
+
+        usesRecyclerViewAdapter = new ReusablesUseAdapter(options);
+
+        RecyclerView useRecyclerView = v.findViewById(R.id.reusables_UsesRecyclerView);
+        useRecyclerView.setHasFixedSize(true);
+        useRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        useRecyclerView.setAdapter(usesRecyclerViewAdapter);
+    }
+
 }

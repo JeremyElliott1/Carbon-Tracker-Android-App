@@ -17,11 +17,4 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-
-    <style name="DarkMode" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorDMPrimary</item>
-        <item name="colorPrimaryDark">@color/colorDMPrimaryDark</item>
-        <item name="colorAccent">@color/colorDMAccent</item>
-    </style>
 </resources>

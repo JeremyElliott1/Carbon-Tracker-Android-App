@@ -4,23 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".SettingsAbout">
 
-    <TextView
-        android:id="@+id/text_home2"
-        android:layout_width="407dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/settings_tos"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#C6000000"
-        android:textSize="30sp"
-        android:textStyle="bold"
+    <include
+        android:id="@+id/tos_toolbar"
+        layout="@layout/tos_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/cardview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
@@ -28,10 +25,11 @@
         android:layout_height="424dp"
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="32dp"
         android:text="@string/settings_tos_policy"
+        android:textColor="@color/colorB"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tos_toolbar" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -39,26 +37,9 @@
         android:layout_height="142dp"
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
-        android:layout_marginTop="484dp"
+        android:layout_marginTop="528dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sage" />
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="44dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="85dp"
-        android:layout_marginEnd="346dp"
-        android:layout_marginRight="346dp"
-        android:layout_marginBottom="604dp"
-        android:background="@drawable/back_button"
-        android:shadowColor="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
