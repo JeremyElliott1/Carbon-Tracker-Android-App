@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -18,12 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.slidebox.R;
+import com.example.slidebox.User;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-
-import java.util.ArrayList;
 
 public class ReusablesFragment extends Fragment {
     //Buttons
@@ -34,7 +32,8 @@ public class ReusablesFragment extends Fragment {
 
     //    Firebase RecyclerAdapter
     private FirebaseFirestore db = FirebaseFirestore.getInstance(); //firestore database
-    private CollectionReference reusableItemsCollRef = db.collection("ReusableItems"); //ReusableItems Collection reference
+    private CollectionReference reusableItemsCollRef;
+    private String userId;
     private ReusablesItemAdapter itemRecyclerViewAdapter;
 
 
@@ -52,6 +51,11 @@ public class ReusablesFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_reusables, container, false);
         final TextView textView = root.findViewById(R.id.reusables_MainHeader);
         /*Untouched Code Ends---------------------------------------------------------------- */
+
+        //get user ID & firestore db reference.
+        User user = new User();
+        userId = user.getUserId();
+        reusableItemsCollRef = db.collection("users").document(userId).collection("ReusableItems"); //ReusableItems Collection reference
 
         setUpItemRecyclerView(root);
         itemRecyclerViewAdapter.startListening();
@@ -73,7 +77,7 @@ public class ReusablesFragment extends Fragment {
         rmvItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                openReusableItemRmv();
+                openReusableItemRmv();
             }
         });
 
@@ -110,10 +114,10 @@ public class ReusablesFragment extends Fragment {
         startActivity(intent);
     }
 
-//    public void openReusableItemRmv() {
-//        Intent intent = new Intent(getActivity(), ReusablesItemRmv.class);
-//        startActivity(intent);
-//    }
+    private void openReusableItemRmv() {
+        Intent intent = new Intent(getActivity(), ReusablesItemRmv.class);
+        startActivity(intent);
+    }
 //
 //    public void openReusableUseAdd() {
 //        Intent intent = new Intent(getActivity(), ReusablesUseAdd.class);

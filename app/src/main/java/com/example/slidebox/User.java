@@ -51,6 +51,10 @@ public class User {
         return single_instance;
     }
 
+    public String getUserId() {
+        return firebaseAuth.getCurrentUser().getUid();
+    }
+
 public void getFirstName(final TextView text){
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
