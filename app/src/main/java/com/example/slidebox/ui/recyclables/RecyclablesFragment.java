@@ -33,6 +33,11 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
     private Button glassButton;
     private Button unsureButton;
 
+    private int CO2value;
+    private int totalCO2;
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         recyclablesViewModel = new ViewModelProvider(this).get(RecyclablesViewModel.class);
@@ -44,11 +49,6 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
 //            public void onClick(View v) {
 //                paperPopUp.showContextMenu();
 //
-//            }
-//
-//    }
-//
-//        );
 
         recyclablesViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -69,42 +69,6 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
 
         return root;
     }
-
-
-
-    /*public void popup_window() {
-
-            View menuItemView = getView().findViewById(R.id.Re);
-            PopupMenu paperPopup = new PopupMenu(getActivity(), menuItemView);
-            paperPopup.getMenuInflater().inflate(R.menu.recyclables_popup, paperPopup.getMenu());
-
-            paperPopup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_ticket:
-                        Intent intdn = new Intent(getActivity(),RecyclablesFragment.class);
-                        intdn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intdn);
-                        break;
-
-                    case R.id.action_survey:
-                        Toast.makeText(getActivity(),"Under Construction ",Toast.LENGTH_LONG).show();
-                        break;
-                    case R.id.action_service_request:
-                        Toast.makeText(getActivity(),"Under Construction ",Toast.LENGTH_LONG).show();
-                        break;
-
-                    default:
-                        break;
-
-                }
-                return true;
-            }
-        });
-        paperPopup.show();
-    }
-        */
-
 
 
     public void paperPopup(View v) {
@@ -192,20 +156,101 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                Toast.makeText(getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
-                return true;
+                Toast.makeText(getActivity(), "Old corrugated Containers selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 10;
+                totalCO2 += CO2value;
+            return true;
             case R.id.item2:
-                Toast.makeText(getActivity(), "Item 2 clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Old Newspaper selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 10;
+                totalCO2 += CO2value;
                 return true;
             case R.id.item3:
-                Toast.makeText(getActivity(), "Item 3 clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Standard Stationary Paper selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 10;
+                totalCO2 += CO2value;
                 return true;
             case R.id.item4:
-                Toast.makeText(getActivity(), "Item 4 clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "High Grade De-inked Paper selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 10;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item5:
+                Toast.makeText(getActivity(), "Transparent Glass selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 20;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item6:
+                Toast.makeText(getActivity(), "Coloured Glass selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 20;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item7:
+                Toast.makeText(getActivity(), "Stationary Items selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 30;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item8:
+                Toast.makeText(getActivity(), "PC's, Laptops, Tablets etc.. selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 30;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item9:
+                Toast.makeText(getActivity(), "Batteries selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 30;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item10:
+                Toast.makeText(getActivity(), "Generic Scrap Metal selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 30;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item11:
+                Toast.makeText(getActivity(), "Small Plastic Bottle (500ml) selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 40;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item12:
+                Toast.makeText(getActivity(), "Medium plastic bottle (1L) selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 40;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item13:
+                Toast.makeText(getActivity(), "Large plastic bottle (1.5L+) selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 40;
+                totalCO2 += CO2value;
+                return true;
+            case R.id.item14:
+                Toast.makeText(getActivity(), "Plastic Cup/Container selected", Toast.LENGTH_SHORT).show();
+                CO2value = CO2value + 40;
+                totalCO2 += CO2value;
                 return true;
             default:
                 return false;
         }
     }
+
+
+
+    public int getCO2value(){
+        return CO2value;
+    }
+
+    public int getTotalCO2(){
+        return totalCO2;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
