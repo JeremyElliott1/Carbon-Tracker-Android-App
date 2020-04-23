@@ -4,17 +4,18 @@ import com.google.firebase.firestore.Exclude;
 
 import java.util.Date;
 
-public class ReusablesUse {
+public class ReusableUse {
 
         private String id;
         private String itemName;
         private Date date;
+    private String points;
 
-        public ReusablesUse() {
+    public ReusableUse() {
             //fireStore needs an empty constructor otherwise it crashes.
         }
 
-        public ReusablesUse(String itemName, Date date) {
+    public ReusableUse(String itemName, Date date) {
             this.itemName = itemName;
             this.date = date;
         }
@@ -37,4 +38,8 @@ public class ReusablesUse {
         public Date getDate() {
             return date;
         }
+
+    public String getPoints() {
+        return points;
+    }
 }

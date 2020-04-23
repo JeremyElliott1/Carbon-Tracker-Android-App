@@ -30,15 +30,18 @@ public class ReusablesFragment extends Fragment {
     private Button addItemButton;
     private Button rmvItemButton;
 
-    //    Firebase RecyclerAdapter
+    //    Firebase database
     private FirebaseFirestore db = FirebaseFirestore.getInstance(); //firestore database
-    private CollectionReference reusableItemsCollRef;
     private String userId;
+
+    //ReusablesUses
+    private CollectionReference reusableUsesCollRef;
+    private ReusablesUseAdapter usesRecyclerViewAdapter;
+
+    //ReusableItems
+    private CollectionReference reusableItemsCollRef;
     private ReusablesItemAdapter itemRecyclerViewAdapter;
 
-
-    //RecyclerView
-    private RecyclerView itemRecyclerView;
 
     /*Untouched Code Starts----------------------------------------------------------------*/
     private ReusablesViewModel reusablesViewModel;
@@ -55,10 +58,16 @@ public class ReusablesFragment extends Fragment {
         //get user ID & firestore db reference.
         User user = new User();
         userId = user.getUserId();
-        reusableItemsCollRef = db.collection("users").document(userId).collection("ReusableItems"); //ReusableItems Collection reference
+        reusableItemsCollRef = db.collection("users").document(userId)
+                .collection("ReusableItems"); //ReusableItems Collection reference
+        reusableUsesCollRef = db.collection("users").document(userId)
+                .collection("ReusableUses"); //ReusableUses Collection reference
 
         setUpItemRecyclerView(root);
         itemRecyclerViewAdapter.startListening();
+
+        setUpUsesRecyclerView(root);
+        usesRecyclerViewAdapter.startListening();
 
         //Buttons:
         addItemButton = root.findViewById(R.id.reusables_AddItemsButton);
@@ -108,7 +117,7 @@ public class ReusablesFragment extends Fragment {
     }
     /*Untouched Code Ends---------------------------------------------------------------- */
 
-    //Navigates to ItemAdd Activity carrying the RecyclerView List data extra with it
+    //Button Navigation
     private void openReusableItemAdd() {
         Intent intent = new Intent(getActivity(), ReusablesItemAdd.class);
         startActivity(intent);
@@ -118,16 +127,16 @@ public class ReusablesFragment extends Fragment {
         Intent intent = new Intent(getActivity(), ReusablesItemRmv.class);
         startActivity(intent);
     }
-//
-//    public void openReusableUseAdd() {
-//        Intent intent = new Intent(getActivity(), ReusablesUseAdd.class);
-//        startActivity(intent);
-//    }
-//
-//    public void openReusableUseRmv() {
-//        Intent intent = new Intent(getActivity(), ReusablesUseAdd.class);
-//        startActivity(intent);
-//    }
+
+    public void openReusableUseAdd() {
+        Intent intent = new Intent(getActivity(), ReusablesUseAdd.class);
+        startActivity(intent);
+    }
+
+    public void openReusableUseRmv() {
+        Intent intent = new Intent(getActivity(), ReusablesUseRmv.class);
+        startActivity(intent);
+    }
 private void setUpItemRecyclerView(View v) {
     Query query = reusableItemsCollRef.orderBy("name", Query.Direction.DESCENDING);
 
@@ -142,5 +151,20 @@ private void setUpItemRecyclerView(View v) {
     itemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     itemRecyclerView.setAdapter(itemRecyclerViewAdapter);
 }
+
+    private void setUpUsesRecyclerView(View v) {
+        Query query = reusableUsesCollRef.orderBy("date", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions options = new FirestoreRecyclerOptions.Builder<ReusableUse>()
+                .setQuery(query, ReusableUse.class)
+                .build();
+
+        usesRecyclerViewAdapter = new ReusablesUseAdapter(options);
+
+        RecyclerView useRecyclerView = v.findViewById(R.id.reusables_UsesRecyclerView);
+        useRecyclerView.setHasFixedSize(true);
+        useRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        useRecyclerView.setAdapter(usesRecyclerViewAdapter);
+    }
 
 }
