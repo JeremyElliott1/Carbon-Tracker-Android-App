@@ -66,20 +66,4 @@ public class ReusablesUseAdd extends AppCompatActivity {
 
 
     }
-
-    private ArrayList getItemNames() {
-        reusableItemsCollRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                String name;
-
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    itemNames.clear();
-                    ReusableItem item = documentSnapshot.toObject(ReusableItem.class);
-                    name = item.getName();
-                    itemNames.add(name);
-                }
-            }
-        })
-    }
 }
