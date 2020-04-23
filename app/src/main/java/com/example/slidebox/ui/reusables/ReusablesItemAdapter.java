@@ -3,6 +3,7 @@ package com.example.slidebox.ui.reusables;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.slidebox.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 /* Adapter accesses data from firestore database and puts it in the RecyclerViewHolder
  *   FireStoreRecycler Adapter is a subclass of a normal RecyclerView Adapter */
 
 public class ReusablesItemAdapter extends FirestoreRecyclerAdapter<ReusableItem, ReusablesItemAdapter.ItemHolder> {
 
-    /**
+    private AdapterView.OnItemClickListener listener;
+
+    /*
      * Create a new RecyclerView adapter that listens to a Firestore Query.
-     *
-     * @param options
      */
     ReusablesItemAdapter(@NonNull FirestoreRecyclerOptions<ReusableItem> options) {
         super(options);
@@ -42,6 +44,14 @@ public class ReusablesItemAdapter extends FirestoreRecyclerAdapter<ReusableItem,
         return new ItemHolder(v);
     }
 
+    ReusableItem getReusablesItem(int position) {
+        return getSnapshots().getSnapshot(position).toObject(ReusableItem.class);
+    }
+
+    public void deleteReusableItem(int position) {
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
     class ItemHolder extends RecyclerView.ViewHolder {
         /* variables for each TextView within an ReusableItem */
         TextView reusableItemNameTextView;
@@ -52,6 +62,7 @@ public class ReusablesItemAdapter extends FirestoreRecyclerAdapter<ReusableItem,
 
             reusableItemNameTextView = itemView.findViewById(R.id.reusable_ItemNameTextView);
             reusableItemPointTextView = itemView.findViewById(R.id.reusable_ItemPointsTextView);
+
         }
     }
 

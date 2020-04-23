@@ -36,6 +36,9 @@ public class ReusablesItemAdd extends AppCompatActivity {
     //Database instance
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    //User info
+    private String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,10 @@ public class ReusablesItemAdd extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextItemNameAdd);
         saveItemButton = findViewById(R.id.addItemButton);
         cancelItemAddButton = findViewById(R.id.reusable_cancelAddItemButton);
+
+        //get userId
+        User user = new User();
+        userId = user.getUserId();
 
         // set OnClickListener for saveButton
         saveItemButton.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +90,12 @@ public class ReusablesItemAdd extends AppCompatActivity {
          @field = "name"
          @field = "points"
          */
-        db.collection("ReusableItems").document().set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("users").document(userId).collection("ReusableItems").document()
+                .set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved" +
+                        "\n user: " + userId, Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
