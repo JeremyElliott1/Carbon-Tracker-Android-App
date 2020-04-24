@@ -56,7 +56,7 @@ public class ReusablesUseAdd extends AppCompatActivity {
         date = new Date();
 
         //get user ID & firestore db reference.
-        User user = new User();
+        User user = User.getInstance();
         userId = user.getUserId();
         reusableItemsCollRef = db.collection("users").document(userId).
                 collection("ReusableItems"); //ReusableItems Collection reference
@@ -67,7 +67,7 @@ public class ReusablesUseAdd extends AppCompatActivity {
         dateTextView = findViewById(R.id.reusable_useAddDateDisplayTextView);
 
         itemNameSpinner = findViewById(R.id.useItemNameSpinner);
-        adapter = new ArrayAdapter<ReusableItem>(this, android.R.layout.simple_spinner_item, reusableItems);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, reusableItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         itemNameSpinner.setAdapter(adapter);
         itemNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -133,7 +133,7 @@ public class ReusablesUseAdd extends AppCompatActivity {
         final ReusableUse use = new ReusableUse(selectedItemName, date, points);
 
         //Adding points to user
-        User user = new User();
+        User user = User.getInstance();
         user.addPoints(Integer.parseInt(points));
 
         /*

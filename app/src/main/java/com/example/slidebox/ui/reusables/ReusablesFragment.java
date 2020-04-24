@@ -56,7 +56,7 @@ public class ReusablesFragment extends Fragment {
         /*Untouched Code Ends---------------------------------------------------------------- */
 
         //get user ID & firestore db reference.
-        User user = new User();
+        User user = User.getInstance();
         userId = user.getUserId();
         reusableItemsCollRef = db.collection("users").document(userId)
                 .collection("ReusableItems"); //ReusableItems Collection reference
@@ -128,12 +128,12 @@ public class ReusablesFragment extends Fragment {
         startActivity(intent);
     }
 
-    public void openReusableUseAdd() {
+    private void openReusableUseAdd() {
         Intent intent = new Intent(getActivity(), ReusablesUseAdd.class);
         startActivity(intent);
     }
 
-    public void openReusableUseRmv() {
+    private void openReusableUseRmv() {
         Intent intent = new Intent(getActivity(), ReusablesUseRmv.class);
         startActivity(intent);
     }
