@@ -38,7 +38,7 @@ public class ReusablesUseRmv extends AppCompatActivity {
         setContentView(R.layout.reusable_use_remove);
 
         //get user ID & firestore db reference.
-        User user = new User();
+        User user = User.getInstance();
         userId = user.getUserId();
         reusableUsesCollRef = db.collection("users")
                 .document(userId).collection("ReusableUses"); //ReusableUses Collection reference
@@ -86,7 +86,7 @@ public class ReusablesUseRmv extends AppCompatActivity {
 
 
                 usesRecyclerViewAdapter.deleteReusableUse(viewHolder.getAdapterPosition());
-                User user = new User();
+                User user = User.getInstance();
                 user.addPoints((usePoints * -1));
             }
         }).attachToRecyclerView(useRecyclerView);
