@@ -38,7 +38,8 @@ public class ReusablesItemRmv extends AppCompatActivity {
         //get userId
         User user = new User();
         userId = user.getUserId();
-        reusableItemsCollRef = db.collection("users").document(userId).collection("ReusableItems"); //ReusableItems Collection reference
+        reusableItemsCollRef = db.collection("users")
+                .document(userId).collection("ReusableItems"); //ReusableItems Collection reference
 
         setUpItemRecyclerView();
         itemRecyclerViewAdapter.startListening();

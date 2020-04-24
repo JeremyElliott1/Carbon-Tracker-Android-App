@@ -56,7 +56,7 @@
 
     <Spinner
         android:id="@+id/useItemNameSpinner"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="196dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/reusable_useDateDisplayTextView"
+        android:id="@+id/reusable_useAddDateDisplayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"

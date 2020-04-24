@@ -93,13 +93,13 @@ public class ReusablesFragment extends Fragment {
         addUseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                openReusableUseAdd();
+                openReusableUseAdd();
             }
         });
         rmvUseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                openReusableUseRmv();
+                openReusableUseRmv();
             }
         });
 
