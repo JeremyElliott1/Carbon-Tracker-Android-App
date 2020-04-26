@@ -10,7 +10,7 @@ public class ReusablesViewModel extends ViewModel {
 
     public ReusablesViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Reusables fragment");
+        mText.setValue("");
     }
 
     public LiveData<String> getText() {

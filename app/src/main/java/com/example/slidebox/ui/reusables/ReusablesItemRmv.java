@@ -36,9 +36,10 @@ public class ReusablesItemRmv extends AppCompatActivity {
         setContentView(R.layout.reusable_item_remove);
 
         //get userId
-        User user = new User();
+        User user = User.getInstance();
         userId = user.getUserId();
-        reusableItemsCollRef = db.collection("users").document(userId).collection("ReusableItems"); //ReusableItems Collection reference
+        reusableItemsCollRef = db.collection("users")
+                .document(userId).collection("ReusableItems"); //ReusableItems Collection reference
 
         setUpItemRecyclerView();
         itemRecyclerViewAdapter.startListening();
@@ -84,7 +85,7 @@ public class ReusablesItemRmv extends AppCompatActivity {
 
 
                 itemRecyclerViewAdapter.deleteReusableItem(viewHolder.getAdapterPosition());
-                User user = new User();
+                User user = User.getInstance();
                 user.addPoints((itemPoints * -1));
             }
         }).attachToRecyclerView(itemRecyclerView);

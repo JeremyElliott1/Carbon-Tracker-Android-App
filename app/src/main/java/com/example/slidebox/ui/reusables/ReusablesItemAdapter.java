@@ -21,7 +21,7 @@ public class ReusablesItemAdapter extends FirestoreRecyclerAdapter<ReusableItem,
     private AdapterView.OnItemClickListener listener;
 
     /*
-     * Create a new RecyclerView adapter that listens to a Firestore Query.
+     * Create a new RecyclerView adapter that listens for a Firestore Query.
      */
     ReusablesItemAdapter(@NonNull FirestoreRecyclerOptions<ReusableItem> options) {
         super(options);

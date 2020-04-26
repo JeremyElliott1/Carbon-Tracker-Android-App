@@ -50,7 +50,7 @@ public class ReusablesItemAdd extends AppCompatActivity {
         cancelItemAddButton = findViewById(R.id.reusable_cancelAddItemButton);
 
         //get userId
-        User user = new User();
+        User user = User.getInstance();
         userId = user.getUserId();
 
         // set OnClickListener for saveButton
@@ -81,7 +81,7 @@ public class ReusablesItemAdd extends AppCompatActivity {
         final ReusableItem item = new ReusableItem(name, points);
 
         //Adding points to user
-        User user = new User();
+        User user = User.getInstance();
         user.addPoints(Integer.parseInt(points));
 
         /*
@@ -94,8 +94,7 @@ public class ReusablesItemAdd extends AppCompatActivity {
                 .set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved" +
-                        "\n user: " + userId, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

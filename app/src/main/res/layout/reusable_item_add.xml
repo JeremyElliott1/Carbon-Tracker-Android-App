@@ -23,9 +23,9 @@
             android:layout_width="338dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:hint="hint"
-            android:textColorHint="@color/colorB"
-            android:textColor="@color/colorB"/>
+            android:hint="Enter Item Name"
+            android:textColor="@color/colorB"
+            android:textColorHint="@color/colorB" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
