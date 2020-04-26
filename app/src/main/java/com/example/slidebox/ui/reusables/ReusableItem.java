@@ -1,5 +1,7 @@
 package com.example.slidebox.ui.reusables;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.firestore.Exclude;
 
 public class ReusableItem {
@@ -35,4 +37,9 @@ public class ReusableItem {
         return points;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
+    }
 }

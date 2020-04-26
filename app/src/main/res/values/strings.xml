@@ -8,6 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_help">Help</string>
     <string name="action_myAccount">My Account</string>
+    <string name="back">Back</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_recyclables">Recyclables</string>
@@ -97,6 +98,9 @@
     <string name="reusables_ItemNameHeader">Item Name:</string>
     <string name="reusables_EnterItemDetails">Enter Item Details</string>
     <string name="reusables_ExistingItemsHeader">Existing Items</string>
+    <string name="reusables_ItemRemoveHeader">Swipe a item to remove</string>
+    <string name="reusables_UseRemoveHeader">Swipe a use to remove</string>
+
 
     <string-array name="Reusable_Items">
         <item>Cup</item>

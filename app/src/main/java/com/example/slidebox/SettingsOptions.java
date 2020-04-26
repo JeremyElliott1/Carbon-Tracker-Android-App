@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -80,13 +81,14 @@ public class SettingsOptions extends AppCompatActivity {
         //https://stackoverflow.com/questions/10895882/mute-the-global-sound-in-android
         //https://www.youtube.com/watch?v=RyiTx8lWdx0
         switch_sounds = (Switch) findViewById(R.id.sounds);
-        final SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+        final SharedPreferences sharedPreferences = getSharedPreferences("save", 0);
+
         switch_sounds.setChecked(sharedPreferences.getBoolean("value", true));
         switch_sounds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view) {
                 if (switch_sounds.isChecked()) {
-                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor = getSharedPreferences("save", 0).edit();
                     editor.putBoolean("value", true);
                     editor.apply();
                     switch_sounds.setChecked(true);
@@ -98,7 +100,7 @@ public class SettingsOptions extends AppCompatActivity {
                     amanager.setStreamMute(AudioManager.STREAM_SYSTEM, false);
                 }
                 else {
-                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor = getSharedPreferences("save", 0).edit();
                     editor.putBoolean("value", false);
                     editor.apply();
                     switch_sounds.setChecked(false);
@@ -120,14 +122,14 @@ public class SettingsOptions extends AppCompatActivity {
             @Override
             public void onClick (View view) {
                 if (switch_dark_mode.isChecked()) {
-                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor = getSharedPreferences("save", 0).edit();
                     editor.putBoolean("dark", true);
                     editor.apply();
                     switch_dark_mode.setChecked(true);
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }
                 else {
-                    SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor = getSharedPreferences("save", 0).edit();
                     editor.putBoolean("dark", false);
                     editor.apply();
                     switch_dark_mode.setChecked(false);
@@ -137,7 +139,6 @@ public class SettingsOptions extends AppCompatActivity {
                 }
             }
         });
-
     }
 
 
@@ -159,5 +160,9 @@ public class SettingsOptions extends AppCompatActivity {
     public void openSetting_Help() {
         Intent intent = new Intent(this, HelpOptions.class);
         startActivity(intent);
+    }
+    public static boolean getDarkMode(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getBoolean("dark", true);
     }
 }
