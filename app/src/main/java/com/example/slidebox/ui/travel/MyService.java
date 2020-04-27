@@ -59,7 +59,7 @@ public class MyService extends Service {
             channel.setDescription(description);
             notificationManager.createNotificationChannel(channel);
         }
-        Intent intent = new Intent(MyService.this, TravelActivity.class);
+        Intent intent = new Intent(MyService.this, TravelFragment.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this,
@@ -73,8 +73,8 @@ public class MyService extends Service {
         super.onCreate();
 
     }
-    public float getDistance(){
-        return distance;
+    public int getDistance(){
+        return (int) distance;
     }
 
 

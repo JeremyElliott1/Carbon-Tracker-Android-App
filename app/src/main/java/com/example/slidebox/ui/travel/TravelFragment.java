@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -30,6 +31,31 @@ public class TravelFragment extends Fragment {
 
     private TravelViewModel travelViewModel;
     Button button;
+    TextView liveUpdate;
+    TextView total;
+    Handler handler = new Handler();
+    Runnable r= new Runnable(){
+        @Override
+        public void run() {
+            liveUpdate.setText("" + MyService.getDistance() + " m");
+            handler.post(r);
+        }
+    };
+    private  MyService MyService;
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            MyService = ((MyService.MyBinder)iBinder).getService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            MyService = null;
+        }
+    };
+
+    private Button start;
+    private Button stop;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,17 +71,52 @@ public class TravelFragment extends Fragment {
             }
         });
 
-        button = root.findViewById(R.id.button5);
-        button.setOnClickListener(new View.OnClickListener() {
+                MyService = new MyService();
+                Intent intent = new Intent(getActivity(),MyService.class);
+                getActivity().startService(intent);
+                getActivity().bindService(intent, serviceConnection, getActivity().BIND_AUTO_CREATE);
+                liveUpdate = root.findViewById(R.id.textView);
+                total = root.findViewById(R.id.textView4);
+                handler.post(r);
+
+                start = root.findViewById(R.id.start);
+                stop = root.findViewById(R.id.stop);
+
+                onStartClick();
+                onStopClick();
+
+                return root;
+            }
+
+
+            public void onStartClick(){
+            start.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    total.setText("0 m");
+                    MyService.Start();
+                }
+            });
+            }
+
+            public void onStopClick(){
+        stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TravelActivity.class);
-                startActivity(intent);
+                total.setText(String.valueOf(MyService.getDistance())+ " m");
+                MyService.Stop();
             }
         });
+            }
 
-        return root;
-    }
-
-
+            public void onDestroy() {
+                if (serviceConnection != null) {
+                    getActivity().unbindService(serviceConnection);
+                    serviceConnection = null;
+                }
+                super.onDestroy();
+            }
 }
+
+
+

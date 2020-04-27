@@ -19,7 +19,6 @@
             android:enabled="true"
             android:exported="true"></service>
 
-        <activity android:name=".ui.travel.TravelActivity" />
         <activity
             android:name=".MyProfile.Edit.ProfileEditActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
