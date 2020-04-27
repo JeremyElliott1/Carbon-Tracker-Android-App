@@ -63,13 +63,7 @@ public class TravelFragment extends Fragment {
         travelViewModel =
                 ViewModelProviders.of(this).get(TravelViewModel.class);
         View root = inflater.inflate(R.layout.fragment_travel, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        travelViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
 
                 MyService = new MyService();
                 Intent intent = new Intent(getActivity(),MyService.class);
