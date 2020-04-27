@@ -21,88 +21,17 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center_horizontal" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="77dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="188dp"
-        android:text="Carbon dioxide emission(kg)"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="40dp"
-        android:text="Bike(km)"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="63dp"
-        android:text="Car(km)"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_tools" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="181dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="number|numberDecimal"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/text_tools" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="183dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="64dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="192dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="212dp"
-        android:ems="10"
-        android:inputType="none"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calculate"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        android:layout_marginTop="60dp"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/text_tools"
+        app:layout_constraintVertical_bias="0.055" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

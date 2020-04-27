@@ -39,6 +39,14 @@ public class ReusablesUseAdapter extends FirestoreRecyclerAdapter<ReusableUse, R
         return new ReusablesUseAdapter.ItemHolder(v);
     }
 
+    ReusableUse getReusablesUse(int position) {
+        return getSnapshots().getSnapshot(position).toObject(ReusableUse.class);
+    }
+
+    public void deleteReusableUse(int position) {
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
     class ItemHolder extends RecyclerView.ViewHolder {
         /* variables for each TextView within an ReusableItem */
         TextView reusableUseItemNameTextView;
