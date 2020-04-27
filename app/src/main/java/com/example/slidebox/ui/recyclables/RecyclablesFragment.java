@@ -67,6 +67,7 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
         glassPopup(root);
         unsurePopup(root);
 
+
         return root;
     }
 
@@ -74,13 +75,12 @@ public class RecyclablesFragment extends Fragment implements PopupMenu.OnMenuIte
     public void paperPopup(View v) {
         final PopupMenu paperPopup = new PopupMenu(getActivity(),v);
         paperPopup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);
+        paperPopup.getMenuInflater().inflate(R.menu.recyclables_popup, paperPopup.getMenu());
         paperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                paperPopup.getMenuInflater().inflate(R.menu.recyclables_popup, paperPopup.getMenu());
                 paperPopup.inflate(R.menu.recyclables_popup);
                 paperPopup.show();
-
             }
         });
 
