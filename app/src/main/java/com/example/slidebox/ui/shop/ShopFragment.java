@@ -53,6 +53,7 @@ public class ShopFragment extends Fragment {
     private Dialog dialogShopRedeemPopup;
 
     private ImageView closeShopPopup;
+    private Button cancelRedeemItem;
     private ImageView closeShopRedeemPopup;
     private Button redeemItem;
 
@@ -106,6 +107,7 @@ public class ShopFragment extends Fragment {
                    dialogShopPopup.setContentView(R.layout.activity_shop_popup);
                     textShopPopup = dialogShopPopup.findViewById(R.id.textShopPopup);
                     textShopPopup.setText(itemNames[finalI]);
+
                     Drawable myDrawable = getResources().getDrawable(itemImages[finalI]);
                     textShopPopup.setCompoundDrawablesWithIntrinsicBounds(null,null,null,myDrawable);
 
@@ -129,6 +131,14 @@ public class ShopFragment extends Fragment {
                 dialogShopPopup.dismiss();
             }
         });
+        cancelRedeemItem = (Button) dialogShopPopup.findViewById(R.id.cancelRedeemItem);
+        cancelRedeemItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogShopPopup.dismiss();
+            }
+        });
+
     }
     private void redeemItem(int finalI){
         final int finalII = finalI;
