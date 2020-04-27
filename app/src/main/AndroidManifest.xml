@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.slidebox">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:name=".Home"
         android:allowBackup="true"
@@ -10,9 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyProfile.Edit.ProfileEditActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-         ></activity>
+        <service
+            android:name=".ui.travel.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity
+            android:name=".MyProfile.Edit.ProfileEditActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SignUp"
             android:label="@string/app_name"
@@ -21,11 +30,11 @@
         <activity
             android:name=".SettingsPrivacyPolicy"
             android:parentActivityName=".SettingsOptions"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SettingsTos"
             android:parentActivityName=".SettingsOptions"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SettingsAbout"
             android:parentActivityName=".SettingsOptions"
@@ -38,7 +47,7 @@
         <activity
             android:name=".HelpOptions"
             android:parentActivityName=".SettingsOptions"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SettingsOptions"
             android:parentActivityName=".SlideBox"
@@ -57,8 +66,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SlideBox" android:theme="@style/AppTheme.NoActionBar" />
-      <!--- <activity android:name=".ui.recyclables.RecyclablesFragment" /> -->
+        <activity
+            android:name=".SlideBox"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

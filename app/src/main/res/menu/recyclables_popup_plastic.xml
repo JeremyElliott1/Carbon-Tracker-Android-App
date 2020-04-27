@@ -8,8 +8,8 @@
         android:title="Medium plastic bottle (1L Coke bottle)"/>
 
     <item android:id="@+id/item13"
-        android:title="Large plastic bottle (1L Coke bottle)"/>
+        android:title="Large plastic bottle (1.5L+ Coke bottle)"/>
 
     <item android:id="@+id/item14"
-        android:title="Plastic cup"/>
+        android:title="Plastic cup/Container"/>
 </menu>

@@ -33,6 +33,9 @@
     <string name="settings_version">Version:            1.0.1</string>
     <string name="help_trouble">Having trouble? Click a button for more info on each page.</string>
 
+    <string name="travel_description">Click the mode of transport and then start to begin your journey!\n
+        Then stop to find out the distance and earn points.</string>
+
     <string name="settings_about_policy">
         Welcome to SAGE\’s own Carbon Footprint Tracker. We\'re dedicated to giving you the
         very best experience, with a focus on helping our employees reducing their carbon
