@@ -82,7 +82,7 @@ public class ShopFragment extends Fragment {
         dialogShopPopup = new Dialog(getContext());
         dialogShopRedeemPopup = new Dialog(getContext(),android.R.style.Theme_Black_NoTitleBar_Fullscreen);
 
-        mainGrid = (GridLayout) root.findViewById(R.id.mainGrid);
+        mainGrid = root.findViewById(R.id.mainGrid);
 
         db= FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
