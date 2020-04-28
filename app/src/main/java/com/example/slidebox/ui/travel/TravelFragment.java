@@ -134,7 +134,7 @@ public class TravelFragment extends Fragment {
                     totalDistance = MyService.getDistance();
                     total.setText(String.valueOf(totalDistance) + " m");
                     MyService.Stop();
-                    int pointsAwarded = 1 + (int) (totalDistance * pointsPerMeter[selectedTravelMode]);
+                    int pointsAwarded = (int) (Math.ceil(totalDistance * pointsPerMeter[selectedTravelMode]));
                     User.getInstance().addPoints(pointsAwarded);
                     Toast toast=Toast.makeText(getActivity().getApplicationContext(),"You have been awarded " + pointsAwarded + " points" ,Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 200);
