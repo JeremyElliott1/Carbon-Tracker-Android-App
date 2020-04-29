@@ -78,15 +78,7 @@ public class ReusablesItemRmv extends AppCompatActivity {
 
             @Override /* onSwiped is for swipe movements. */
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                ReusableItem item;
-                int itemPoints;
-                item = itemRecyclerViewAdapter.getReusablesItem(viewHolder.getAdapterPosition());
-                itemPoints = Integer.parseInt(item.getPoints()); // NEEDS TO BE FIXED SO ITS SAVING JUST AN INT NOT A STRING FOR ITEM POINTS
-
-
                 itemRecyclerViewAdapter.deleteReusableItem(viewHolder.getAdapterPosition());
-                User user = User.getInstance();
-                user.addPoints((itemPoints * -1));
             }
         }).attachToRecyclerView(itemRecyclerView);
     }

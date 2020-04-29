@@ -127,7 +127,7 @@ public class ReusablesUseAdd extends AppCompatActivity {
 
     private void saveUse() {
         String name = selectedItemName;
-        String points = "10";
+        String points = "2";
 
         //Using custom object created in ReusableItem class.
         final ReusableUse use = new ReusableUse(selectedItemName, date, points);
