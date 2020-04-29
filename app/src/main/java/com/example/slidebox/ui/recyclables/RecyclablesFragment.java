@@ -74,7 +74,7 @@ public class RecyclablesFragment extends Fragment {
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(view.getContext(), "Item added: " + chooseItem, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Item added: " + chooseItem + ". You have been awarded " + points[index] + " points!", Toast.LENGTH_SHORT).show();
                         user.addPoints(points[index]);
                     }
                 });
@@ -114,7 +114,7 @@ public class RecyclablesFragment extends Fragment {
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(view.getContext(), "Item added: " + chooseItem, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Item added: " + chooseItem + ". You have been awarded " + points[index] + " points!", Toast.LENGTH_SHORT).show();
                         user.addPoints(points[index]);
                     }
                 });
@@ -154,7 +154,7 @@ public class RecyclablesFragment extends Fragment {
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(view.getContext(), "Item added: " + chooseItem, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Item added: " + chooseItem + ". You have been awarded " + points[index] + " points!", Toast.LENGTH_SHORT).show();
                         user.addPoints(points[index]);
                     }
                 });
