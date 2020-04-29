@@ -119,9 +119,9 @@ public class HomeFragment extends Fragment {
         firebaseUser = firebaseAuth.getCurrentUser();
 
         edit_target = root.findViewById(R.id.edit_target);
-        target = Integer.parseInt(edit_target.getText().toString());
+     //   target = Integer.parseInt(edit_target.getText().toString());
         set_target = root.findViewById(R.id.setTarget);
-        setTarget();
+      // setTarget();
         circleProgress = root.findViewById(R.id.circle_progress);
 
         sign_out=root.findViewById(R.id.sign_out);
@@ -185,7 +185,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        target = Integer.parseInt(edit_target.getText().toString());
+     //   target = Integer.parseInt(edit_target.getText().toString());
 
     }
 
