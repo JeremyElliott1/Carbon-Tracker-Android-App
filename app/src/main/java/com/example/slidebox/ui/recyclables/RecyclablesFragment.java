@@ -21,8 +21,6 @@ import com.example.slidebox.User;
 
 public class RecyclablesFragment extends Fragment {
 
-    public static final int DIALOG_FRAGMENT = 1;
-    public static final int RESULT_OK = 101;
 
     private RecyclablesViewModel recyclablesViewModel;
 
@@ -42,14 +40,6 @@ public class RecyclablesFragment extends Fragment {
 
         TextView textViewGlass = (TextView)root.findViewById(R.id.glassDialog);
         this.glassDialog(textViewGlass, root);
-
-
-
-
-
-
-
-
 
         return root;
     }
@@ -175,8 +165,6 @@ public class RecyclablesFragment extends Fragment {
             }
         });
     }
-
-
 
 
     private void glassDialog(TextView textViewGlass, View v) {
