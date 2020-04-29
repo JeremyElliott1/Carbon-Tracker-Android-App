@@ -82,7 +82,7 @@ public class ReusablesUseRmv extends AppCompatActivity {
                 ReusableUse use;
                 int usePoints;
                 use = usesRecyclerViewAdapter.getReusablesUse(viewHolder.getAdapterPosition());
-                usePoints = Integer.parseInt(use.getPoints()); // NEEDS TO BE FIXED SO ITS SAVING JUST AN INT NOT A STRING FOR ITEM POINTS
+                usePoints = Integer.parseInt(use.getPoints());
 
 
                 usesRecyclerViewAdapter.deleteReusableUse(viewHolder.getAdapterPosition());
