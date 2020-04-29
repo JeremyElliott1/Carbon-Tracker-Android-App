@@ -4,18 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -30,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -53,7 +52,14 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
+    private  String userID;
+    private DocumentReference docRef;
+
     private Button sign_out;
+    private Button set_target;
+    private EditText edit_target;
+    private int target;
+    private CircleProgress circleProgress;
 
     private static final String TAG = "DocSnippets";
 
@@ -112,30 +118,45 @@ public class HomeFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
+        edit_target = root.findViewById(R.id.edit_target);
+        target = Integer.parseInt(edit_target.getText().toString());
+        set_target = root.findViewById(R.id.setTarget);
+        setTarget();
+        circleProgress = root.findViewById(R.id.circle_progress);
+
         sign_out=root.findViewById(R.id.sign_out);
         signOut();
+
+        //Circle Progress bar
+        //circleProgress.setValue( a* mCircleProgress.getMaxValue());
+        // a is the percentage
+        // a = total point/target
+
+
+        userID = firebaseAuth.getCurrentUser().getUid();
+        docRef = db.collection("users").document(userID);
 
 
         return root;
     }
     private void getQuote(int random){
-       quotes.whereEqualTo("id",random)
-       .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-           @Override
-           public void onComplete(@NonNull Task<QuerySnapshot> task) {
-               if (task.isSuccessful()) {
-                   for (QueryDocumentSnapshot document : task.getResult()) {
-                       String quote = document.get("quote").toString();
-                       quoteText.setText(quote);
-                       String author = document.get("author").toString();
-                       quoteAuthor.setText(author);
-                       Log.d(TAG, document.getId() + " => " + document.getData());
-                   }
-               } else {
-                   Log.d(TAG, "Error getting documents: ", task.getException());
-               }
-           }
-       });
+        quotes.whereEqualTo("id",random)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String quote = document.get("quote").toString();
+                        quoteText.setText(quote);
+                        String author = document.get("author").toString();
+                        quoteAuthor.setText(author);
+                        Log.d(TAG, document.getId() + " => " + document.getData());
+                    }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
     }
     private void signOut(){
         sign_out.setOnClickListener(new View.OnClickListener() {
@@ -149,4 +170,24 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+
+    private void setTarget(){
+        set_target.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (edit_target.getVisibility() == View.INVISIBLE){
+                    edit_target.setVisibility(View.VISIBLE);
+                } else if (edit_target.getVisibility() == View.VISIBLE){
+                    edit_target.setVisibility(View.INVISIBLE);
+                }
+
+            }
+        });
+
+        target = Integer.parseInt(edit_target.getText().toString());
+
+    }
+
+
 }
