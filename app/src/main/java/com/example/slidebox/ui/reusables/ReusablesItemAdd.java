@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.slidebox.BinarySemaphore;
 import com.example.slidebox.R;
 import com.example.slidebox.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,6 +28,8 @@ public class ReusablesItemAdd extends AppCompatActivity {
     private EditText editTextName;
     private Button saveItemButton;
     private Button cancelItemAddButton;
+    private String EnteredItemName;
+    private boolean isUnique;
 
     //Database instance
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -34,10 +37,12 @@ public class ReusablesItemAdd extends AppCompatActivity {
     //User info
     private String userId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reusable_item_add);
+
 
         //assigning widgets to respective xml widget
         editTextName = findViewById(R.id.editTextItemNameAdd);
@@ -52,10 +57,7 @@ public class ReusablesItemAdd extends AppCompatActivity {
         saveItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getItemNames();
                 checkItemNameUniqueness();
-                saveItem(v);
-                finish();
             }
         });
 
@@ -68,18 +70,18 @@ public class ReusablesItemAdd extends AppCompatActivity {
         });
     }
 
-    private void saveItem(View v) {
+    private void saveItem() {
 
-        String name = editTextName.getText().toString();
-        if (name.length() < 1) {
+        String name = editTextName.getText().toString().trim();
+        if (name.isEmpty()) {
             Toast.makeText(this, "Error! \n Invalid name input \n please try again", Toast.LENGTH_SHORT).show();
         } else {
 
 
-            if (checkItemNameUniqueness() == false) {
-                Toast.makeText(this, "Error! \n Duplicated name input \n please try again", Toast.LENGTH_SHORT).show();
+            if (!isUnique) {
+                Toast.makeText(this, "Error! \n Duplicated item \n please try again", Toast.LENGTH_SHORT).show();
             } else {
-
+                finish();
                 final String points = "10";
 
                 //Using custom object created in ReusableItem class.
@@ -111,36 +113,26 @@ public class ReusablesItemAdd extends AppCompatActivity {
         }
     }
 
-    //Check to ensure item name input is unique
-    private void getItemNames() {
-        itemNames.clear();
+
+    private void checkItemNameUniqueness() {
+        isUnique=true;
+//        Toast.makeText(this, itemNames.size(), Toast.LENGTH_SHORT).show();
+        EnteredItemName = editTextName.getText().toString();
         db.collection("users").document(userId).collection("ReusableItems").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-
                             ReusableItem item = documentSnapshot.toObject(ReusableItem.class);
                             String name = item.getName();
-                            itemNames.add(name);
-//                            Toast.makeText(ReusablesItemAdd.this, name, Toast.LENGTH_SHORT).show();
+            if (EnteredItemName.equals(name)) {
+                isUnique = false;
+                break;
+            }
                         }
-
+                        saveItem();
                     }
                 });
-    }
-
-    private boolean checkItemNameUniqueness() {
-//        Toast.makeText(this, itemNames.size(), Toast.LENGTH_SHORT).show();
-        String EnteredItemName = editTextName.getText().toString();
-        boolean isUnique = true;
-        for (int i = 0; i < itemNames.size(); i++) {
-            Toast.makeText(this, itemNames.size(), Toast.LENGTH_SHORT).show();
-            if (EnteredItemName.equals(itemNames.get(i))) {
-                isUnique = false;
-            }
         }
-        return isUnique;
+
     }
-}

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -113,6 +114,7 @@ public class HomeFragment extends Fragment {
 
         sign_out=root.findViewById(R.id.sign_out);
         signOut();
+
 
         return root;
     }
