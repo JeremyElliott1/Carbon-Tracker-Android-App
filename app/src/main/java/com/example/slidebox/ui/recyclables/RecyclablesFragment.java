@@ -49,7 +49,7 @@ public class RecyclablesFragment extends Fragment {
 
             @Override
             public void onClick(final View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(),R.style.AlertDialog);
                 builder.setIcon(R.mipmap.ic_launcher);
                 builder.setTitle("What kind of paper are you recycling?");
 
@@ -66,7 +66,7 @@ public class RecyclablesFragment extends Fragment {
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(view.getContext(), "Item added: " + chooseItem, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Item added: " + chooseItem + ". You have been awarded " + points[index] + " points!", Toast.LENGTH_SHORT).show();
                         user.addPoints(points[index]);
                     }
                 });
