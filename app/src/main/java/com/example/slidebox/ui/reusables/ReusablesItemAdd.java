@@ -23,7 +23,6 @@ import java.util.List;
 
 public class ReusablesItemAdd extends AppCompatActivity {
 
-    private List<String> itemNames = new ArrayList();
     //widgets
     private EditText editTextName;
     private Button saveItemButton;
