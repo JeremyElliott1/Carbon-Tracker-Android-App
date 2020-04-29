@@ -17,14 +17,16 @@ import com.example.slidebox.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ReusablesItemAdd extends AppCompatActivity {
-    //"Key" or "Field" in DB:
-    private static final String KEY_NAME = "Name";
-    private static final String KEY_POINTS = "Points";
+
+    //boolean value to indicate uniqueness of item name input
+    private boolean duplicatedName = true;
 
     //widgets
     private EditText editTextName;
@@ -55,6 +57,7 @@ public class ReusablesItemAdd extends AppCompatActivity {
         saveItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nameIsUnique();
                 saveItem(v);
                 finish();
             }
@@ -70,15 +73,24 @@ public class ReusablesItemAdd extends AppCompatActivity {
     }
 
     private void saveItem(View v) {
+
         String name = editTextName.getText().toString();
-        String points = "10";
+        if (name.length() < 1) {
+            Toast.makeText(this, "Error! \n Invalid name input \n please try again", Toast.LENGTH_SHORT).show();
+        } else {
 
-        //Using custom object created in ReusableItem class.
-        final ReusableItem item = new ReusableItem(name, points);
+            if (duplicatedName = true) {
+                Toast.makeText(this, "Error! \n Duplicated name input \n please try again", Toast.LENGTH_SHORT).show();
+            } else {
 
-        //Adding points to user
-        User user = User.getInstance();
-        user.addPoints(Integer.parseInt(points));
+                String points = "10";
+
+                //Using custom object created in ReusableItem class.
+                final ReusableItem item = new ReusableItem(name, points);
+
+                //Adding points to user
+                User user = User.getInstance();
+                user.addPoints(Integer.parseInt(points));
 
         /*
         referencing the database then a collection "ReusableItems", document name is auto assigned,
@@ -86,17 +98,41 @@ public class ReusablesItemAdd extends AppCompatActivity {
          @field = "name"
          @field = "points"
          */
-        db.collection("users").document(userId).collection("ReusableItems").document()
-                .set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved", Toast.LENGTH_SHORT).show();
+                db.collection("users").document(userId).collection("ReusableItems").document()
+                        .set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ReusablesItemAdd.this, "Error!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ReusablesItemAdd.this, "Error!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        }
+    }
+
+    //Check to ensure item name input is unique
+    private boolean nameIsUnique() {
+        final String enteredName = editTextName.getText().toString();
+
+        db.collection("users").document(userId).collection("ReusableItems").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            ReusableItem item = documentSnapshot.toObject(ReusableItem.class);
+                            String name = item.getName();
+
+                            duplicatedName = name.equals(enteredName);
+
+                        }
+
+                    }
+                });
+        return duplicatedName;
     }
 }
