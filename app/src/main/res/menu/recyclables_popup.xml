@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/item1"
-        android:title="@string/old_corrugated_containers_i_e_cardboard"/>
+<item android:id="@+id/item100"
+    android:title="@string/old_corrugated_containers_i_e_cardboard"/>
 
-    <item android:id="@+id/item2"
-        android:title="@string/old_newspaper"/>
+<item android:id="@+id/item200"
+    android:title="@string/old_newspaper"/>
 
-    <item android:id="@+id/item3"
-        android:title="@string/standard_stationary_paper"/>
+<item android:id="@+id/item300"
+    android:title="@string/standard_stationary_paper"/>
 
-    <item android:id="@+id/item4"
-        android:title="@string/high_grade_deinked_paper"/>
+<item android:id="@+id/item400"
+    android:title="@string/high_grade_deinked_paper"/>
 </menu>
+
+

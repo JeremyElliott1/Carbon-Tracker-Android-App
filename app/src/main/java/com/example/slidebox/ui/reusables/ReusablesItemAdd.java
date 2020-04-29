@@ -22,8 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReusablesItemAdd extends AppCompatActivity {
-
-
     //"Key" or "Field" in DB:
     private static final String KEY_NAME = "Name";
     private static final String KEY_POINTS = "Points";
@@ -69,8 +67,6 @@ public class ReusablesItemAdd extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     private void saveItem(View v) {

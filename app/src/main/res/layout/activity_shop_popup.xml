@@ -75,7 +75,7 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/CancelRedeemItem"
+                    android:id="@+id/cancelRedeemItem"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-48.5dp"

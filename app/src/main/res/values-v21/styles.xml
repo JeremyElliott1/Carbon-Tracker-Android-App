@@ -13,6 +13,16 @@
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
+
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorB</item>
+        <item name="iconTint">@color/colorB</item>
+        <item name="android:textColorAlertDialogListItem">@color/colorB</item>
+        <item name="android:textColorPrimary">@color/colorB</item>
+        <item name="colorAccent">@color/colorB</item>
+    </style>
+
     <style name="settings_toolbar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@color/colorPrimary</item>
         <item name="titleTextColor">@color/colorAccent</item>
