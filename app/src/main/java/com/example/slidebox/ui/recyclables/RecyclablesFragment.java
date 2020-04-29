@@ -97,7 +97,7 @@ public class RecyclablesFragment extends Fragment {
 
             @Override
             public void onClick(final View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(),R.style.AlertDialog);
                 builder.setIcon(R.mipmap.ic_launcher);
                 builder.setTitle("What kind of metal are you recycling?");
 
@@ -137,7 +137,7 @@ public class RecyclablesFragment extends Fragment {
 
             @Override
             public void onClick(final View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(),R.style.AlertDialog);
                 builder.setIcon(R.mipmap.ic_launcher);
                 builder.setTitle("What kind of plastic are you recycling?");
 
@@ -177,7 +177,7 @@ public class RecyclablesFragment extends Fragment {
 
             @Override
             public void onClick(final View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(),R.style.AlertDialog);
                 builder.setIcon(R.mipmap.ic_launcher);
                 builder.setTitle("What kind of glass are you recycling?");
 
