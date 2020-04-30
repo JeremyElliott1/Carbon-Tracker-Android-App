@@ -58,6 +58,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="hintTextColor">@color/colorB</item>
+        <item name="android:textColorHint">@color/colorB</item>
         <item name="android:windowActivityTransitions">true</item>
     </style>
 </resources>

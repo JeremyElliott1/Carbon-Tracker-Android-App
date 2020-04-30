@@ -3,14 +3,16 @@ package com.example.slidebox.ui.reusables;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.slidebox.BinarySemaphore;
+import com.example.slidebox.Home;
 import com.example.slidebox.R;
+import com.example.slidebox.SlideBox;
 import com.example.slidebox.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,17 +20,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReusablesItemAdd extends AppCompatActivity {
+
+    //boolean value to indicate uniqueness of item name input
+    private boolean duplicatedName = true;
 
     //widgets
     private EditText editTextName;
     private Button saveItemButton;
     private Button cancelItemAddButton;
-    private String EnteredItemName;
-    private boolean isUnique;
 
     //Database instance
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -36,12 +39,10 @@ public class ReusablesItemAdd extends AppCompatActivity {
     //User info
     private String userId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reusable_item_add);
-
 
         //assigning widgets to respective xml widget
         editTextName = findViewById(R.id.editTextItemNameAdd);
@@ -56,7 +57,9 @@ public class ReusablesItemAdd extends AppCompatActivity {
         saveItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkItemNameUniqueness();
+                nameIsUnique();
+                saveItem(v);
+                finish();
             }
         });
 
@@ -69,19 +72,18 @@ public class ReusablesItemAdd extends AppCompatActivity {
         });
     }
 
-    private void saveItem() {
+    private void saveItem(View v) {
 
-        String name = editTextName.getText().toString().trim();
-        if (name.isEmpty()) {
+        String name = editTextName.getText().toString();
+        if (name.length() < 1) {
             Toast.makeText(this, "Error! \n Invalid name input \n please try again", Toast.LENGTH_SHORT).show();
         } else {
 
-
-            if (!isUnique) {
-                Toast.makeText(this, "Error! \n Duplicated item \n please try again", Toast.LENGTH_SHORT).show();
+            if (duplicatedName = true) {
+                Toast.makeText(this, "Error! \n Duplicated name input \n please try again", Toast.LENGTH_SHORT).show();
             } else {
-                finish();
-                final String points = "10";
+
+                String points = "10";
 
                 //Using custom object created in ReusableItem class.
                 final ReusableItem item = new ReusableItem(name, points);
@@ -100,7 +102,7 @@ public class ReusablesItemAdd extends AppCompatActivity {
                         .set(item).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved \n Points awarded: " + points, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReusablesItemAdd.this, item.getName() + " saved", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -112,26 +114,25 @@ public class ReusablesItemAdd extends AppCompatActivity {
         }
     }
 
+    //Check to ensure item name input is unique
+    private boolean nameIsUnique() {
+        final String enteredName = editTextName.getText().toString();
 
-    private void checkItemNameUniqueness() {
-        isUnique=true;
-//        Toast.makeText(this, itemNames.size(), Toast.LENGTH_SHORT).show();
-        EnteredItemName = editTextName.getText().toString();
         db.collection("users").document(userId).collection("ReusableItems").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             ReusableItem item = documentSnapshot.toObject(ReusableItem.class);
                             String name = item.getName();
-            if (EnteredItemName.equals(name)) {
-                isUnique = false;
-                break;
-            }
+
+                            duplicatedName = name.equals(enteredName);
+
                         }
-                        saveItem();
+
                     }
                 });
-        }
-
+        return duplicatedName;
     }
+}
