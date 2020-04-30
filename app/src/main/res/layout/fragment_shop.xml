@@ -13,12 +13,13 @@
         android:background="@drawable/bg"
         android:orientation="vertical"
         android:visibility="visible"
-        android:weightSum="10">
+        android:weightSum="10"
+        android:backgroundTint="@color/colorBackground">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="0.2">
 
             <TextView
                 android:id="@+id/text_shop"
@@ -42,6 +43,7 @@
         </RelativeLayout>
 
         <GridLayout
+            android:backgroundTint="@color/colorBackground"
             android:id="@+id/mainGrid"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -66,6 +68,7 @@
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 tools:ignore="UnusedAttribute"
+                app:cardBackgroundColor="@color/colorPrimary"
                 >
 
 
@@ -76,10 +79,11 @@
                     android:layout_marginTop="24dp"
                     android:textAlignment="center"
                     android:drawableBottom="@drawable/coffee"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:gravity="center_horizontal" />
+                    android:gravity="center_horizontal"
+                    />
 
                 <TextView
                     android:id="@id/textGrid"
@@ -88,7 +92,7 @@
                     android:layout_gravity="bottom"
                     android:text="@string/_20_points"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -109,7 +113,8 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                tools:targetApi="lollipop">
+                tools:targetApi="lollipop"
+                app:cardBackgroundColor="@color/colorPrimary">
 
 
                 <TextView
@@ -119,7 +124,7 @@
                     android:layout_marginTop="24dp"
                     android:textAlignment="center"
                     android:drawableBottom="@drawable/tea"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:gravity="center_horizontal" />
@@ -131,7 +136,7 @@
                     android:layout_gravity="bottom"
                     android:text="@string/_20_points"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -151,7 +156,8 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                tools:targetApi="lollipop">
+                tools:targetApi="lollipop"
+                app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -160,7 +166,7 @@
                     android:layout_marginTop="16dp"
                     android:textAlignment="center"
                     android:drawableBottom="@drawable/cookie"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:gravity="center_horizontal" />
@@ -172,7 +178,7 @@
                     android:layout_gravity="bottom"
                     android:text="@string/_10_points"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -193,7 +199,8 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                tools:targetApi="lollipop">
+                tools:targetApi="lollipop"
+                app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -202,7 +209,7 @@
                     android:layout_marginTop="16dp"
                     android:textAlignment="center"
                     android:drawableBottom="@drawable/muffin2"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:gravity="center_horizontal" />
@@ -214,7 +221,7 @@
                     android:layout_gravity="bottom"
                     android:text="@string/_10_points"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -234,7 +241,8 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                tools:targetApi="lollipop">
+                tools:targetApi="lollipop"
+                app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -242,10 +250,11 @@
                     android:text="@string/tshirt"
                     android:textAlignment="center"
                     android:drawableBottom="@drawable/shirt"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:gravity="center_horizontal" />
+                    android:gravity="center_horizontal"
+                    />
 
                 <TextView
                     android:id="@id/textGrid"
@@ -254,7 +263,7 @@
                     android:layout_gravity="bottom"
                     android:text="@string/_80_points"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -275,7 +284,8 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
-                tools:targetApi="lollipop">
+                tools:targetApi="lollipop"
+                app:cardBackgroundColor="@color/colorPrimary">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -283,7 +293,7 @@
                     android:text="@string/travelMug"
                     android:textAlignment="center"
                     android:drawableBottom="@drawable/travelmug"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:gravity="center_horizontal" />
@@ -295,7 +305,7 @@
                     android:layout_gravity="bottom"
                     android:text="@string/_80_points"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />

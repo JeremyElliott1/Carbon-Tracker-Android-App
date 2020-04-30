@@ -15,7 +15,7 @@
         android:id="@+id/nav_recyclables"
         android:name="com.example.slidebox.ui.recyclables.RecyclablesFragment"
         android:label="@string/menu_recyclables"
-        tools:layout="@layout/recyclables_fragment"
+        tools:layout="@layout/recyclables_dialog"
         />
 
     <fragment
