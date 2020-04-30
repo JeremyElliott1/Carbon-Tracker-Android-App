@@ -20,9 +20,9 @@
             android:id="@+id/logo_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
             android:layout_alignTop="@id/currentPoints"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
             android:src="@drawable/sage" />
 
         <TextView
@@ -31,10 +31,10 @@
             android:layout_height="150dp"
             android:text=""
             android:textAlignment="center"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorB"
             android:textSize="20sp"
             android:layout_centerHorizontal="true"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorBackground"
             android:gravity="center_vertical"
             tools:ignore="PrivateResource,RtlCompat"
             />
@@ -48,7 +48,7 @@
             android:layout_marginRight="20dp"
             android:gravity="bottom|right"
             android:text=""
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorB"
             android:textSize="16sp"
             android:textStyle="italic"
             tools:ignore="PrivateResource,RtlCompat" />
@@ -71,24 +71,60 @@
 
         <TextView
             android:id="@+id/currentPoints"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/currentPointsText"
-            android:layout_marginTop="0dp"
-            android:text=""
-            android:textSize="50dp"
-            android:textColor="@color/colorB"
-            android:layout_centerHorizontal="true"/>
-        <TextView
-            android:id="@+id/currentPointsText"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/edit_target"
-            android:layout_marginTop="0dp"
-            android:text="Current Points"
-            android:textSize="30dp"
-            android:textColor="@color/colorB"
-            android:layout_centerHorizontal="true"/>
+            android:layout_marginStart="0dp"
+
+            android:layout_marginLeft="11dp"
+            android:paddingLeft="5dp"
+            android:layout_toEndOf="@+id/currentPointsText"
+            android:layout_toRightOf="@+id/currentPointsText"
+            android:background="@color/colorPrimary"
+            android:text="!!!!!"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
+            />
+
+        <TextView
+            android:id="@+id/totalPoints"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/currentPoints"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="11dp"
+            android:paddingLeft="5dp"
+            android:layout_toEndOf="@+id/currentPointsText"
+            android:layout_toRightOf="@+id/currentPointsText"
+            android:background="@color/colorPrimary"
+            android:text="!!!!!"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
+            />
+
+        <TextView
+        android:id="@+id/currentPointsText"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_target"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:gravity="left"
+        android:paddingLeft="15dp"
+
+        android:text="@string/points"
+        android:textAlignment="gravity"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp"
+        android:layout_marginLeft="25dp"
+        android:background="@color/colorPrimary"
+            android:paddingBottom="4dp"/>
+
 
         <Button
             android:id="@+id/sign_out"
@@ -97,6 +133,12 @@
             android:text="Sign out"
             android:textSize="25dp"
             android:layout_below="@id/logo_home"
+            style="@style/Widget.AppCompat.Button"
+            android:background="@color/colorPrimary"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorAccent"
+            android:typeface="normal"
             />
 
 
@@ -114,6 +156,7 @@
             app:bgArcWidth="2dp"
             app:dottedLineWidth="12dp"
             app:hint="Points"
+            app:hintColor="@color/colorB"
             app:hintSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -123,22 +166,33 @@
             app:maxValue="100"
             app:startAngle="135"
             app:sweepAngle="270"
-            app:textOffsetPercentInRadius="0.5"
+            app:textOffsetPercentInRadius="0.35"
             app:unit="%"
-            app:unitSize="15dp"
+            app:unitSize="20dp"
             app:value="75"
-            app:valueSize="15dp" />
+            app:valueSize="15dp"
+            app:valueColor="@color/colorB"
+            app:unitColor="@color/colorB"
+            app:arcColors="@color/colorB"/>
 
         <Button
             android:id="@+id/setTarget"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
             android:layout_alignBottom="@+id/circle_progress"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="-27dp"
-            android:text="SET"
-
-            android:textSize="15dp" />
+            android:text="@string/setTarget"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_marginStart="96dp"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorAccent"
+            android:typeface="normal"
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/edit_target"

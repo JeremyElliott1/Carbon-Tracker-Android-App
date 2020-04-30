@@ -45,6 +45,7 @@ public class HomeFragment extends Fragment {
     private TextView quoteAuthor;
     private TextView congrats;
     private TextView currentPoints;
+    private TextView totalPoints;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -71,6 +72,7 @@ public class HomeFragment extends Fragment {
         quoteAuthor = root.findViewById(R.id.quoteAuthor);
         congrats = root.findViewById(R.id.congrats);
         currentPoints = root.findViewById(R.id.currentPoints);
+        totalPoints = root.findViewById(R.id.totalPoints);
 
         Calendar calender = Calendar.getInstance();
         int currentDay = calender.get(Calendar.DAY_OF_MONTH);
@@ -126,6 +128,7 @@ public class HomeFragment extends Fragment {
         sign_out=root.findViewById(R.id.sign_out);
         signOut();
         User.getInstance().getCurrentPoints(currentPoints);
+        User.getInstance().getTotalPoints(totalPoints);
 
 
         return root;
