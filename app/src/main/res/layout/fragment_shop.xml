@@ -95,7 +95,8 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:ignore="RtlCompat" />
+                    tools:ignore="RtlCompat"
+                    />
 
 
 
