@@ -38,13 +38,13 @@ import java.util.Random;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference quotes = db.collection("quotes");
 
     private TextView quoteText;
     private TextView quoteAuthor;
     private TextView congrats;
+    private TextView currentPoints;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -65,20 +65,12 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.congrats);
-        homeViewModel.getText().observe(getActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
         quoteText = root.findViewById(R.id.quoteText);
         quoteAuthor = root.findViewById(R.id.quoteAuthor);
-        //congrats = root.findViewById(R.id.congrats);
+        congrats = root.findViewById(R.id.congrats);
+        currentPoints = root.findViewById(R.id.currentPoints);
 
         Calendar calender = Calendar.getInstance();
         int currentDay = calender.get(Calendar.DAY_OF_MONTH);
@@ -126,7 +118,6 @@ public class HomeFragment extends Fragment {
 
         set_target = root.findViewById(R.id.setTarget);
 
-  // target=190;
 
         getSavedTarget();
 
@@ -134,15 +125,7 @@ public class HomeFragment extends Fragment {
 
         sign_out=root.findViewById(R.id.sign_out);
         signOut();
-
-        //Circle Progress bar
-        //setMaxValue(totalPoints)
-        //circleProgress.setValue( a* mCircleProgress.getMaxValue());
-        // a is the percentage
-        // a = total point/target
-
-       // showCongrats();
-
+        User.getInstance().getCurrentPoints(currentPoints);
 
 
         return root;
@@ -196,10 +179,10 @@ public class HomeFragment extends Fragment {
                         editor.putFloat("savedTarget" , target);
                         editor.commit();
                         getTotalPoints();
+
                     }
                     catch (NumberFormatException e)
                     {
-//         handle the exception
                     }
                     edit_target.setVisibility(View.INVISIBLE);
                 }
@@ -207,7 +190,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        target = Integer.parseInt(edit_target.getText().toString());
+
     }
 
     public void getTotalPoints(){
@@ -224,6 +207,12 @@ public class HomeFragment extends Fragment {
                     try {
                         Float totalPoints = Float.parseFloat(String.valueOf(snapshot.get("totalPoints")));
                        circleProgress.setValue((totalPoints/target)*100);
+                        if ((totalPoints/target)*100>=100){
+                            congrats.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            congrats.setVisibility(View.INVISIBLE);
+                        }
                     }
                     catch (NumberFormatException n){}
                     Log.d(TAG, "Current data: " + snapshot.getData());
@@ -236,17 +225,7 @@ public class HomeFragment extends Fragment {
 public void getSavedTarget(){
         assert settings != null;
         target = settings.getFloat("savedTarget",0);
-      getTotalPoints();
-    }
-
-    public void showCongrats(){
-//        if (100==100){
-            congrats.setVisibility(View.VISIBLE);
-//        }
-//        else {
-//            congrats.setVisibility(View.INVISIBLE);
-//        }
-
+        getTotalPoints();
     }
 
 }

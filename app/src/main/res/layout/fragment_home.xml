@@ -5,7 +5,8 @@
     android:id="@+id/sv1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    >
 
     <RelativeLayout
         android:id="@+id/relativeLayout_1"
@@ -15,26 +16,13 @@
         tools:ignore="ExtraText">
 
 
-        <TextView
-            android:id="@+id/congrats"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="168dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="14dp"
-            android:text="@string/congrats"
-            android:textColor="@color/colorB"
-            android:textSize="20sp" />
-
         <ImageView
             android:id="@+id/logo_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="500dp"
             android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_alignTop="@id/currentPoints"
             android:src="@drawable/sage" />
 
         <TextView
@@ -43,10 +31,10 @@
             android:layout_height="150dp"
             android:text=""
             android:textAlignment="center"
-            android:textColor="#00000f"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/eco"
+            android:background="@color/colorPrimary"
             android:gravity="center_vertical"
             tools:ignore="PrivateResource,RtlCompat"
             />
@@ -60,20 +48,46 @@
             android:layout_marginRight="20dp"
             android:gravity="bottom|right"
             android:text=""
-            android:textColor="#00000f"
+            android:textColor="@color/colorAccent"
             android:textSize="16sp"
             android:textStyle="italic"
             tools:ignore="PrivateResource,RtlCompat" />
 
         <TextView
-            android:id="@+id/challange_lable"
+            android:id="@+id/congrats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="174dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/congrats"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textColor="@color/colorB"
+            android:textSize="20sp"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/currentPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/currentPointsText"
+            android:layout_marginTop="0dp"
+            android:text=""
+            android:textSize="50dp"
+            android:textColor="@color/colorB"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/currentPointsText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@+id/edit_target"
-            android:layout_marginTop="16dp"
-            android:paddingLeft="20dp"
-            android:text="Current Point"
-            android:textSize="50dp"
+            android:layout_marginTop="0dp"
+            android:text="Current Points"
+            android:textSize="30dp"
+            android:textColor="@color/colorB"
             android:layout_centerHorizontal="true"/>
 
         <Button
@@ -82,7 +96,7 @@
             android:layout_height="match_parent"
             android:text="Sign out"
             android:textSize="25dp"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/logo_home"
             />
 
 
@@ -96,7 +110,7 @@
             android:layout_marginTop="10dp"
             app:antiAlias="true"
             app:arcWidth="15dp"
-            app:bgArcColor="@android:color/darker_gray"
+            app:bgArcColor="@color/colorB"
             app:bgArcWidth="2dp"
             app:dottedLineWidth="12dp"
             app:hint="Points"
