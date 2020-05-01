@@ -78,7 +78,6 @@ public class SignUp extends AppCompatActivity {
                                                     Map<String,Object> user = new HashMap<>();
                                                     user.put("firstName",myFirstName);
                                                     user.put("lastName",myLastName);
-                                                    user.put("email",myEmail);
                                                     user.put("totalPoints",0);
                                                     user.put("currentPoints",0);
                                                     user.put("dailyPoints",0);
