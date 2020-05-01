@@ -1,22 +1,26 @@
 package com.example.slidebox;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.slidebox.MyProfile.MyProfile;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -24,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class SlideBox extends AppCompatActivity {
 
@@ -52,7 +57,10 @@ public class SlideBox extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        ImageButton ib = navigationView.getHeaderView(0).findViewById(R.id.imageButton);
+        //read default image from firebase
+
+        ImageView ib = navigationView.getHeaderView(0).findViewById(R.id.imageView);
+        loadProfileImage(ib);
         ib.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -108,6 +116,24 @@ public class SlideBox extends AppCompatActivity {
 
 
     private void setUpItemRecyclerView() {
+
+    }
+
+    private void loadProfileImage(final View view){
+        StorageReference mRef = FirebaseStorage.getInstance().getReference();
+        mRef.child("default_picture/default_profile_image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into((ImageView) view);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Slide profile", "is failed!");
+            }
+        });
+
+
 
     }
 }

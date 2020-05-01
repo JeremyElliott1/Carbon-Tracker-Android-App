@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
+            android:id="@+id/toolbarBaseEditor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarBaseEditor" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"

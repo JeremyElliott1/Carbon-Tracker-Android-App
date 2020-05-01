@@ -148,4 +148,9 @@
     <string name="leaderboard_weekly">Weekly</string>
     <string name="leaderboard_today">Today</string>
 
+
+    //Lei strings for profile
+    <string name="defaultImageChildPath">default_picture/default_profile_image.jpg</string>
+    <string name="defaultImageFullPath">"default_picture/default_profile_image.jpg"</string>
+
 </resources>

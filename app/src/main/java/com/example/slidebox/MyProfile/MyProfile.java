@@ -19,6 +19,7 @@ import android.app.Application;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.util.Log;
@@ -30,16 +31,27 @@ import android.widget.TextView;
 
 import com.example.slidebox.MyProfile.Edit.ProfileEditActivity;
 import com.example.slidebox.R;
+import com.example.slidebox.User;
 import com.example.slidebox.databinding.ActivityMyProfileBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
+import com.google.common.base.Strings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class MyProfile extends AppCompatActivity {
 
     private static final String TAG = "MyProfile";
     private ProfileViewModel profileViewModel;
     private Button buttonEditor;
+    private ImageView profileImage;
+    private TextView textViewFirstName;
+    private TextView textViewLastName;
+    private TextView textViewEmail;
+    private StorageReference mRef = FirebaseStorage.getInstance().getReference();
     ActivityMyProfileBinding dataBinding;
     private FirebaseAuth mAuth;
 
@@ -49,9 +61,20 @@ public class MyProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dataBinding = DataBindingUtil.setContentView(this,R.layout.activity_my_profile);
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-        //  profileImage = findViewById(R.id.profile_image);
         buttonEditor = findViewById(R.id.button_editor);
+        profileImage = findViewById(R.id.profile_image);
+        textViewFirstName = findViewById(R.id.textView_FirstName);
+        textViewLastName = findViewById(R.id.textView_LastName);
+        textViewEmail = findViewById(R.id.textView_Email);
 
+        //profileViewModel = new ProfileViewModel(this);
+        loadProfileImage();
+        ReadData readData = new ReadData();
+
+        String s = readData.getFirstName();
+        Log.d(TAG,"sdd" +s);
+        //profileViewModel.getUserInfor();
+       // loadProfileInfor();
 
 
         //  setup customer's toolbar with manifests setting
@@ -74,6 +97,17 @@ public class MyProfile extends AppCompatActivity {
 
     }
 
+    private void loadProfileImage(){
+        String s = getResources().getString(R.string.defaultImageChildPath);
+        mRef.child(s).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+            }
+        });
+    }
+
+
 
     private void setupFirebaseAuth(){
         Log.d(TAG,"setupFirebaseAuth: setting auth");
@@ -86,6 +120,7 @@ public class MyProfile extends AppCompatActivity {
             Log.d(TAG,"ononAuthStateChanged:signed out");
         }
     }
+
 
 
 

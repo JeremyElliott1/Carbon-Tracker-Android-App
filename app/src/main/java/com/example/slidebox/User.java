@@ -29,22 +29,20 @@ import java.util.Random;
 public class User {
 
     private static User single_instance = null;
-    private  final String TAG = "TAG";
-    private  FirebaseFirestore db;
-    private  FirebaseAuth firebaseAuth;
-    private  String userID;
+    private final String TAG = "TAG";
+    private FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
+    private String userID;
     private DocumentReference docRef;
 
-    public User()
-    {
-        db=FirebaseFirestore.getInstance();
+    public User() {
+        db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         userID = firebaseAuth.getCurrentUser().getUid();
         docRef = db.collection("users").document(userID);
     }
 
-    public static User getInstance()
-    {
+    public static User getInstance() {
         if (single_instance == null)
             single_instance = new User();
 
@@ -55,7 +53,7 @@ public class User {
         return firebaseAuth.getCurrentUser().getUid();
     }
 
-public void getFirstName(final TextView text){
+    public void getFirstName(final TextView text) {
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -72,8 +70,9 @@ public void getFirstName(final TextView text){
                 }
             }
         });
-}
-    public void getLastName(final TextView text){
+    }
+
+    public void getLastName(final TextView text) {
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -91,7 +90,8 @@ public void getFirstName(final TextView text){
             }
         });
     }
-    public void getCurrentPoints(final TextView text){
+
+    public void getCurrentPoints(final TextView text) {
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -110,7 +110,8 @@ public void getFirstName(final TextView text){
             }
         });
     }
-    public void getTotalPoints(final TextView text){
+
+    public void getTotalPoints(final TextView text) {
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -129,7 +130,8 @@ public void getFirstName(final TextView text){
             }
         });
     }
-    public void getMonthlyPoints(final TextView text){
+
+    public void getMonthlyPoints(final TextView text) {
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -148,7 +150,8 @@ public void getFirstName(final TextView text){
             }
         });
     }
-    public void getWeeklyPoints(final TextView text){
+
+    public void getWeeklyPoints(final TextView text) {
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -167,7 +170,8 @@ public void getFirstName(final TextView text){
             }
         });
     }
-    public void addPoints(final int points){
+
+    public void addPoints(final int points) {
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -179,9 +183,9 @@ public void getFirstName(final TextView text){
                         Long monthlyPoints = (Long) document.get("monthlyPoints");
                         Long weeklyPoints = (Long) document.get("weeklyPoints");
                         docRef.update(
-                                "currentPoints", currentPoints+points,
-                                "totalPoints", totalPoints+points, "monthlyPoints", monthlyPoints+points,
-                                "weeklyPoints",weeklyPoints+points
+                                "currentPoints", currentPoints + points,
+                                "totalPoints", totalPoints + points, "monthlyPoints", monthlyPoints + points,
+                                "weeklyPoints", weeklyPoints + points
                         ).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -204,7 +208,8 @@ public void getFirstName(final TextView text){
             }
         });
     }
-    public void resetWeeklyPoints(){
+
+    public void resetWeeklyPoints() {
         docRef.update(
                 "weeklyPoints", 0
         ).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -220,7 +225,8 @@ public void getFirstName(final TextView text){
                     }
                 });
     }
-    public void resetMonthlyPoints(){
+
+    public void resetMonthlyPoints() {
         docRef.update(
                 "monthlyPoints", 0
         ).addOnSuccessListener(new OnSuccessListener<Void>() {
