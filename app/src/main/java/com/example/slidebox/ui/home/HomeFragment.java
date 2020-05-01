@@ -1,11 +1,9 @@
 package com.example.slidebox.ui.home;
 
-import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -264,7 +262,7 @@ public void getSavedTarget(){
                     if (snapshot != null && snapshot.exists()) {
                         Log.d(TAG, "Current data: " + snapshot.getData());
                         if(Integer.valueOf(String.valueOf(snapshot.get("dailyPoints")))!=0) {
-                            not(String.valueOf(snapshot.get("dailyPoints")));
+                            notification(String.valueOf(snapshot.get("dailyPoints")));
                             User.getInstance().resetDailyPoints();
                         }
                     } else {
@@ -275,7 +273,7 @@ public void getSavedTarget(){
         }
 
     }
-    public void not(String points){
+    public void notification(String points){
         int NOTIFICATION_ID = 234;
         Context currentActivity=getActivity();
         NotificationManager notificationManager = (NotificationManager) currentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
