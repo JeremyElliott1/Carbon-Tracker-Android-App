@@ -81,6 +81,7 @@ public class SignUp extends AppCompatActivity {
                                                     user.put("email",myEmail);
                                                     user.put("totalPoints",0);
                                                     user.put("currentPoints",0);
+                                                    user.put("dailyPoints",0);
                                                     user.put("weeklyPoints",0);
                                                     user.put("monthlyPoints",0);
                                                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
