@@ -27,7 +27,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        app:cardBackgroundColor="@color/colorWhite"
+        app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="15dp">
 
 
@@ -70,7 +70,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_green_round"
                     android:text="yes,redeem!"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="#FFFFFF"
                     android:drawableLeft="@drawable/ic_check_white_24dp"
                     android:textSize="16sp" />
 
@@ -83,7 +83,7 @@
                     android:background="@drawable/button_red_round"
                     android:drawableLeft="@drawable/ic_clear_white_24dp"
                     android:text="No, Cancel"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 
 

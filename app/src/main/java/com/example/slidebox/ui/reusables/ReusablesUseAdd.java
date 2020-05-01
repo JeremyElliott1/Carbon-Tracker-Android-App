@@ -127,7 +127,7 @@ public class ReusablesUseAdd extends AppCompatActivity {
 
     private void saveUse() {
         String name = selectedItemName;
-        final String points = "2";
+        String points = "2";
 
         //Using custom object created in ReusableItem class.
         final ReusableUse use = new ReusableUse(selectedItemName, date, points);
@@ -146,7 +146,7 @@ public class ReusablesUseAdd extends AppCompatActivity {
                 .set(use).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(ReusablesUseAdd.this, selectedItemName + " use saved \n Points awarded: " + points, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReusablesUseAdd.this, selectedItemName + " use saved", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
