@@ -182,10 +182,11 @@ public class User {
                         Long totalPoints = (Long) document.get("totalPoints");
                         Long monthlyPoints = (Long) document.get("monthlyPoints");
                         Long weeklyPoints = (Long) document.get("weeklyPoints");
+                        Long dailyPoints = (Long) document.get("dailyPoints");
                         docRef.update(
                                 "currentPoints", currentPoints + points,
                                 "totalPoints", totalPoints + points, "monthlyPoints", monthlyPoints + points,
-                                "weeklyPoints", weeklyPoints + points
+                                "weeklyPoints", weeklyPoints + points,"dailyPoints",dailyPoints+points
                         ).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -229,6 +230,22 @@ public class User {
     public void resetMonthlyPoints() {
         docRef.update(
                 "monthlyPoints", 0
+        ).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully updated!");
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
+                    }
+                });
+    }
+    public void resetDailyPoints() {
+        docRef.update(
+                "dailyPoints", 0
         ).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
