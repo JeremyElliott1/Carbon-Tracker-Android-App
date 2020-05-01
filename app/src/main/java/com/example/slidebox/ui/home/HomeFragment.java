@@ -221,11 +221,13 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+    //get saved target set by user from shared preferences
 public void getSavedTarget(){
         assert settings != null;
         target = settings.getFloat("savedTarget",0);
         getTotalPoints();
     }
+    //reset weekly and monthly points
     public void resetPoints(){
         int currentWeek = calender.get(Calendar.WEEK_OF_MONTH);
         int currentMonth = calender.get(Calendar.MONTH);
@@ -244,6 +246,8 @@ public void getSavedTarget(){
             editor.commit();
         }
     }
+
+    //reset points daily and send notification to user about their daily achievements
     public void resetDailyPoints(){
       int currentDay = calender.get(Calendar.DAY_OF_MONTH);
       int lastDay = settings.getInt("day",0);
