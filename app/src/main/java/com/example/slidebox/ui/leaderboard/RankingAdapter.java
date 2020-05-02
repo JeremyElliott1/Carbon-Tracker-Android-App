@@ -93,40 +93,6 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, UserPoint
 
         DocumentSnapshot dsPosition = getItem(position);
         String fn = (String) dsPosition.get("firstName") + (String) dsPosition.get("lastName");
-        holder.onClick(fn);
-//        final UserPointsViewHolder holder1 = holder;
-//        firebaseFirestore.collection("users").document("thumbup").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document.exists()) {
-//                       if(String.valueOf(document.get(fn)).isEmpty() == false){
-////                           holder.onClick();
-//                       };
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-//                    } else {
-//                        Log.d(TAG, "No such document");
-//                    }
-//                } else {
-//                    Log.d(TAG, "get failed with ", task.getException());
-//                }
-//            }
-//        });
-
-
-//        if(documentSnapshot.get(user.getUid()) != null){
-//            Log.d(TAG, "get thumb doc" + documentSnapshot.get(user.getUid()));
-//            String o = (String) documentSnapshot.get(user.getUid());
-//
-//            // holder.getNumThumbup().setText(String .valueOf(holder.onClick(o,documentSnapshot)));
-//        }else {
-//            if( String.valueOf(model.getNumThumbup()).isEmpty() == false){
-//                holder.getNumThumbup().setText(String .valueOf(model.getNumThumbup()));
-//            }
-//        }
-
-
     }
 
     private void readDocSnapshot(){
@@ -148,30 +114,6 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, UserPoint
                 }
             }
         });
-
-        //    firebaseFirestore.collection("users").document("thumbup").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document.exists()) {
-//                            ds =document;
-////                            int numthumbup = (int) ds.get(fullname2);
-//                            Log.d(TAG, "get thumb doc" + numthumbup );
-//                            holder1.getNumThumbup().setText(String .valueOf(holder1.onClick(numthumbup,documentSnapshot)));
-//
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-//                    } else {
-//                        Log.d(TAG, "No such document");
-//                    }
-//                } else {
-//                    Log.d(TAG, "get failed with ", task.getException());
-//                }
-//            }
-//        });
-
-
-
     }
 
     @Override
