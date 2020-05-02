@@ -67,8 +67,8 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, UserPoint
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull UserPointsViewHolder holder, int position, @NonNull UserPoints model) {
-        String fullName = model.getFirstName() + "  " + model.getLastName();
+    protected void onBindViewHolder(@NonNull final UserPointsViewHolder holder, int position, @NonNull UserPoints model) {
+        String fullNameDisplay = model.getFirstName() + "  " + model.getLastName();
         String point = null;
         switch (flag){
             case TODAY_FLAG:
@@ -83,25 +83,16 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, UserPoint
         }
         //holder.onClick(model.getNumThumbup());
 
-        holder.getFullName().setText(fullName);
+        holder.getFullName().setText(fullNameDisplay);
         holder.getImageViewThumbup().setImageResource(R.drawable.ic_thumb_up_black_24dp);
         holder.getItemPosition().setText(String.valueOf(position +1));
         holder.getPoints().setText(point);
 
-        DocumentSnapshot documentSnapshot = getItem(position);
-
-        if(documentSnapshot.get(user.getUid()) != null){
-            Log.d(TAG, "get thumb doc" + documentSnapshot.get(user.getUid()));
-            String o = (String) documentSnapshot.get(user.getUid());
-
-            // holder.getNumThumbup().setText(String .valueOf(holder.onClick(o,documentSnapshot)));
-        }else {
-            if( String.valueOf(model.getNumThumbup()).isEmpty() == false){
-                holder.getNumThumbup().setText(String .valueOf(model.getNumThumbup()));
-            }
-        }
+        //holder.onClick();
 
 
+        DocumentSnapshot dsPosition = getItem(position);
+        String fn = (String) dsPosition.get("firstName") + (String) dsPosition.get("lastName");
     }
 
     private void readDocSnapshot(){
@@ -123,30 +114,6 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, UserPoint
                 }
             }
         });
-
-        //        firebaseFirestore.collection("users").document("thumbup").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document.exists()) {
-//                            ds =document;
-////                            int numthumbup = (int) ds.get(fullname2);
-//                            Log.d(TAG, "get thumb doc" + numthumbup );
-//                            holder1.getNumThumbup().setText(String .valueOf(holder1.onClick(numthumbup,documentSnapshot)));
-//
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-//                    } else {
-//                        Log.d(TAG, "No such document");
-//                    }
-//                } else {
-//                    Log.d(TAG, "get failed with ", task.getException());
-//                }
-//            }
-//        });
-
-
-
     }
 
     @Override

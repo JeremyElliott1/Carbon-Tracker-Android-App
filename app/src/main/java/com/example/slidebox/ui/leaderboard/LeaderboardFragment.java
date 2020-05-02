@@ -83,7 +83,7 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
         buttonWeek.setBackgroundColor(getResources().getColor(R.color.colorLeaderBoardLight));
         buttonMonth.setBackgroundColor(getResources().getColor(R.color.colorLeaderBoardLight));
         initialLoad(view);
-        addThumbupNum();
+        //addThumbupNum();
         addThumbup();
 
         buttonToday.setOnClickListener(new View.OnClickListener() {
