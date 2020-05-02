@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import com.example.slidebox.Home;
 import com.example.slidebox.LogIn;
 import com.example.slidebox.R;
 import com.example.slidebox.User;
+import com.example.slidebox.ui.reusables.ReusablesItemAdd;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -90,7 +92,7 @@ public class HomeFragment extends Fragment {
         docRef = db.collection("users").document(userID);
 
         calender = Calendar.getInstance();
-        int currentDay = calender.get(Calendar.DAY_OF_MONTH);
+        int currentDay = calender.get(Calendar.DAY_OF_YEAR);
         settings = getActivity().getSharedPreferences("PREFS",0);
         int lastDay = settings.getInt("day",0);
         int random = settings.getInt("random", 1);
@@ -98,7 +100,7 @@ public class HomeFragment extends Fragment {
         if (lastDay!=currentDay) {
             SharedPreferences.Editor editor = settings.edit();
             editor.putInt("day" , currentDay);
-
+            resetDailyPoints();
             Random r = new Random();
             int low = 1;
             int high = 10;
@@ -108,7 +110,6 @@ public class HomeFragment extends Fragment {
         }
         getQuote(random);
         resetPoints();
-        resetDailyPoints();
 
 
         edit_target = root.findViewById(R.id.edit_target);
@@ -249,33 +250,25 @@ public void getSavedTarget(){
 
     //reset points daily and send notification to user about their daily achievements
     public void resetDailyPoints(){
-      int currentDay = calender.get(Calendar.DAY_OF_MONTH);
-      int lastDay = settings.getInt("day",0);
-       if(lastDay!=currentDay){
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("day" , currentDay);
-            editor.commit();
-            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot snapshot,
-                                    @Nullable FirebaseFirestoreException e) {
-                    if (e != null) {
-                        Log.w(TAG, "Listen failed.", e);
-                        return;
-                    }
-                    if (snapshot != null && snapshot.exists()) {
-                        Log.d(TAG, "Current data: " + snapshot.getData());
-                        if(Integer.valueOf(String.valueOf(snapshot.get("dailyPoints")))!=0) {
-                            notification(String.valueOf(snapshot.get("dailyPoints")));
-                            User.getInstance().resetDailyPoints();
-                        }
-                    } else {
-                        Log.d(TAG, "Current data: null");
-                    }
-                }
-            });
-        }
-
+           docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+               @Override
+               public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                   if (task.isSuccessful()) {
+                       DocumentSnapshot document = task.getResult();
+                       if (document.exists()) {
+                           if(Integer.valueOf(String.valueOf(document.get("dailyPoints")))!=0){
+                               notification(String.valueOf(document.get("dailyPoints")));
+                               User.getInstance().resetDailyPoints();
+                           }
+                           Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                       } else {
+                           Log.d(TAG, "No such document");
+                       }
+                   } else {
+                       Log.d(TAG, "get failed with ", task.getException());
+                   }
+               }
+           });
     }
     public void notification(String points){
         int NOTIFICATION_ID = 234;
