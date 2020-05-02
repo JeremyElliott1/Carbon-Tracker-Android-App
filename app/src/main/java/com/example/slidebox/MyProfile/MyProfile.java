@@ -62,6 +62,10 @@ public class MyProfile extends AppCompatActivity {
     private ProfileViewModel profileViewModel;
     private Button buttonEditor;
     private ImageView profileImage;
+    private ImageView imageViewToday;
+    private ImageView imageViewWeek;
+    private ImageView imageViewMonth;
+    private ImageView imageViewTotal;
     private TextView textViewFirstName;
     private TextView textViewLastName;
     private TextView textViewEmail;
@@ -87,8 +91,13 @@ public class MyProfile extends AppCompatActivity {
         textViewFirstName = findViewById(R.id.textView_FirstName);
         textViewLastName = findViewById(R.id.textView_LastName);
         textViewEmail = findViewById(R.id.textView_Email);
+        imageViewToday = findViewById(R.id.imageViewToday);
+        imageViewWeek = findViewById(R.id.imageViewWeek);
+        imageViewMonth= findViewById(R.id.imageViewMonth);
+        imageViewTotal = findViewById(R.id.imageViewTotal);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+
 
         buttonEditor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +121,11 @@ public class MyProfile extends AppCompatActivity {
                         textViewFirstName.setText(userInfor.get("firstName").toString());
                         textViewLastName.setText(userInfor.get("lastName").toString());
                         textViewEmail.setText(userInfor.get("email").toString());
+
+
+                        achievementFun();
+
+
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                     } else {
                         Log.d(TAG, "No such document");
@@ -121,6 +135,7 @@ public class MyProfile extends AppCompatActivity {
                 }
             }
         });
+
         loadProfileImage();
 
 
@@ -131,8 +146,33 @@ public class MyProfile extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         //------------------------------------------------
 
-        //-------------------FriebaseAuth-------------------------------
-        setupFirebaseAuth();
+    }
+
+    private void achievementFun(){
+        imageViewToday.setImageResource(R.drawable.ic_check_box_black_24dp);
+        imageViewWeek .setImageResource(R.drawable.ic_view_week_black_24dp);
+        imageViewMonth.setImageResource(R.drawable.ic_format_align_justify_black_24dp);
+        imageViewTotal.setImageResource(R.drawable.ic_spa_black_24dp);
+
+        imageViewToday.setVisibility(View.INVISIBLE);
+        imageViewWeek .setVisibility(View.INVISIBLE);
+        imageViewMonth.setVisibility(View.INVISIBLE);
+        imageViewTotal.setVisibility(View.INVISIBLE);
+
+        if( Integer.valueOf(userInfor.get("currentPoints").toString())>= 20){
+            imageViewToday.setVisibility(View.VISIBLE);
+        }
+
+        if(Integer.valueOf(userInfor.get("weeklyPoints").toString())>= 100){
+            imageViewWeek .setVisibility(View.VISIBLE);
+        }
+
+        if(Integer.valueOf(userInfor.get("monthlyPoints").toString())>= 1000){
+            imageViewMonth.setVisibility(View.VISIBLE);
+        }
+        if(Integer.valueOf(userInfor.get("totalPoints").toString())>= 10000){
+            imageViewTotal.setVisibility(View.VISIBLE);
+        }
 
 
     }

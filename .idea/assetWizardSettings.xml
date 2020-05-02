@@ -175,7 +175,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_email_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/D:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/places/ic_spa_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -185,7 +185,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_email_black_24dp" />
+                            <entry key="color" value="60aa20" />
+                            <entry key="outputName" value="ic_spa_black_24dp" />
                             <entry key="sourceFile" value="C:\Users\abdelrahman1998" />
                           </map>
                         </option>

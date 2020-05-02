@@ -9,7 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.slidebox.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,6 +32,8 @@ class UserPointsViewHolder extends RecyclerView.ViewHolder implements View.OnCli
     private TextView itemPosition;
     private ImageView imageViewUser;
     private RankingAdapter.OnThumbupClick onThumbupClick;
+    private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
 
@@ -68,15 +72,40 @@ class UserPointsViewHolder extends RecyclerView.ViewHolder implements View.OnCli
         return numThumbup;
     }
 
-    public int onClick(final String o, final DocumentSnapshot documentSnapshot) {
-        final int[] i1 = {Integer.valueOf(o)};
+    public int onClick(final String fullname) {
+      final int[] i1 = {};
         imageViewThumbup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i1[0]++ ;
                 FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String fullname = user.getUid();
+                firebaseFirestore.collection("users").
+                        document("thumbup").
+                        get().
+                        addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete (@NonNull Task < DocumentSnapshot > task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        if (String.valueOf(document.get(fullname)).isEmpty() == false) {
+//
+                                        }
+
+                                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                    } else {
+                                        Log.d(TAG, "No such document");
+                                    }
+                                } else {
+                                    Log.d(TAG, "get failed with ", task.getException());
+                                }
+                            }
+                        });
+//
+//                i1[0]++ ;
+//                FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+//                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//                String fullname = (String) documentSnapshot.get("firstName") + (String)documentSnapshot.get("lastName");
                 Log.d(TAG, "Count is " + i1[0]);
                 Map<String, Object> map = new HashMap<>();
                 map.put(fullname,String.valueOf(i1[0]));
