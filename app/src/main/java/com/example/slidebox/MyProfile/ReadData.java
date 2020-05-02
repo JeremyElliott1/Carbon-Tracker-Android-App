@@ -1,21 +1,14 @@
 package com.example.slidebox.MyProfile;
 
 
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,7 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +35,7 @@ public class ReadData {
     private String defImageUrl;
     private FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
     private DocumentReference documentReference = dataBase.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-    private Map<String,Object> userInfor = new HashMap<String, Object>();
+    private Map<String, Object> userInfor = new HashMap<String, Object>();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
@@ -53,20 +45,20 @@ public class ReadData {
         getUserInfor(new FireBaseCallBack() {
             @Override
             public void onCallBack(HashMap<String, Object> map) {
-                Log.d(TAG,"dfds"+ (String) map.get("firstName"));
+                Log.d(TAG, "dfds" + (String) map.get("firstName"));
                 readUserInforToViewModule(map);
             }
         });
     }
 
-    private void readUserInforToViewModule(HashMap<String,Object> userInfor) {
+    private void readUserInforToViewModule(HashMap<String, Object> userInfor) {
         this.firstName = (String) userInfor.get("firstName");
-        Log.d(TAG,"ddddddddd"+ getFirstName());
-        this.lastName =(String)  userInfor.get("lastName");
-        this.eMail =(String) userInfor.get("email");
-        this.currentPoints =String.valueOf(userInfor.get("currentPoints"));
-        this.weeklyPoints =String.valueOf(userInfor.get("weeklyPoints"));
-        this.monthlyPoints =String.valueOf(userInfor.get("monthlyPoints"));
+        Log.d(TAG, "ddddddddd" + getFirstName());
+        this.lastName = (String) userInfor.get("lastName");
+        this.eMail = (String) userInfor.get("email");
+        this.currentPoints = String.valueOf(userInfor.get("currentPoints"));
+        this.weeklyPoints = String.valueOf(userInfor.get("weeklyPoints"));
+        this.monthlyPoints = String.valueOf(userInfor.get("monthlyPoints"));
         this.totalPoints = String.valueOf(userInfor.get("totalPoints"));
 
     }
@@ -79,7 +71,7 @@ public class ReadData {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        fireBaseCallBack.onCallBack((HashMap<String, Object>)document.getData());
+                        fireBaseCallBack.onCallBack((HashMap<String, Object>) document.getData());
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                     } else {
                         Log.d(TAG, "No such document");
@@ -101,7 +93,7 @@ public class ReadData {
         });
     }*/
 
-    private interface FireBaseCallBack{
+    private interface FireBaseCallBack {
         void onCallBack(HashMap<String, Object> map);
     }
 
@@ -117,7 +109,6 @@ public class ReadData {
 //                }
 //            }
 //        });
-
 
 
     public String getWeeklyPoints() {

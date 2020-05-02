@@ -18,9 +18,9 @@ public class UserPoints {
         this.totalPoints = totalPoints;
         this.currentPoints = currentPoints;
         Integer integer = numThumbup;
-        if (integer != null){
+        if (integer != null) {
             this.numThumbup = numThumbup;
-        }else{
+        } else {
             this.numThumbup = 0;
         }
     }
@@ -51,6 +51,7 @@ public class UserPoints {
     public int getCurrentPoints() {
         return currentPoints;
     }
+
     public int getNumThumbup() {
         return numThumbup;
     }

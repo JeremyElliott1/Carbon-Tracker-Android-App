@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.slidebox.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,8 +34,8 @@ public class ProfileViewModel extends ViewModel {
     private String mImageURL;
     private String defImageUrl;
     private FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
-    private DocumentReference  documentReference = dataBase.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-    private Map<String,Object> userInfor = new HashMap<String, Object>();
+    private DocumentReference documentReference = dataBase.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    private Map<String, Object> userInfor = new HashMap<String, Object>();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
@@ -46,24 +45,22 @@ public class ProfileViewModel extends ViewModel {
         getUserInfor(new FireBaseCallBack() {
             @Override
             public void onCallBack(HashMap<String, Object> map) {
-                Log.d(TAG,"dfds"+ (String) map.get("firstName"));
+                Log.d(TAG, "dfds" + (String) map.get("firstName"));
                 readUserInforToViewModule(map);
             }
         });
 
 
-
-
     }
 
-    private void readUserInforToViewModule(HashMap<String,Object> userInfor) {
+    private void readUserInforToViewModule(HashMap<String, Object> userInfor) {
         this.firstName = (String) userInfor.get("firstName");
-        Log.d(TAG,"ddddddddd"+ getFirstName());
-        this.lastName =(String)  userInfor.get("lastName");
-        this.eMail =(String) userInfor.get("email");
-        this.currentPoints =String.valueOf(userInfor.get("currentPoints"));
-        this.weeklyPoints =String.valueOf(userInfor.get("weeklyPoints"));
-        this.monthlyPoints =String.valueOf(userInfor.get("monthlyPoints"));
+        Log.d(TAG, "ddddddddd" + getFirstName());
+        this.lastName = (String) userInfor.get("lastName");
+        this.eMail = (String) userInfor.get("email");
+        this.currentPoints = String.valueOf(userInfor.get("currentPoints"));
+        this.weeklyPoints = String.valueOf(userInfor.get("weeklyPoints"));
+        this.monthlyPoints = String.valueOf(userInfor.get("monthlyPoints"));
         this.totalPoints = String.valueOf(userInfor.get("totalPoints"));
 
     }
@@ -76,7 +73,7 @@ public class ProfileViewModel extends ViewModel {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        fireBaseCallBack.onCallBack((HashMap<String, Object>)document.getData());
+                        fireBaseCallBack.onCallBack((HashMap<String, Object>) document.getData());
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                     } else {
                         Log.d(TAG, "No such document");
@@ -98,12 +95,12 @@ public class ProfileViewModel extends ViewModel {
         });
     }*/
 
-    private interface FireBaseCallBack{
+    private interface FireBaseCallBack {
         void onCallBack(HashMap<String, Object> map);
     }
 
     public void setDefImageUrl(Context context) {
-          this.defImageUrl = context.getResources().getString(R.string.defaultImageChildPath);
+        this.defImageUrl = context.getResources().getString(R.string.defaultImageChildPath);
     }
 
 /*    public void setUserFile(){
@@ -112,11 +109,13 @@ public class ProfileViewModel extends ViewModel {
         Log.d(TAG,"Set the userfile!");
     }*/
 
-public  Map<String,Object> getMap(){
-    return userInfor;
-}
+    public Map<String, Object> getMap() {
+        return userInfor;
+    }
 
-    public String getLastName() { return lastName; }
+    public String getLastName() {
+        return lastName;
+    }
 
     public String getFirstName() {
         return this.firstName;

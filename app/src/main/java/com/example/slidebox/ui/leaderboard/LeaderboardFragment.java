@@ -1,50 +1,32 @@
 package com.example.slidebox.ui.leaderboard;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.slidebox.R;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.firebase.ui.firestore.SnapshotParser;
-import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -112,31 +94,32 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
 
     private void addThumbupNum() {
 
-       firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-           @Override
-           public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-               if (task.isSuccessful()) {
-                   DocumentSnapshot document = task.getResult();
-                   if (document.exists()) {
-                       if(document.get("numThumbup") == null){
-                           int i = 0;
-                           Map<String, Object> map = new HashMap<>();
-                           map.put("numThumbup",i);
-                           firebaseFirestore.collection("users").document(user.getUid()).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                               @Override
-                               public void onSuccess(Void aVoid) {
-                                   Log.d(TAG, "Added thumbup! " );
-                               }
-                           });
-                       };
-                   } else {
-                       Log.d(TAG, "No such document");
-                   }
-               } else {
-                   Log.d(TAG, "get failed with ", task.getException());
-               }
-           }
-       });
+        firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        if (document.get("numThumbup") == null) {
+                            int i = 0;
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("numThumbup", i);
+                            firebaseFirestore.collection("users").document(user.getUid()).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "Added thumbup! ");
+                                }
+                            });
+                        }
+                        ;
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
     }
 
     private void addThumbup() {
@@ -147,17 +130,18 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        if(document.get(user.getUid()) == null){
+                        if (document.get(user.getUid()) == null) {
                             int i = 0;
                             Map<String, Object> map = new HashMap<>();
-                            map.put(user.getUid(),String.valueOf(i));
+                            map.put(user.getUid(), String.valueOf(i));
                             firebaseFirestore.collection("users").document(user.getUid()).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "Added thumbup! " );
+                                    Log.d(TAG, "Added thumbup! ");
                                 }
                             });
-                        };
+                        }
+                        ;
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -181,7 +165,7 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
         FirestorePagingOptions<UserPoints> options = new FirestorePagingOptions.Builder<UserPoints>()
                 .setQuery(query, config, UserPoints.class)
                 .build();
-        adapter = new RankingAdapter(options, TODAY_REQUEST,this);
+        adapter = new RankingAdapter(options, TODAY_REQUEST, this);
         adapter.getOnThumbupClick();
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -202,7 +186,7 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
         FirestorePagingOptions<UserPoints> options = new FirestorePagingOptions.Builder<UserPoints>()
                 .setQuery(query, config, UserPoints.class)
                 .build();
-        adapter = new RankingAdapter(options, WEEK_REQUEST,this);
+        adapter = new RankingAdapter(options, WEEK_REQUEST, this);
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mFirestoreList.setAdapter(adapter);
@@ -223,7 +207,7 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
                 .setLifecycleOwner(this)
                 .setQuery(query, config, UserPoints.class)
                 .build();
-        adapter = new RankingAdapter(options, MONTH_REQUEST,this);
+        adapter = new RankingAdapter(options, MONTH_REQUEST, this);
 
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(getActivity()));
