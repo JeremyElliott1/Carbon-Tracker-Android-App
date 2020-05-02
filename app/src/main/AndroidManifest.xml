@@ -73,6 +73,8 @@
         <activity
             android:name=".SlideBox"
             android:theme="@style/AppTheme.NoActionBar" />
+
+
     </application>
 
 </manifest>

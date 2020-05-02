@@ -1,5 +1,10 @@
 package com.example.slidebox.ui.home;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,10 +18,10 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
+import com.example.slidebox.Home;
 import com.example.slidebox.LogIn;
 import com.example.slidebox.R;
 import com.example.slidebox.User;
@@ -38,6 +43,7 @@ import java.util.Random;
 
 public class HomeFragment extends Fragment {
 
+    private static final String CHANNEL_ID = "1";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference quotes = db.collection("quotes");
 
@@ -61,6 +67,8 @@ public class HomeFragment extends Fragment {
 
     private SharedPreferences settings;
 
+    private Calendar calender;
+
     private static final String TAG = "DocSnippets";
 
 
@@ -74,14 +82,17 @@ public class HomeFragment extends Fragment {
         currentPoints = root.findViewById(R.id.currentPoints);
         totalPoints = root.findViewById(R.id.totalPoints);
 
-        Calendar calender = Calendar.getInstance();
+
+        //firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        userID = firebaseAuth.getCurrentUser().getUid();
+        docRef = db.collection("users").document(userID);
+
+        calender = Calendar.getInstance();
         int currentDay = calender.get(Calendar.DAY_OF_MONTH);
-        int currentWeek = calender.get(Calendar.WEEK_OF_MONTH);
-        int currentMonth = calender.get(Calendar.MONTH);
-         settings = getActivity().getSharedPreferences("PREFS",0);
+        settings = getActivity().getSharedPreferences("PREFS",0);
         int lastDay = settings.getInt("day",0);
-        int lastWeek = settings.getInt("week",0);
-        int lastMonth = settings.getInt("month",0);
         int random = settings.getInt("random", 1);
 
         if (lastDay!=currentDay) {
@@ -95,25 +106,10 @@ public class HomeFragment extends Fragment {
             editor.putInt("random",result);
             editor.commit();
         }
-        if(lastWeek!=currentWeek){
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("week" , currentWeek);
-            User.getInstance().resetWeeklyPoints();
-            editor.commit();
-        }
-        if(lastMonth!=currentMonth){
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("month" , currentMonth);
-            User.getInstance().resetMonthlyPoints();
-            editor.commit();
-        }
         getQuote(random);
+        resetPoints();
+        resetDailyPoints();
 
-        //firebase
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-        userID = firebaseAuth.getCurrentUser().getUid();
-        docRef = db.collection("users").document(userID);
 
         edit_target = root.findViewById(R.id.edit_target);
         circleProgress = root.findViewById(R.id.circle_progress);
@@ -225,10 +221,93 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+    //get saved target set by user from shared preferences
 public void getSavedTarget(){
         assert settings != null;
         target = settings.getFloat("savedTarget",0);
         getTotalPoints();
     }
+    //reset weekly and monthly points
+    public void resetPoints(){
+        int currentWeek = calender.get(Calendar.WEEK_OF_MONTH);
+        int currentMonth = calender.get(Calendar.MONTH);
+        int lastWeek = settings.getInt("week",0);
+        int lastMonth = settings.getInt("month",0);
+        if(lastWeek!=currentWeek){
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("week" , currentWeek);
+            User.getInstance().resetWeeklyPoints();
+            editor.commit();
+        }
+        if(lastMonth!=currentMonth){
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("month" , currentMonth);
+            User.getInstance().resetMonthlyPoints();
+            editor.commit();
+        }
+    }
 
+    //reset points daily and send notification to user about their daily achievements
+    public void resetDailyPoints(){
+      int currentDay = calender.get(Calendar.DAY_OF_MONTH);
+      int lastDay = settings.getInt("day",0);
+       if(lastDay!=currentDay){
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("day" , currentDay);
+            editor.commit();
+            docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                    @Nullable FirebaseFirestoreException e) {
+                    if (e != null) {
+                        Log.w(TAG, "Listen failed.", e);
+                        return;
+                    }
+                    if (snapshot != null && snapshot.exists()) {
+                        Log.d(TAG, "Current data: " + snapshot.getData());
+                        if(Integer.valueOf(String.valueOf(snapshot.get("dailyPoints")))!=0) {
+                            notification(String.valueOf(snapshot.get("dailyPoints")));
+                            User.getInstance().resetDailyPoints();
+                        }
+                    } else {
+                        Log.d(TAG, "Current data: null");
+                    }
+                }
+            });
+        }
+
+    }
+    public void notification(String points){
+        int NOTIFICATION_ID = 234;
+        Context currentActivity=getActivity();
+        NotificationManager notificationManager = (NotificationManager) currentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            String CHANNEL_ID = "my_channel_01";
+            CharSequence name = "my_channel";
+            String Description = "This is my channel";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+            mChannel.setDescription(Description);
+            mChannel.enableLights(true);
+            mChannel.enableVibration(true);
+            mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mChannel.setShowBadge(false);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(currentActivity, CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Congratulations")
+                .setContentText("You achieved " + points + " last day")
+                .setAutoCancel(true);
+
+        Intent resultIntent = new Intent(currentActivity, Home.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(currentActivity);
+        stackBuilder.addParentStack(getActivity());
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(resultPendingIntent);
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
+    }
 }

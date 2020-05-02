@@ -31,6 +31,7 @@ public class SignUp extends AppCompatActivity {
     private EditText lastName;
     private EditText email;
     private EditText password;
+    private EditText confirmPassword;
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressBar;
     private FirebaseFirestore db;
@@ -52,13 +53,15 @@ public class SignUp extends AppCompatActivity {
         lastName = findViewById(R.id.last_name);
         email = findViewById(R.id.email_sign_up);
         password = findViewById(R.id.password_sign_up);
+        confirmPassword=findViewById(R.id.confirm_password);
         progressBar = findViewById(R.id.progress_bar);
         findViewById(R.id.sign_up).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!firstName.getText().toString().trim().isEmpty() && !lastName.getText().toString().trim().isEmpty() &&
-                        !email.getText().toString().trim().isEmpty() && !password.getText().toString().trim().isEmpty()) {
-                    final String myFirstName = firstName.getText().toString().trim();
+                        !email.getText().toString().trim().isEmpty() && !password.getText().toString().isEmpty()) {
+                    if (password.getText().toString().equals(confirmPassword.getText().toString())){
+                        final String myFirstName = firstName.getText().toString().trim();
                     final String myLastName = lastName.getText().toString().trim();
                     final String myEmail = email.getText().toString().trim();
                     progressBar.setVisibility(View.VISIBLE);
@@ -72,21 +75,21 @@ public class SignUp extends AppCompatActivity {
                                         firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                if(task.isSuccessful()) {
-                                                    userID=firebaseAuth.getCurrentUser().getUid();
+                                                if (task.isSuccessful()) {
+                                                    userID = firebaseAuth.getCurrentUser().getUid();
                                                     DocumentReference documentReference = db.collection("users").document(userID);
-                                                    Map<String,Object> user = new HashMap<>();
-                                                    user.put("firstName",myFirstName);
-                                                    user.put("lastName",myLastName);
-                                                    user.put("email",myEmail);
-                                                    user.put("totalPoints",0);
-                                                    user.put("currentPoints",0);
-                                                    user.put("weeklyPoints",0);
-                                                    user.put("monthlyPoints",0);
+                                                    Map<String, Object> user = new HashMap<>();
+                                                    user.put("firstName", myFirstName);
+                                                    user.put("lastName", myLastName);
+                                                    user.put("totalPoints", 0);
+                                                    user.put("currentPoints", 0);
+                                                    user.put("dailyPoints", 0);
+                                                    user.put("weeklyPoints", 0);
+                                                    user.put("monthlyPoints", 0);
                                                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
-                                                            Log.d(TAG,"onSuccess: user profile is created for "+ userID);
+                                                            Log.d(TAG, "onSuccess: user profile is created for " + userID);
                                                         }
                                                     });
                                                     Intent intent = new Intent();
@@ -94,8 +97,7 @@ public class SignUp extends AppCompatActivity {
                                                     startActivity(intent);
                                                     Toast.makeText(SignUp.this, "Please verify your email address to sign in",
                                                             Toast.LENGTH_LONG).show();
-                                                }
-                                                else{
+                                                } else {
                                                     Toast.makeText(SignUp.this, task.getException().getMessage(),
                                                             Toast.LENGTH_LONG).show();
                                                 }
@@ -108,6 +110,11 @@ public class SignUp extends AppCompatActivity {
                                     }
                                 }
                             });
+                }
+                    else{
+                        Toast.makeText(SignUp.this, "Please ensure you entered the same password ",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
                     Toast.makeText(SignUp.this, "Please enter your full details ",
