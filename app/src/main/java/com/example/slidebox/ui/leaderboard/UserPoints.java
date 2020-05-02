@@ -8,14 +8,21 @@ public class UserPoints {
     private int monthlyPoints;
     private int totalPoints;
     private int currentPoints;
+    private int numThumbup;
 
-    public UserPoints(String firstName, String lastName, int weeklyPoints, int monthlyPoints, int totalPoints, int currentPoints) {
+    public UserPoints(String firstName, String lastName, int weeklyPoints, int monthlyPoints, int totalPoints, int currentPoints, int numThumbup) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.weeklyPoints = weeklyPoints;
         this.monthlyPoints = monthlyPoints;
         this.totalPoints = totalPoints;
         this.currentPoints = currentPoints;
+        Integer integer = numThumbup;
+        if (integer != null) {
+            this.numThumbup = numThumbup;
+        } else {
+            this.numThumbup = 0;
+        }
     }
 
     public UserPoints() {
@@ -43,5 +50,9 @@ public class UserPoints {
 
     public int getCurrentPoints() {
         return currentPoints;
+    }
+
+    public int getNumThumbup() {
+        return numThumbup;
     }
 }
