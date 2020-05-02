@@ -24,11 +24,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:navigationIcon="@drawable/ic_chevron_left_black_24dp"
+            app:navigationIcon="@drawable/ic_arrow_back"
             app:title="Editor" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonUpdata"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
@@ -38,21 +38,20 @@
             app:layout_constraintHorizontal_bias="0.511"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toBottomOf="@+id/imageView_picture_baseedit"
-            app:layout_constraintVertical_bias="0.921"
-            >
+            app:layout_constraintVertical_bias="0.921">
 
         </Button>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView_picture_baseedit"
-            android:layout_width="207dp"
-            android:layout_height="138dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_marginTop="44dp"
-            android:src="@drawable/myprofile_image"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarBaseEditor" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarBaseEditor"
+            tools:src="@tools:sample/avatars" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
@@ -60,6 +59,79 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
+
+        <EditText
+            android:id="@+id/textViewFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="216dp"
+            android:layout_marginRight="216dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_picture_baseedit"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/textViewEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="136dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_picture_baseedit"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/textViewLastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.262"
+            app:layout_constraintStart_toEndOf="@+id/textViewFirstName"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_picture_baseedit"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="122dp"
+            android:layout_marginBottom="280dp"
+            android:src="@drawable/ic_email_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.182"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_picture_baseedit"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="33dp"
+            android:src="@drawable/ic_person_black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.182"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_picture_baseedit"
+            app:layout_constraintVertical_bias="0.384" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

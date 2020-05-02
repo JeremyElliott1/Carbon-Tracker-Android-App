@@ -2,23 +2,12 @@ package com.example.slidebox.MyProfile.Edit;
 
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,10 +15,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.slidebox.MyProfile.MyProfile;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.example.slidebox.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
@@ -41,11 +48,13 @@ public class PictureEditFragment extends Fragment {
     private ImageView imageViewProfile;
     private Button buttonGallery;
     private Button buttonCamera;
+    private Button buttonConfirm;
     private Toolbar mToolbar;
     private static final int PICK_IMAGE = 1;
     private static final int CAPTURE_IMAGE = 2;
     private static final int REQUEST_CODE = 101;
     Uri imageUri;
+
 
     public PictureEditFragment() {
         // Required empty public constructor
@@ -56,12 +65,16 @@ public class PictureEditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_picture_edit, container, false);
         verifyPermissions();
         mToolbar = view.findViewById(R.id.toolbarImageEdit);
+        buttonConfirm = view.findViewById(R.id.buttonComfirm);
         buttonGallery = view.findViewById(R.id.buttonFromGallery);
         buttonCamera = view.findViewById(R.id.buttonFromCamera);
         imageViewProfile = view.findViewById(R.id.imageViewProfile);
+
+        loadProfileImage();
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,21 +102,31 @@ public class PictureEditFragment extends Fragment {
             }
         });
 
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageViewProfile.setDrawingCacheEnabled(true);
+                imageViewProfile.buildDrawingCache();
+                Bitmap bitmap = ((BitmapDrawable)imageViewProfile.getDrawable()).getBitmap();
+                uploadImage(bitmap);
+            }
+        });
+
         return view;
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         switch (requestCode) {
             case PICK_IMAGE:
                 if (resultCode == getActivity().RESULT_OK) {
                     imageUri = data.getData();
                     try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
+                        Bitmap bitmap =(Bitmap) MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
                         Log.d(TAG, "load image from gallery.");
                         imageViewProfile.setImageBitmap(bitmap);
+                       // uploadImage(bitmap);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -115,6 +138,7 @@ public class PictureEditFragment extends Fragment {
                     imageUri = data.getData();
                     Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                     imageViewProfile.setImageBitmap(bitmap);
+                    //uploadImage(bitmap);
                 }
                 break;
             default:
@@ -124,11 +148,6 @@ public class PictureEditFragment extends Fragment {
 
     }
 
-    private void uploadProfileImage(){
-
-
-
-    }
 
     private void verifyPermissions() {
         Log.d(TAG, "verifyPermissions: asking user for permissions");
@@ -156,7 +175,56 @@ public class PictureEditFragment extends Fragment {
         verifyPermissions();
     }
 
-    private void uploadImage(){
+    private void uploadImage(Bitmap bitmap){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80,baos);
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        StorageReference reference = FirebaseStorage.getInstance().getReference()
+                .child("profileImages")
+                .child(uid+".jpeg");
+
+        reference.putBytes(baos.toByteArray()).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+                Toast.makeText(getActivity(),"Failed update ProfileImage!",Toast.LENGTH_LONG).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                Toast.makeText(getActivity(),"Successfully update ProfileImage!",Toast.LENGTH_LONG).show();
+                NavController navController = Navigation.findNavController(getView());
+                navController.navigate(R.id.action_pictureEditFragment_to_baseEditFragment);
+
+            }
+        });
 
     }
+
+    private void loadProfileImage() {
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        StorageReference reference = FirebaseStorage.getInstance().getReference()
+                .child("profileImages")
+                .child(uid + ".jpeg");
+        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(imageViewProfile);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                StorageReference mref = FirebaseStorage.getInstance().getReference();
+                String s = getResources().getString(R.string.defaultImageChildPath);
+                mref.child(s).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(imageViewProfile);
+                    }
+                });
+            }
+        });
+    }
+
 }

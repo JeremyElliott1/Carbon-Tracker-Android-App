@@ -155,5 +155,7 @@
     //Lei strings for profile
     <string name="defaultImageChildPath">default_picture/default_profile_image.jpg</string>
     <string name="defaultImageFullPath">"default_picture/default_profile_image.jpg"</string>
+    <string name="buttonComfirm">Comfirm</string>
+    <string name="SignOut">SignOut</string>
 
 </resources>
