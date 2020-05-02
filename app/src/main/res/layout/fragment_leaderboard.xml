@@ -24,16 +24,16 @@
         app:layout_constraintGuide_percent="0.92" />
 
     <Button
-        android:id="@+id/buttonToCountSteps"
+        android:id="@+id/buttonWeek"
         android:layout_width="137dp"
         android:layout_height="60dp"
         android:text="@string/leaderboard_weekly"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonToReductionCarbon"
+        app:layout_constraintStart_toEndOf="@+id/buttonToday"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
-        android:id="@+id/buttonToReductionCarbon"
+        android:id="@+id/buttonToday"
         android:layout_width="137dp"
         android:layout_height="60dp"
         android:text="@string/leaderboard_today"
@@ -42,14 +42,14 @@
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonMonth"
         android:layout_width="137dp"
         android:layout_height="60dp"
         android:text="@string/leaderboard_monthly"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/buttonToCountSteps"
+        app:layout_constraintStart_toEndOf="@+id/buttonWeek"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
     <androidx.constraintlayout.widget.Guideline

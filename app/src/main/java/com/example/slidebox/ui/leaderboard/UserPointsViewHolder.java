@@ -18,6 +18,8 @@ class UserPointsViewHolder extends RecyclerView.ViewHolder {
     private TextView points;
     private ImageView imageViewThumbup;
     private TextView numThumbup;
+    private TextView itemPosition;
+    private ImageView imageViewUser;
 
 
 
@@ -27,7 +29,17 @@ class UserPointsViewHolder extends RecyclerView.ViewHolder {
         points = itemView.findViewById(R.id.textViewPoints);
         imageViewThumbup = itemView.findViewById(R.id.imageViewThumbup);
         numThumbup = itemView.findViewById(R.id.textViewThumbupNum);
+        itemPosition = itemView.findViewById(R.id.textViewPosition);
+        imageViewUser = itemView.findViewById(R.id.imageViewUser);
 
+    }
+
+    public TextView getItemPosition() {
+        return itemPosition;
+    }
+
+    public ImageView getImageViewUser() {
+        return imageViewUser;
     }
 
     public TextView getFullName() {
