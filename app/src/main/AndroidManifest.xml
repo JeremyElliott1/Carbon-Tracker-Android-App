@@ -46,7 +46,6 @@
             android:name=".MyProfile.MyProfile"
             android:parentActivityName=".SlideBox"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".MyAccountOptions" />
         <activity
             android:name=".HelpOptions"
             android:parentActivityName=".SettingsOptions"

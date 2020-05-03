@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarBaseEditor"
@@ -25,7 +26,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Editor" />
+            app:title="Editor"
+            app:titleTextColor="@color/colorAccent"
+            />
 
         <Button
             android:id="@+id/buttonUpdata"
@@ -36,7 +39,13 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toTopOf="@+id/guideline27">
+            app:layout_constraintTop_toTopOf="@+id/guideline27"
+            android:background="@color/colorPrimary"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold">
 
         </Button>
 
@@ -65,12 +74,14 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:text="TextView"
+            android:textColor="@color/colorB"
+            android:textColorHint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline23"
             app:layout_constraintEnd_toStartOf="@+id/guideline25"
-            app:layout_constraintHorizontal_bias="0.619"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
             app:layout_constraintTop_toTopOf="@+id/guideline20"
-            app:layout_constraintVertical_bias="0.35" />
+            app:layout_constraintVertical_bias="0.433" />
 
         <EditText
             android:id="@+id/textViewEmail"
@@ -79,41 +90,47 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:text="TextView"
+            android:textColor="@color/colorB"
+            android:textColorHint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
             app:layout_constraintTop_toTopOf="@+id/guideline23"
-            app:layout_constraintVertical_bias="0.46" />
+            app:layout_constraintVertical_bias="0.269" />
 
         <EditText
             android:id="@+id/textViewLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:textColor="@color/colorB"
+            android:textColorHint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline23"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.195"
-            app:layout_constraintStart_toStartOf="@+id/guideline25"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@+id/textViewFirstName"
             app:layout_constraintTop_toTopOf="@+id/guideline20"
-            app:layout_constraintVertical_bias="0.35" />
+            app:layout_constraintVertical_bias="0.433" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_email_black_24dp"
+            android:tint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline24"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline23" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_person_black"
+            android:tint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline23"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="1.0"
@@ -167,13 +184,14 @@
             android:id="@+id/imageViewChangePword"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="32dp"
             android:src="@drawable/ic_vpn_key_black_24dp"
+            android:tint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline27"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline24"
-            app:layout_constraintVertical_bias="0.38" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline27"
@@ -188,12 +206,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
+            android:gravity="center"
             android:text="Click icon to change Password!"
+            android:textColor="@color/colorB"
+            android:textColorHint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline27"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
-            app:layout_constraintTop_toTopOf="@+id/guideline24" />
+            app:layout_constraintTop_toTopOf="@+id/guideline24"
+            app:layout_constraintVertical_bias="0.673" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
