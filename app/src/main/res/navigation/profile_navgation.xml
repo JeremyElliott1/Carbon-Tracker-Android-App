@@ -18,7 +18,8 @@
         android:id="@+id/baseEditFragment"
         android:name="com.example.slidebox.MyProfile.Edit.BaseEditFragment"
         android:label="base_edit_fragment"
-        tools:layout="@layout/base_edit_fragment" >
+        tools:layout="@layout/base_edit_fragment"
+        >
         <action
             android:id="@+id/action_baseEditFragment_to_pictureEditFragment"
             app:destination="@id/pictureEditFragment" />
