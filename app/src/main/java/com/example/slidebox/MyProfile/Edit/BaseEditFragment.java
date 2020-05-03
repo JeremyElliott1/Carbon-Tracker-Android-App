@@ -83,8 +83,8 @@ public class BaseEditFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(editTextFirstName.getText().toString().trim().isEmpty() ||
-                editTextLastName.getText().toString().trim().isEmpty() ||
-                editTextEmail.getText().toString().trim().isEmpty()){
+                    editTextLastName.getText().toString().trim().isEmpty() ||
+                    editTextEmail.getText().toString().trim().isEmpty()){
                     Toast.makeText(getActivity(),"One or many field are empty.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -99,6 +99,9 @@ public class BaseEditFragment extends Fragment {
                         editor.put("lastName",editTextLastName.getText().toString().trim());
                         documentReference.update(editor);
                         Toast.makeText(getActivity(),"Profile has been updated.", Toast.LENGTH_SHORT).show();
+                        Intent intent =  new Intent(getActivity(),MyProfile.class);
+                        startActivity(intent);
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

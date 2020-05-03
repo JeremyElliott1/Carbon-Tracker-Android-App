@@ -1,6 +1,7 @@
 package com.example.slidebox.MyProfile;
 
 import android.content.Context;
+import android.service.autofill.AutofillService;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -34,12 +35,12 @@ public class ProfileViewModel extends ViewModel {
     private String mImageURL;
     private String defImageUrl;
     private FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
-    private DocumentReference documentReference = dataBase.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    private DocumentReference documentReference = dataBase.collection("users").document();
     private Map<String, Object> userInfor = new HashMap<String, Object>();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public ProfileViewModel() {
         getUserInfor(new FireBaseCallBack() {
