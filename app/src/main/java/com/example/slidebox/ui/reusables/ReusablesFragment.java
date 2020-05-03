@@ -36,11 +36,9 @@ public class ReusablesFragment extends Fragment {
     private CollectionReference reusableItemsCollRef;
     private ReusablesItemAdapter itemRecyclerViewAdapter;
     /*Untouched Code Starts----------------------------------------------------------------*/
-    private ReusablesViewModel reusablesViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        reusablesViewModel = ViewModelProviders.of(this).get(ReusablesViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_reusables, container, false);
         final TextView textView = root.findViewById(R.id.reusables_MainHeader);
         /*Untouched Code Ends---------------------------------------------------------------- */
@@ -86,12 +84,6 @@ public class ReusablesFragment extends Fragment {
             }
         });
         /*Untouched Code Starts----------------------------------------------------------------*/
-        reusablesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
     /*Untouched Code Ends---------------------------------------------------------------- */

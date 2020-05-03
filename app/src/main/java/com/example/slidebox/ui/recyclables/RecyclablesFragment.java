@@ -22,11 +22,9 @@ import com.example.slidebox.User;
 public class RecyclablesFragment extends Fragment {
 
 
-    private RecyclablesViewModel recyclablesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        recyclablesViewModel = new ViewModelProvider(this).get(RecyclablesViewModel.class);
         final View root = inflater.inflate(R.layout.recyclables_dialog, container, false);
 
         TextView textViewPaper = (TextView)root.findViewById(R.id.paperDialog);

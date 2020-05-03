@@ -36,12 +36,10 @@ import com.example.slidebox.User;
 
 public class TravelFragment extends Fragment {
 
-    private TravelViewModel travelViewModel;
-    Button button;
-    TextView liveUpdate;
-    TextView total;
-    Handler handler = new Handler();
-    Runnable r= new Runnable(){
+    private TextView liveUpdate;
+    private TextView total;
+    private Handler handler = new Handler();
+    private Runnable r= new Runnable(){
         @Override
         public void run() {
             liveUpdate.setText("" + MyService.getDistance() + " m");
@@ -76,8 +74,6 @@ public class TravelFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        travelViewModel =
-                ViewModelProviders.of(this).get(TravelViewModel.class);
         View root = inflater.inflate(R.layout.fragment_travel, container, false);
 
 
