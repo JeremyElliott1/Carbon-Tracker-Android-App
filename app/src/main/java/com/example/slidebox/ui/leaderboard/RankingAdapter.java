@@ -82,30 +82,8 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, RankingAd
         holder.getItemPosition().setText(String.valueOf(position + 1));
         holder.getPoints().setText(point);
         holder.getNumThumbup().setText(String.valueOf(model.getNumThumbup()));
-
         DocumentSnapshot dsPosition = getItem(position);
         String fn = (String) dsPosition.get("firstName") + (String) dsPosition.get("lastName");
-    }
-
-    private void readDocSnapshot() {
-        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        firebaseFirestore.collection("users").document("thumbup").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        ds = document;
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
     }
 
     @Override
@@ -165,72 +143,14 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, RankingAd
             return numThumbup;
         }
 
-/*        public int onClick(final String o, final DocumentSnapshot documentSnapshot) {
-            final int[] i1 = {Integer.valueOf(o)};
-            imageViewThumbup.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    i1[0]++;
-                    FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-
-                    String fullname = user.getUid();
-
-
-                    Log.d(TAG, "Count is " + i1[0]);
-                    Map<String, Object> map = new HashMap<>();
-                    map.put(fullname, String.valueOf(i1[0]));
-                    firebaseFirestore.collection("users").document(user.getUid()).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d(TAG, "Added thumbup! ");
-                        }
-                    });
-                    firebaseFirestore.collection("users").document("thumbup").update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d(TAG, "Added thumbup! ");
-                        }
-                    });
-                }
-            });
-            return i1[0];
-        }*/
-
-        public void  changeNum(){
-            DocumentSnapshot documentSnapshot = getItem(getAdapterPosition());
-            String id = documentSnapshot.getId();
-            addThumbupNumToUserCollection(id);
-            addThumbupCollection(id);
-            Log.d(TAG, "this in stage3");
-            Log.d(TAG, "this in holder"+documentSnapshot.get("numThumbup",Integer.class));
-            Log.d(TAG, "DocumentSnapshot data: " + documentSnapshot.getData());
-          /*  int num =documentSnapshot.get("numThumbup",Integer.class).intValue();
-            num++;
-            Log.d(TAG, "Count is " + num);
-            Map<String, Object> map = new HashMap<>();
-            map.put("numThumbup", num);
-            firebaseFirestore.collection("users").document(id).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "Added thumbup! ");
-                }
-            });*/
-        }
 
         @Override
         public void onClick(View v) {
-            //onThumbupClick.onClick();
             DocumentSnapshot documentSnapshot = getItem(getAdapterPosition());
             final String id = documentSnapshot.getId();
-            addThumbupNumToUserCollection(id);
-            addThumbupCollection(id);
             Log.d(TAG, "this in stage0" + getAdapterPosition());
-            changeNum();
             Log.d(TAG, "this in stage1");
             final FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             firebaseFirestore.collection("users").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -239,9 +159,9 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, RankingAd
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             Log.d(TAG, "this in stage3");
-                            Log.d(TAG, "this in holder"+document.get("numThumbup",Integer.class));
+                            Log.d(TAG, "this in holder" + document.get("numThumbup", Integer.class));
                             Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                            int num =document.get("numThumbup",Integer.class).intValue();
+                            int num = document.get("numThumbup", Integer.class).intValue();
                             num++;
                             Log.d(TAG, "Count is " + num);
                             Map<String, Object> map = new HashMap<>();
@@ -298,41 +218,11 @@ public class RankingAdapter extends FirestorePagingAdapter<UserPoints, RankingAd
                 }
             });
         }
-
-        private void addThumbupCollection(final String id) {
-
-            firebaseFirestore.collection("users").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            if (document.get(user.getUid()) == null) {
-                                int i = 0;
-                                Map<String, Object> map = new HashMap<>();
-                                map.put(user.getUid(), String.valueOf(i));
-                                firebaseFirestore.collection("users").document(id).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d(TAG, "Added thumbup! ");
-                                    }
-                                });
-                            }
-                            ;
-                        } else {
-                            Log.d(TAG, "No such document");
-                        }
-                    } else {
-                        Log.d(TAG, "get failed with ", task.getException());
-                    }
-                }
-            });
-        }
-
     }
 
-public interface OnThumbupClick {
-    void onClick();
-    void onClick(DocumentSnapshot documentSnapshot ,int position);
-}
+    public interface OnThumbupClick {
+        void onClick();
+
+        void onClick(DocumentSnapshot documentSnapshot, int position);
+    }
 }
