@@ -1,15 +1,16 @@
-package com.example.slidebox.ui.shop;
+package com.example.slidebox.ui.travel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShopViewModel extends ViewModel {
+public class TravelViewModel extends ViewModel {
+
     private MutableLiveData<String> mText;
 
-    public ShopViewModel() {
+    public TravelViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("");
+        mText.setValue("This is Travel fragment");
     }
 
     public LiveData<String> getText() {

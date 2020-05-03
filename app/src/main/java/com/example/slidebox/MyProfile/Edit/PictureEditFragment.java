@@ -53,7 +53,7 @@ public class PictureEditFragment extends Fragment {
     private static final int PICK_IMAGE = 1;
     private static final int CAPTURE_IMAGE = 2;
     private static final int REQUEST_CODE = 101;
-    Uri imageUri;
+    private Uri imageUri;
 
 
     public PictureEditFragment() {

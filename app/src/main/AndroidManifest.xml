@@ -30,7 +30,6 @@
             android:name=".SignUp"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.shop.ShoppingCart" />
         <activity
             android:name=".SettingsPrivacyPolicy"
             android:parentActivityName=".SettingsOptions"

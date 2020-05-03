@@ -23,14 +23,10 @@ public class ReusablesUseRmv extends AppCompatActivity {
 
     //    Firebase database
     private FirebaseFirestore db = FirebaseFirestore.getInstance(); //firestore database
-    private String userId;
 
     //ReusablesUses
     private CollectionReference reusableUsesCollRef;
     private ReusablesUseAdapter usesRecyclerViewAdapter;
-
-    //Cancel Button
-    private Button cancelButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,14 +35,15 @@ public class ReusablesUseRmv extends AppCompatActivity {
 
         //get user ID & firestore db reference.
         User user = User.getInstance();
-        userId = user.getUserId();
+        String userId = user.getUserId();
         reusableUsesCollRef = db.collection("users")
                 .document(userId).collection("ReusableUses"); //ReusableUses Collection reference
 
         setUpUsesRecyclerView();
         usesRecyclerViewAdapter.startListening();
 
-        cancelButton = findViewById(R.id.reusabuleCancelUseRemoveButton);
+        //Cancel Button
+        Button cancelButton = findViewById(R.id.reusabuleCancelUseRemoveButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

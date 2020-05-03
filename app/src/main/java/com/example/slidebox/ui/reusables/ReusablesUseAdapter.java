@@ -20,7 +20,7 @@ public class ReusablesUseAdapter extends FirestoreRecyclerAdapter<ReusableUse, R
     /**
      * Create a new RecyclerView adapter that listens for a Firestore Query.
      */
-    public ReusablesUseAdapter(@NonNull FirestoreRecyclerOptions<ReusableUse> options) {
+    ReusablesUseAdapter(@NonNull FirestoreRecyclerOptions<ReusableUse> options) {
         super(options);
     }
 
@@ -43,7 +43,7 @@ public class ReusablesUseAdapter extends FirestoreRecyclerAdapter<ReusableUse, R
         return getSnapshots().getSnapshot(position).toObject(ReusableUse.class);
     }
 
-    public void deleteReusableUse(int position) {
+    void deleteReusableUse(int position) {
         getSnapshots().getSnapshot(position).getReference().delete();
     }
 
@@ -63,7 +63,7 @@ public class ReusablesUseAdapter extends FirestoreRecyclerAdapter<ReusableUse, R
         }
     }
 
-    public String getDateAsString(Date date) {
+    private String getDateAsString(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         String strDate = formatter.format(date);
         return strDate;

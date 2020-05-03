@@ -176,7 +176,7 @@ private void getCode(String text){
         }
 }
 
-public void qrCode(String text) throws WriterException {
+private void qrCode(String text) throws WriterException {
     QRCodeWriter qrCodeWriter = new QRCodeWriter();
     qrCode = dialogShopRedeemPopup.findViewById(R.id.qr_code);
     BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 350,350);
@@ -190,7 +190,7 @@ public void qrCode(String text) throws WriterException {
     qrCode.setImageBitmap(bitmap);
 }
 
-    public void removePoints(final int points, final int finalI){
+    private void removePoints(final int points, final int finalI){
         redeemItem = (Button) dialogShopPopup.findViewById(R.id.redeemItem);
         redeemItem.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,7 +15,7 @@ public class ReusableUse {
             //fireStore needs an empty constructor otherwise it crashes.
         }
 
-    public ReusableUse(String itemName, Date date, String points) {
+    ReusableUse(String itemName, Date date, String points) {
             this.itemName = itemName;
             this.date = date;
         this.points = points;
@@ -32,11 +32,11 @@ public class ReusableUse {
             this.id = id;
         }
 
-        public String getItemName() {
+        String getItemName() {
             return itemName;
         }
 
-        public Date getDate() {
+        Date getDate() {
             return date;
         }
 

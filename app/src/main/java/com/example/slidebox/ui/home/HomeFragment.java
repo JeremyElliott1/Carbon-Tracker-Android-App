@@ -92,23 +92,7 @@ public class HomeFragment extends Fragment {
         docRef = db.collection("users").document(userID);
 
         calender = Calendar.getInstance();
-        int currentDay = calender.get(Calendar.DAY_OF_YEAR);
-        settings = getActivity().getSharedPreferences("PREFS",0);
-        int lastDay = settings.getInt("day",0);
-        int random = settings.getInt("random", 1);
-
-        if (lastDay!=currentDay) {
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("day" , currentDay);
-            resetDailyPoints();
-            Random r = new Random();
-            int low = 1;
-            int high = 10;
-            int result = r.nextInt(high-low) + low;
-            editor.putInt("random",result);
-            editor.commit();
-        }
-        getQuote(random);
+        dailyUpdate();
         resetPoints();
 
 
@@ -193,7 +177,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void getTotalPoints(){
+    private void getTotalPoints(){
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -223,13 +207,34 @@ public class HomeFragment extends Fragment {
         });
     }
     //get saved target set by user from shared preferences
-public void getSavedTarget(){
+    private void getSavedTarget(){
         assert settings != null;
         target = settings.getFloat("savedTarget",0);
         getTotalPoints();
     }
+
+    //reset daily points, send notification and update daily quote
+    private void dailyUpdate(){
+        int currentDay = calender.get(Calendar.DAY_OF_YEAR);
+        settings = getActivity().getSharedPreferences("PREFS",0);
+        int lastDay = settings.getInt("day",0);
+
+        if (lastDay!=currentDay) {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("day" , currentDay);
+            resetDailyPoints();
+            Random r = new Random();
+            int low = 1;
+            int high = 10;
+            int result = r.nextInt(high-low) + low;
+            editor.putInt("random",result);
+            editor.commit();
+        }
+        int random = settings.getInt("random", 1);
+        getQuote(random);
+    }
     //reset weekly and monthly points
-    public void resetPoints(){
+    private void resetPoints(){
         int currentWeek = calender.get(Calendar.WEEK_OF_MONTH);
         int currentMonth = calender.get(Calendar.MONTH);
         int lastWeek = settings.getInt("week",0);
@@ -249,7 +254,7 @@ public void getSavedTarget(){
     }
 
     //reset points daily and send notification to user about their daily achievements
-    public void resetDailyPoints(){
+    private void resetDailyPoints(){
            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                @Override
                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -270,7 +275,7 @@ public void getSavedTarget(){
                }
            });
     }
-    public void notification(String points){
+    private void notification(String points){
         int NOTIFICATION_ID = 234;
         Context currentActivity=getActivity();
         NotificationManager notificationManager = (NotificationManager) currentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
