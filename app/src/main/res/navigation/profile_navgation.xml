@@ -22,5 +22,16 @@
         <action
             android:id="@+id/action_baseEditFragment_to_pictureEditFragment"
             app:destination="@id/pictureEditFragment" />
+        <action
+            android:id="@+id/action_baseEditFragment_to_passWordChange2"
+            app:destination="@id/passWordChange2" />
+    </fragment>
+    <fragment
+        android:id="@+id/passWordChange2"
+        android:name="com.example.slidebox.MyProfile.Edit.PassWordChange"
+        android:label="PassWordChange" >
+        <action
+            android:id="@+id/action_passWordChange2_to_baseEditFragment"
+            app:destination="@id/baseEditFragment" />
     </fragment>
 </navigation>
