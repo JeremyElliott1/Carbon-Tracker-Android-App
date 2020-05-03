@@ -200,7 +200,7 @@ public class MyProfile extends AppCompatActivity {
         if (user != null) {
             Log.d(TAG, "onAuthStateChange:signed in" + user.getUid());
         } else {
-            Log.d(TAG, "ononAuthStateChanged:signed out");
+            Log.d(TAG, "onAuthStateChanged:signed out");
         }
     }
 
