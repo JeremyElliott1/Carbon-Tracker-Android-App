@@ -216,6 +216,11 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
 
     @Override
     public void onClick() {
-        Log.d(TAG,"this in leader.");
+
+    }
+
+    @Override
+    public void onClick(DocumentSnapshot documentSnapshot, int position) {
+
     }
 }
