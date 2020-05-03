@@ -9,13 +9,11 @@
     <style name="mytoolbar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@color/colorPrimary</item>
         <item name="title">@string/myprofile_title</item>
-        <item name="colorControlNormal">@color/colorB</item>
-        <item name="android:windowActivityTransitions">true</item>
-        <item name="iconTint">@color/colorB</item>
-        <item name="android:textColor">@color/colorB</item>
-        <item name="android:textColorAlertDialogListItem">@color/colorB</item>
-        <item name="android:textColorPrimary">@color/colorB</item>
-        <item name="colorAccent">@color/colorB</item>
+        <item name="iconTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColorAlertDialogListItem">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 

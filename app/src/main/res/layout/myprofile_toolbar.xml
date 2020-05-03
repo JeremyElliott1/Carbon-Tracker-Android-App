@@ -7,7 +7,8 @@
     android:theme="@style/mytoolbar"
     android:accessibilityPaneTitle=""
     tools:context=".MyProfile.MyProfile"
-    app:titleTextColor="@color/colorB"
+    app:titleTextColor="@color/colorAccent"
+
 
     tools:targetApi="p">
 
