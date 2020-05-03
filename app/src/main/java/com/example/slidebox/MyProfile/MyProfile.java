@@ -115,7 +115,7 @@ public class MyProfile extends AppCompatActivity {
                         userInfor.putAll((HashMap<String, Object>) document.getData());
                         textViewFirstName.setText(userInfor.get("firstName").toString());
                         textViewLastName.setText(userInfor.get("lastName").toString());
-                        textViewEmail.setText(userInfor.get("email").toString());
+                        textViewEmail.setText(user.getEmail());
                         achievementFun();
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                     } else {
