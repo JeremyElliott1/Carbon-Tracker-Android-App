@@ -56,13 +56,9 @@ public class MyProfile extends AppCompatActivity {
     private Map<String, Object> userInfor = new HashMap<String, Object>();
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
-    private FirebaseDatabase database;
-    private DatabaseReference databaseReference;
-    private FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     private FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
     private DocumentReference documentReference;
-    ActivityMyProfileBinding dataBinding;
-    private FirebaseAuth mAuth;
+    private ActivityMyProfileBinding dataBinding;
 
 
     @Override
@@ -115,7 +111,7 @@ public class MyProfile extends AppCompatActivity {
                         userInfor.putAll((HashMap<String, Object>) document.getData());
                         textViewFirstName.setText(userInfor.get("firstName").toString());
                         textViewLastName.setText(userInfor.get("lastName").toString());
-                        textViewEmail.setText(userInfor.get("email").toString());
+                        textViewEmail.setText(user.getEmail());
                         achievementFun();
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                     } else {
@@ -192,17 +188,6 @@ public class MyProfile extends AppCompatActivity {
     }
 
 
-    private void setupFirebaseAuth() {
-        Log.d(TAG, "setupFirebaseAuth: setting auth");
-        mAuth = FirebaseAuth.getInstance();
-        Log.d(TAG, "setupFirebaseAuth: initial finished");
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            Log.d(TAG, "onAuthStateChange:signed in" + user.getUid());
-        } else {
-            Log.d(TAG, "ononAuthStateChanged:signed out");
-        }
-    }
 
 
 }

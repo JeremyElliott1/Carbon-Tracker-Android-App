@@ -86,6 +86,7 @@ public class SignUp extends AppCompatActivity {
                                                     user.put("dailyPoints", 0);
                                                     user.put("weeklyPoints", 0);
                                                     user.put("monthlyPoints", 0);
+                                                    user.put("numThumbup",0);
                                                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
