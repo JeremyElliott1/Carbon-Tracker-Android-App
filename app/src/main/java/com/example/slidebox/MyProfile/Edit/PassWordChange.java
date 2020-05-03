@@ -29,6 +29,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.zip.Inflater;
 
+import static android.content.ContentValues.TAG;
+
 
 public class PassWordChange extends Fragment {
      private EditText editTextOld, editTextNew;
@@ -62,33 +64,43 @@ public class PassWordChange extends Fragment {
         buttonChangePw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String oldPW, newPW;
-                oldPW = editTextOld.getText().toString();
-                newPW = editTextNew.getText().toString();
+                String oldPW = editTextOld.getText().toString();
+                final String newPW = editTextNew.getText().toString();
                 if ( oldPW.equals("") ){
                     Toast.makeText(getActivity(), "OldPassWord is required!", Toast.LENGTH_SHORT).show();
                 }
                 else if (newPW.equals(""))
                 {
                     Toast.makeText(getActivity(), "NewPassWord is null!", Toast.LENGTH_SHORT).show();
-                }else if( newPW.length() <6 && oldPW.length() <6 ){
-                    Toast.makeText(getActivity(), "NewPassWord is null!", Toast.LENGTH_SHORT).show();
+                }else if( newPW.length() <6 || oldPW.length() <6 ){
+                    Toast.makeText(getActivity(), "NewPassWord is too short", Toast.LENGTH_SHORT).show();
                 }else{
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),oldPW);
 
                     user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(getActivity(), "Password changed!", Toast.LENGTH_SHORT).show();
-                            FirebaseAuth.getInstance().signOut();
-                            Intent intent = new Intent(getActivity(), LogIn.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        }else{
-                            Toast.makeText(getActivity(), "Failed change!", Toast.LENGTH_SHORT).show();
+                            user.updatePassword(newPW).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getActivity(), "Password changed!", Toast.LENGTH_SHORT).show();
+                                        FirebaseAuth.getInstance().signOut();
+                                        Intent intent = new Intent(getActivity(), LogIn.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        Log.d(TAG, "Password updated");
+                                    }
+                                    else {
+                                        Log.d(TAG, "Error password not updated");
+                                    }
+                                }
+                            });
+                        } else {
+                            Log.d(TAG, "Error auth failed");
                         }
                         }
                     });
