@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.slidebox.LogIn;
 import com.example.slidebox.MyProfile.Edit.ProfileEditActivity;
 import com.example.slidebox.R;
 import com.example.slidebox.databinding.ActivityMyProfileBinding;
@@ -43,6 +44,7 @@ public class MyProfile extends AppCompatActivity {
     private static final String TAG = "MyProfile";
     private ProfileViewModel profileViewModel;
     private Button buttonEditor;
+    private Button buttonSigOut;
     private ImageView profileImage;
     private ImageView imageViewToday;
     private ImageView imageViewWeek;
@@ -69,6 +71,7 @@ public class MyProfile extends AppCompatActivity {
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_my_profile);
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         buttonEditor = findViewById(R.id.button_editor);
+        buttonSigOut = findViewById(R.id.buttonSignOut);
         profileImage = findViewById(R.id.profile_image);
         textViewFirstName = findViewById(R.id.textView_FirstName);
         textViewLastName = findViewById(R.id.textView_LastName);
@@ -80,6 +83,16 @@ public class MyProfile extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
+        buttonSigOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplication(),LogIn.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
         buttonEditor.setOnClickListener(new View.OnClickListener() {
             @Override

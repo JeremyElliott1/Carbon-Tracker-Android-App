@@ -38,14 +38,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BaseEditFragment extends Fragment {
-
-    private BaseEditViewModel mViewModel;
     private Toolbar mToolbar;
+    private ImageView imageViewChangePW;
     private ImageView imageViewProfileEdit;
     private EditText editTextFirstName;
     private EditText editTextLastName;
     private EditText editTextEmail;
     private Button buttonUpdate;
+
     private boolean imageFlag = false;
     private FirebaseFirestore firebaseStorage = FirebaseFirestore.getInstance();
     private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
@@ -65,13 +65,13 @@ public class BaseEditFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BaseEditViewModel.class);
         mToolbar = getView().findViewById(R.id.toolbarBaseEditor);
         editTextFirstName=getView().findViewById(R.id.textViewFirstName);
         editTextLastName=getView().findViewById(R.id.textViewLastName);
         editTextEmail=getView().findViewById(R.id.textViewEmail);
         buttonUpdate = getView().findViewById(R.id.buttonUpdata);
         imageViewProfileEdit = getView().findViewById(R.id.imageView_picture_baseedit);
+        imageViewChangePW = getView().findViewById(R.id.imageViewChangePword);
         user = mAuth.getCurrentUser();
         Intent data = getActivity().getIntent();
         editTextFirstName.setText(data.getStringExtra("firstName"));
@@ -83,8 +83,8 @@ public class BaseEditFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(editTextFirstName.getText().toString().trim().isEmpty() ||
-                editTextLastName.getText().toString().trim().isEmpty() ||
-                editTextEmail.getText().toString().trim().isEmpty()){
+                        editTextLastName.getText().toString().trim().isEmpty() ||
+                        editTextEmail.getText().toString().trim().isEmpty()){
                     Toast.makeText(getActivity(),"One or many field are empty.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -99,6 +99,9 @@ public class BaseEditFragment extends Fragment {
                         editor.put("lastName",editTextLastName.getText().toString().trim());
                         documentReference.update(editor);
                         Toast.makeText(getActivity(),"Profile has been updated.", Toast.LENGTH_SHORT).show();
+                        Intent intent =  new Intent(getActivity(),MyProfile.class);
+                        startActivity(intent);
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -117,6 +120,14 @@ public class BaseEditFragment extends Fragment {
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.action_baseEditFragment_to_pictureEditFragment);
+            }
+        });
+
+        imageViewChangePW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_baseEditFragment_to_passWordChange2);
             }
         });
 

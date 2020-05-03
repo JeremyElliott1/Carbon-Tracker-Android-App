@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.slidebox.MyProfile.MyProfile;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -17,8 +18,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -30,10 +35,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SlideBox extends AppCompatActivity {
 
-
+    private TextView textView;
     private AppBarConfiguration mAppBarConfiguration;
 
 
@@ -68,6 +74,9 @@ public class SlideBox extends AppCompatActivity {
                 startActivity(intentLoadNewActivity);
             }
         });
+
+        textView = navigationView.getHeaderView(0).findViewById(R.id.textViewHeaderProfile);
+        loadName(textView);
     }
 
     @Override
@@ -110,9 +119,23 @@ public class SlideBox extends AppCompatActivity {
         startActivity(a);
     }
 
-
-    private void setUpItemRecyclerView() {
-
+    private void loadName(final TextView view){
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseFirestore.collection("users").document(user.getUid()).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                String fullname = documentSnapshot.get("firstName")
+                        .toString()
+                        .toUpperCase() + "   " +
+                         documentSnapshot.get("lastName")
+                                .toString()
+                                .toUpperCase();
+                view.setText(fullname);
+            }
+        });
     }
 
     private void loadProfileImage(final View view){

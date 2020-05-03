@@ -64,9 +64,10 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
         buttonToday.setBackgroundColor(getResources().getColor(R.color.colorLeaderBoardLight));
         buttonWeek.setBackgroundColor(getResources().getColor(R.color.colorLeaderBoardLight));
         buttonMonth.setBackgroundColor(getResources().getColor(R.color.colorLeaderBoardLight));
+
         initialLoad(view);
-        //addThumbupNum();
-        addThumbup();
+        addThumbupNumToUserCollection();
+        addThumbupCollection();
 
         buttonToday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,8 +93,7 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
         return root;
     }
 
-    private void addThumbupNum() {
-
+    private void addThumbupNumToUserCollection() {
         firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -122,7 +122,7 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
         });
     }
 
-    private void addThumbup() {
+    private void addThumbupCollection() {
 
         firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -166,7 +166,6 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
                 .setQuery(query, config, UserPoints.class)
                 .build();
         adapter = new RankingAdapter(options, TODAY_REQUEST, this);
-        adapter.getOnThumbupClick();
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mFirestoreList.setAdapter(adapter);
@@ -215,9 +214,13 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
         adapter.startListening();
     }
 
-
     @Override
     public void onClick() {
+
+    }
+
+    @Override
+    public void onClick(DocumentSnapshot documentSnapshot, int position) {
 
     }
 }

@@ -16,32 +16,22 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/award"
             android:layout_width="match_parent"
-            android:layout_height="465dp"
+            android:layout_height="wrap_content"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardview">
+            app:layout_constraintTop_toBottomOf="@+id/cardview"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="371dp" />
-
-            <Button
-                android:id="@+id/buttonSignOut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/SignOut"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline14"
-                app:layout_constraintHorizontal_bias="0.409"
-                app:layout_constraintStart_toStartOf="@+id/guideline14"
-                app:layout_constraintTop_toTopOf="@+id/guideline13"
-                app:layout_constraintVertical_bias="0.17" />
+                app:layout_constraintGuide_begin="466dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline14"
@@ -58,10 +48,10 @@
                 android:layout_marginRight="36dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toStartOf="@+id/guideline14"
-                app:layout_constraintHorizontal_bias="0.809"
+                app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.666"
+                app:layout_constraintVertical_bias="0.424"
                 tools:srcCompat="@drawable/ic_check_box_black_24dp" />
 
             <ImageView
@@ -70,10 +60,10 @@
                 android:layout_height="100dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintHorizontal_bias="0.58"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.671"
+                app:layout_constraintVertical_bias="0.424"
                 tools:srcCompat="@drawable/ic_view_week_black_24dp" />
 
             <ImageView
@@ -83,10 +73,10 @@
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/guideline13"
                 app:layout_constraintEnd_toStartOf="@+id/guideline14"
-                app:layout_constraintHorizontal_bias="0.538"
+                app:layout_constraintHorizontal_bias="0.528"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline17"
-                app:layout_constraintVertical_bias="0.471"
+                app:layout_constraintVertical_bias="0.129"
                 tools:srcCompat="@drawable/ic_format_align_justify_black_24dp" />
 
             <ImageView
@@ -96,10 +86,10 @@
                 android:layout_marginTop="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline13"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.415"
+                app:layout_constraintHorizontal_bias="0.58"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
                 app:layout_constraintTop_toTopOf="@+id/guideline17"
-                app:layout_constraintVertical_bias="0.362"
+                app:layout_constraintVertical_bias="0.071"
                 tools:srcCompat="@drawable/ic_spa_black_24dp" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -117,10 +107,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toStartOf="@+id/guideline14"
-                app:layout_constraintHorizontal_bias="0.53"
+                app:layout_constraintHorizontal_bias="0.402"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.071" />
+                app:layout_constraintVertical_bias="0.046" />
 
             <TextView
                 android:id="@+id/textViewToday"
@@ -153,10 +143,10 @@
                 android:text="Month Award!"
                 app:layout_constraintBottom_toTopOf="@+id/guideline13"
                 app:layout_constraintEnd_toStartOf="@+id/guideline14"
-                app:layout_constraintHorizontal_bias="0.533"
+                app:layout_constraintHorizontal_bias="0.553"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewMonth"
-                app:layout_constraintVertical_bias="0.333" />
+                app:layout_constraintVertical_bias="0.108" />
 
             <TextView
                 android:id="@+id/textViewTotally"
@@ -166,9 +156,30 @@
                 android:text="Total Award!"
                 app:layout_constraintBottom_toTopOf="@+id/guideline13"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.603"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewTotal"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/buttonSignOut"
+                android:layout_width="96dp"
+                android:layout_height="34dp"
+                android:text="@string/SignOut"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline19"
+                app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="@+id/guideline14"
+                app:layout_constraintTop_toTopOf="@+id/guideline19" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="367dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -176,11 +187,17 @@
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:background="@color/colorPrimary"
-            app:layout_constraintBottom_toTopOf="@+id/award"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mytoolbar">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.29" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline12"
@@ -201,7 +218,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.100000024"
-                tools:srcCompat="@tools:sample/avatars"/>
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/textView_LastName"
@@ -209,40 +226,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="monospace"
                 android:text="LastName"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toTopOf="@+id/guideline12"
-                app:layout_constraintVertical_bias="0.162" />
+                app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
             <TextView
                 android:id="@+id/textView_FirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:fontFamily="monospace"
                 android:text="FirstName"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView_Email"
+                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintStart_toStartOf="@+id/guideline18"
                 app:layout_constraintTop_toTopOf="@+id/guideline12"
-                app:layout_constraintVertical_bias="0.162" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView_Email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginRight="48dp"
                 android:text="E-mail"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_FirstName"
-                app:layout_constraintVertical_bias="0.189" />
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toTopOf="@+id/guideline12"
+                app:layout_constraintVertical_bias="0.487" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"
@@ -257,6 +273,8 @@
                 android:layout_height="25dp"
                 android:layout_marginBottom="16dp"
                 android:background="@color/colorPrimary"
+                android:shadowColor="#FFFFFF"
+                android:shadowRadius="0"
                 android:text="Edit"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
