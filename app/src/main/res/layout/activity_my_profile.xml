@@ -17,7 +17,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/award"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="454dp"
+            android:background="@color/colorBackground"
             android:scrollbarAlwaysDrawVerticalTrack="true"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,8 +26,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardview"
-            app:layout_constraintVertical_bias="0.0"
-            android:background="@color/colorBackground">
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline13"
@@ -105,23 +105,24 @@
                 android:id="@+id/textViewAchiev"
                 android:layout_width="150dp"
                 android:layout_height="24dp"
+                android:gravity="center"
                 android:text="Achievements"
-                android:textStyle="bold"
                 android:textColor="@color/colorB"
                 android:textSize="18dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toStartOf="@+id/guideline14"
                 app:layout_constraintHorizontal_bias="0.402"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.046"
-                android:gravity="center"/>
+                app:layout_constraintVertical_bias="0.046" />
 
             <TextView
                 android:id="@+id/textViewToday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:gravity="center"
                 android:text="Today Award!"
                 android:textColor="@color/colorB"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
@@ -129,21 +130,20 @@
                 app:layout_constraintHorizontal_bias="0.535"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewToday"
-                app:layout_constraintVertical_bias="0.666"
-                android:gravity="center"/>
+                app:layout_constraintVertical_bias="0.666" />
 
             <TextView
                 android:id="@+id/textViewWeek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:gravity="center"
                 android:text="Week Award!"
                 android:textColor="@color/colorB"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewWeek"
-                android:gravity="center"/>
+                app:layout_constraintTop_toBottomOf="@+id/imageViewWeek" />
 
             <TextView
                 android:id="@+id/textViewMonthly"
@@ -163,6 +163,7 @@
                 android:layout_width="94dp"
                 android:layout_height="19dp"
                 android:layout_marginTop="17dp"
+                android:gravity="center"
                 android:text="Total Award!"
                 android:textColor="@color/colorB"
                 app:layout_constraintBottom_toTopOf="@+id/guideline13"
@@ -170,8 +171,7 @@
                 app:layout_constraintHorizontal_bias="0.603"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewTotal"
-                app:layout_constraintVertical_bias="0.0"
-                android:gravity="center"/>
+                app:layout_constraintVertical_bias="0.0" />
 
             <Button
                 android:id="@+id/buttonSignOut"
