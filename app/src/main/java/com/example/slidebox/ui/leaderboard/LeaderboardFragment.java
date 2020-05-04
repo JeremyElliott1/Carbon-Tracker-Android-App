@@ -46,8 +46,6 @@ public class LeaderboardFragment extends Fragment implements RankingAdapter.OnTh
     private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    private ListView listView;
-//    private FirebaseList
 
     private LeaderboardViewModel leaderboardViewModel;
 

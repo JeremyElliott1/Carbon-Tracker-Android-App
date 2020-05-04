@@ -8,11 +8,6 @@
     android:accessibilityPaneTitle=""
     tools:context=".MyProfile.MyProfile"
     app:titleTextColor="@color/colorAccent"
-
-
     tools:targetApi="p">
-
-
-
 
 </androidx.appcompat.widget.Toolbar>

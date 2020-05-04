@@ -34,18 +34,19 @@
             android:id="@+id/buttonUpdata"
             android:layout_width="103dp"
             android:layout_height="39dp"
+            android:background="@color/colorPrimary"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
             android:text="Update"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toTopOf="@+id/guideline27"
-            android:background="@color/colorPrimary"
-            android:lineSpacingExtra="@dimen/activity_vertical_margin"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp"
-            android:textStyle="bold">
+            app:layout_constraintVertical_bias="0.382">
 
         </Button>
 
@@ -97,7 +98,24 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
             app:layout_constraintTop_toTopOf="@+id/guideline23"
-            app:layout_constraintVertical_bias="0.269" />
+            app:layout_constraintVertical_bias="0.063" />
+
+        <EditText
+            android:id="@+id/textViewPassword"
+            android:layout_width="124dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:hint="Password"
+            android:textColor="@color/colorB"
+            android:textColorHint="@color/colorB"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline23"
+            app:layout_constraintVertical_bias="0.862" />
 
         <EditText
             android:id="@+id/textViewLastName"
@@ -123,7 +141,8 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.161" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -143,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="308dp" />
+            app:layout_constraintGuide_begin="296dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline21"
@@ -164,14 +183,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="413dp" />
+            app:layout_constraintGuide_begin="365dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="521dp" />
+            app:layout_constraintGuide_begin="508dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline25"
@@ -184,21 +203,20 @@
             android:id="@+id/imageViewChangePword"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="32dp"
             android:src="@drawable/ic_vpn_key_black_24dp"
             android:tint="@color/colorB"
             app:layout_constraintBottom_toTopOf="@+id/guideline27"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toTopOf="@+id/guideline24" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline27"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="592dp" />
+            app:layout_constraintGuide_begin="556dp" />
 
         <TextView
             android:id="@+id/textView5"
@@ -215,7 +233,20 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline21"
             app:layout_constraintTop_toTopOf="@+id/guideline24"
-            app:layout_constraintVertical_bias="0.673" />
+            app:layout_constraintVertical_bias="0.442" />
+
+        <Button
+            android:id="@+id/buttonVerifyPassword"
+            android:layout_width="62dp"
+            android:layout_height="28dp"
+            android:text="Confirm"
+            android:textSize="6sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline24"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline23"
+            app:layout_constraintVertical_bias="0.515" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

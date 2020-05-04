@@ -9,14 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.slidebox.LogIn;
 import com.example.slidebox.MyProfile.Edit.ProfileEditActivity;
 import com.example.slidebox.R;
@@ -126,6 +124,7 @@ public class MyProfile extends AppCompatActivity {
         loadProfileImage();
         //  setup customer's toolbar with manifests setting
         Toolbar myToolbar = findViewById(R.id.mytoolbar);
+        myToolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         setSupportActionBar(myToolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -138,7 +137,6 @@ public class MyProfile extends AppCompatActivity {
         imageViewWeek.setImageResource(R.drawable.ic_view_week_black_24dp);
         imageViewMonth.setImageResource(R.drawable.ic_format_align_justify_black_24dp);
         imageViewTotal.setImageResource(R.drawable.ic_spa_black_24dp);
-
         imageViewToday.setVisibility(View.INVISIBLE);
         imageViewWeek.setVisibility(View.INVISIBLE);
         imageViewMonth.setVisibility(View.INVISIBLE);
@@ -158,8 +156,6 @@ public class MyProfile extends AppCompatActivity {
         if (Integer.valueOf(userInfor.get("totalPoints").toString()) >= 10000) {
             imageViewTotal.setVisibility(View.VISIBLE);
         }
-
-
     }
 
     private void loadProfileImage() {
@@ -186,8 +182,4 @@ public class MyProfile extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }

@@ -55,17 +55,14 @@ public class PictureEditFragment extends Fragment {
     private static final int REQUEST_CODE = 101;
     private Uri imageUri;
 
-
     public PictureEditFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_picture_edit, container, false);
         verifyPermissions();
         mToolbar = view.findViewById(R.id.toolbarImageEdit);
@@ -73,9 +70,7 @@ public class PictureEditFragment extends Fragment {
         buttonGallery = view.findViewById(R.id.buttonFromGallery);
         buttonCamera = view.findViewById(R.id.buttonFromCamera);
         imageViewProfile = view.findViewById(R.id.imageViewProfile);
-
         loadProfileImage();
-
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +106,6 @@ public class PictureEditFragment extends Fragment {
                 uploadImage(bitmap);
             }
         });
-
         return view;
     }
 
@@ -143,9 +137,7 @@ public class PictureEditFragment extends Fragment {
                 break;
             default:
                 throw new IllegalArgumentException();
-
         }
-
     }
 
 
@@ -182,7 +174,6 @@ public class PictureEditFragment extends Fragment {
         StorageReference reference = FirebaseStorage.getInstance().getReference()
                 .child("profileImages")
                 .child(uid+".jpeg");
-
         reference.putBytes(baos.toByteArray()).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -196,10 +187,8 @@ public class PictureEditFragment extends Fragment {
                 Toast.makeText(getActivity(),"Successfully update ProfileImage!",Toast.LENGTH_LONG).show();
                 NavController navController = Navigation.findNavController(getView());
                 navController.navigate(R.id.action_pictureEditFragment_to_baseEditFragment);
-
             }
         });
-
     }
 
     private void loadProfileImage() {

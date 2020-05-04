@@ -175,10 +175,8 @@
 
             <Button
                 android:id="@+id/buttonSignOut"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="387dp"
-                android:layout_marginBottom="31dp"
+                android:layout_width="164dp"
+                android:layout_height="27dp"
                 android:background="@color/colorPrimary"
                 android:lineSpacingExtra="@dimen/activity_vertical_margin"
                 android:shadowColor="#FFFFFF"
@@ -189,16 +187,17 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline14"
-                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="@+id/guideline14"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/guideline19"
+                app:layout_constraintVertical_bias="0.209" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="367dp" />
+                app:layout_constraintGuide_begin="334dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

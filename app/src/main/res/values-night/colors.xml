@@ -11,5 +11,9 @@
     <color name="colorGreen1">#2f3136</color>
     <color name="colorWhite">#7289da</color>
     <color name="colorSlider">#A6A6A6</color>
+
+    <!-- LeaderBoard Colors  -->
+    <color name="colorLeaderBoardDark">#2f3136</color>
+    <color name="colorLeaderBoardLight">#636978</color>
 </resources>
 

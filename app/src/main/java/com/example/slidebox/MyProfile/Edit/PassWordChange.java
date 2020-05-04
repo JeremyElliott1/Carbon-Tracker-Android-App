@@ -33,8 +33,8 @@ import static android.content.ContentValues.TAG;
 
 
 public class PassWordChange extends Fragment {
-     private EditText editTextOld, editTextNew;
-     private Button buttonChangePw;
+    private EditText editTextOld, editTextNew;
+    private Button buttonChangePw;
     private Toolbar mToolbar;
 
 
@@ -42,12 +42,13 @@ public class PassWordChange extends Fragment {
         // Required empty public constructor
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pass_word_change, container, false);
-
         editTextNew = view.findViewById(R.id.editTextNew);
         editTextOld = view.findViewById(R.id.editTextOld);
         buttonChangePw = view.findViewById(R.id.buttonChange);
@@ -66,47 +67,41 @@ public class PassWordChange extends Fragment {
             public void onClick(View v) {
                 String oldPW = editTextOld.getText().toString();
                 final String newPW = editTextNew.getText().toString();
-                if ( oldPW.equals("") ){
+                if (oldPW.equals("")) {
                     Toast.makeText(getActivity(), "OldPassWord is required!", Toast.LENGTH_SHORT).show();
-                }
-                else if (newPW.equals(""))
-                {
+                } else if (newPW.equals("")) {
                     Toast.makeText(getActivity(), "NewPassWord is null!", Toast.LENGTH_SHORT).show();
-                }else if( newPW.length() <6 || oldPW.length() <6 ){
+                } else if (newPW.length() < 6 || oldPW.length() < 6) {
                     Toast.makeText(getActivity(), "NewPassWord is too short", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),oldPW);
-
+                    AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), oldPW);
                     user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            user.updatePassword(newPW).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(getActivity(), "Password changed!", Toast.LENGTH_SHORT).show();
-                                        FirebaseAuth.getInstance().signOut();
-                                        Intent intent = new Intent(getActivity(), LogIn.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        Log.d(TAG, "Password updated");
+                            if (task.isSuccessful()) {
+                                user.updatePassword(newPW).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getActivity(), "Password changed!", Toast.LENGTH_SHORT).show();
+                                            FirebaseAuth.getInstance().signOut();
+                                            Intent intent = new Intent(getActivity(), LogIn.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            Log.d(TAG, "Password updated");
+                                        } else {
+                                            Log.d(TAG, "Error password not updated");
+                                        }
                                     }
-                                    else {
-                                        Log.d(TAG, "Error password not updated");
-                                    }
-                                }
-                            });
-                        } else {
-                            Log.d(TAG, "Error auth failed");
-                        }
+                                });
+                            } else {
+                                Log.d(TAG, "Error auth failed");
+                            }
                         }
                     });
-
                 }
-
             }
         });
         return view;

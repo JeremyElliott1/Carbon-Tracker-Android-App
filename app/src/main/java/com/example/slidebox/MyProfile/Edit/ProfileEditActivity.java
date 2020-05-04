@@ -9,9 +9,6 @@ import com.example.slidebox.R;
 import android.os.Bundle;
 
 public class ProfileEditActivity extends AppCompatActivity {
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
